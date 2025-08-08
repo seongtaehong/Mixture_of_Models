@@ -1,0 +1,88 @@
+INFO 05-23 19:26:41 [importing.py:53] Triton module has been replaced with a placeholder.
+INFO 05-23 19:26:41 [__init__.py:239] Automatically detected platform cuda.
+2025-05-23:19:26:45 INFO     [__main__:440] Selected Tasks: ['commonsense_qa']
+2025-05-23:19:26:45 INFO     [evaluator:185] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+2025-05-23:19:26:45 INFO     [evaluator:223] Initializing hf model, with arguments: {'pretrained': 'nvidia/OpenMath2-Llama3.1-8B'}
+2025-05-23:19:26:48 INFO     [models.huggingface:137] Using device 'cuda'
+2025-05-23:19:26:49 INFO     [models.huggingface:382] Model parallel was set to False, max memory was not set, and device map was set to {'': 'cuda'}
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:09<00:09,  9.56s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:13<00:00,  6.14s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:13<00:00,  6.65s/it]
+2025-05-23:19:27:09 INFO     [api.task:434] Building contexts for commonsense_qa on rank 0...
+  0%|          | 0/1221 [00:00<?, ?it/s]  5%|▌         | 64/1221 [00:00<00:01, 630.79it/s] 10%|█         | 128/1221 [00:00<00:02, 542.44it/s] 16%|█▌        | 190/1221 [00:00<00:01, 571.85it/s] 21%|██▏       | 262/1221 [00:00<00:01, 626.09it/s] 27%|██▋       | 334/1221 [00:00<00:01, 657.52it/s] 33%|███▎      | 406/1221 [00:00<00:01, 675.90it/s] 39%|███▉      | 478/1221 [00:00<00:01, 689.84it/s] 45%|████▌     | 551/1221 [00:00<00:00, 700.19it/s] 51%|█████     | 623/1221 [00:00<00:00, 704.53it/s] 57%|█████▋    | 695/1221 [00:01<00:00, 706.27it/s] 63%|██████▎   | 766/1221 [00:01<00:00, 706.15it/s] 69%|██████▊   | 837/1221 [00:01<00:00, 706.03it/s] 74%|███████▍  | 908/1221 [00:01<00:00, 705.98it/s] 80%|████████  | 979/1221 [00:01<00:00, 707.08it/s] 86%|████████▌ | 1050/1221 [00:01<00:00, 707.56it/s] 92%|█████████▏| 1122/1221 [00:01<00:00, 709.76it/s] 98%|█████████▊| 1194/1221 [00:01<00:00, 711.97it/s]100%|██████████| 1221/1221 [00:01<00:00, 686.50it/s]
+2025-05-23:19:27:11 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=commonsense_qa,output_type=multiple_choice,num_fewshot=0,num_samples=1221); document 0; context prompt (starting on next line):    
+Question: A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?
+A. bank
+B. library
+C. department store
+D. mall
+E. new york
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+A
+(end of target on previous line)
+2025-05-23:19:27:11 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'id': '1afa02df02c908a558b4036e80242fac', 'question': 'A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?', 'question_concept': 'revolving door', 'choices': {'label': ['A', 'B', 'C', 'D', 'E'], 'text': ['bank', 'library', 'department store', 'mall', 'new york']}, 'answerKey': 'A'}, arguments=('Question: A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?\nA. bank\nB. library\nC. department store\nD. mall\nE. new york\nAnswer:', ' A'), idx=0, metadata=('commonsense_qa', 0, 1), resps=[], filtered_resps={}, task_name='commonsense_qa', doc_id=0, repeats=1)
+2025-05-23:19:27:11 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=commonsense_qa,output_type=multiple_choice,num_fewshot=0,num_samples=1221); document 0; context prompt (starting on next line):    
+Question: A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?
+A. bank
+B. library
+C. department store
+D. mall
+E. new york
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+A
+(end of target on previous line)
+2025-05-23:19:27:11 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'id': '1afa02df02c908a558b4036e80242fac', 'question': 'A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?', 'question_concept': 'revolving door', 'choices': {'label': ['A', 'B', 'C', 'D', 'E'], 'text': ['bank', 'library', 'department store', 'mall', 'new york']}, 'answerKey': 'A'}, arguments=('Question: A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?\nA. bank\nB. library\nC. department store\nD. mall\nE. new york\nAnswer:', ' B'), idx=1, metadata=('commonsense_qa', 0, 1), resps=[], filtered_resps={}, task_name='commonsense_qa', doc_id=0, repeats=1)
+2025-05-23:19:27:11 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=commonsense_qa,output_type=multiple_choice,num_fewshot=0,num_samples=1221); document 0; context prompt (starting on next line):    
+Question: A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?
+A. bank
+B. library
+C. department store
+D. mall
+E. new york
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+A
+(end of target on previous line)
+2025-05-23:19:27:11 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'id': '1afa02df02c908a558b4036e80242fac', 'question': 'A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?', 'question_concept': 'revolving door', 'choices': {'label': ['A', 'B', 'C', 'D', 'E'], 'text': ['bank', 'library', 'department store', 'mall', 'new york']}, 'answerKey': 'A'}, arguments=('Question: A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?\nA. bank\nB. library\nC. department store\nD. mall\nE. new york\nAnswer:', ' C'), idx=2, metadata=('commonsense_qa', 0, 1), resps=[], filtered_resps={}, task_name='commonsense_qa', doc_id=0, repeats=1)
+2025-05-23:19:27:11 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=commonsense_qa,output_type=multiple_choice,num_fewshot=0,num_samples=1221); document 0; context prompt (starting on next line):    
+Question: A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?
+A. bank
+B. library
+C. department store
+D. mall
+E. new york
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+A
+(end of target on previous line)
+2025-05-23:19:27:11 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'id': '1afa02df02c908a558b4036e80242fac', 'question': 'A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?', 'question_concept': 'revolving door', 'choices': {'label': ['A', 'B', 'C', 'D', 'E'], 'text': ['bank', 'library', 'department store', 'mall', 'new york']}, 'answerKey': 'A'}, arguments=('Question: A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?\nA. bank\nB. library\nC. department store\nD. mall\nE. new york\nAnswer:', ' D'), idx=3, metadata=('commonsense_qa', 0, 1), resps=[], filtered_resps={}, task_name='commonsense_qa', doc_id=0, repeats=1)
+2025-05-23:19:27:11 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=commonsense_qa,output_type=multiple_choice,num_fewshot=0,num_samples=1221); document 0; context prompt (starting on next line):    
+Question: A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?
+A. bank
+B. library
+C. department store
+D. mall
+E. new york
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+A
+(end of target on previous line)
+2025-05-23:19:27:11 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'id': '1afa02df02c908a558b4036e80242fac', 'question': 'A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?', 'question_concept': 'revolving door', 'choices': {'label': ['A', 'B', 'C', 'D', 'E'], 'text': ['bank', 'library', 'department store', 'mall', 'new york']}, 'answerKey': 'A'}, arguments=('Question: A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?\nA. bank\nB. library\nC. department store\nD. mall\nE. new york\nAnswer:', ' E'), idx=4, metadata=('commonsense_qa', 0, 1), resps=[], filtered_resps={}, task_name='commonsense_qa', doc_id=0, repeats=1)
+2025-05-23:19:27:11 INFO     [evaluator:559] Running loglikelihood requests
+Running loglikelihood requests:   0%|          | 0/6105 [00:00<?, ?it/s]Running loglikelihood requests:   0%|          | 1/6105 [00:08<14:57:17,  8.82s/it]Running loglikelihood requests:   5%|▌         | 321/6105 [00:09<02:01, 47.54it/s] Running loglikelihood requests:  10%|█         | 641/6105 [00:09<00:52, 103.28it/s]Running loglikelihood requests:  16%|█▌        | 961/6105 [00:10<00:30, 166.68it/s]Running loglikelihood requests:  21%|██        | 1281/6105 [00:10<00:20, 235.60it/s]Running loglikelihood requests:  26%|██▌       | 1601/6105 [00:11<00:14, 305.79it/s]Running loglikelihood requests:  31%|███▏      | 1921/6105 [00:11<00:11, 374.90it/s]Running loglikelihood requests:  37%|███▋      | 2241/6105 [00:12<00:08, 438.62it/s]Running loglikelihood requests:  42%|████▏     | 2561/6105 [00:12<00:07, 493.07it/s]Running loglikelihood requests:  47%|████▋     | 2881/6105 [00:13<00:05, 545.33it/s]Running loglikelihood requests:  52%|█████▏    | 3201/6105 [00:13<00:04, 589.85it/s]Running loglikelihood requests:  58%|█████▊    | 3521/6105 [00:14<00:04, 627.31it/s]Running loglikelihood requests:  63%|██████▎   | 3841/6105 [00:14<00:03, 657.21it/s]Running loglikelihood requests:  68%|██████▊   | 4161/6105 [00:15<00:02, 679.04it/s]Running loglikelihood requests:  73%|███████▎  | 4481/6105 [00:15<00:02, 701.96it/s]Running loglikelihood requests:  79%|███████▊  | 4801/6105 [00:15<00:01, 723.31it/s]Running loglikelihood requests:  84%|████████▍ | 5121/6105 [00:16<00:01, 740.74it/s]Running loglikelihood requests:  89%|████████▉ | 5441/6105 [00:16<00:00, 750.44it/s]Running loglikelihood requests:  94%|█████████▍| 5761/6105 [00:17<00:00, 772.50it/s]Running loglikelihood requests: 100%|██████████| 6105/6105 [00:17<00:00, 354.65it/s]
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+2025-05-23:19:27:37 INFO     [loggers.evaluation_tracker:209] Saving results aggregated
+2025-05-23:19:27:37 INFO     [loggers.evaluation_tracker:298] Saving per-sample results for: commonsense_qa
+Passed argument batch_size = auto:1. Detecting largest batch size
+Determined largest batch size: 64
+hf (pretrained=nvidia/OpenMath2-Llama3.1-8B), gen_kwargs: (None), limit: None, num_fewshot: None, batch_size: auto (64)
+|    Tasks     |Version|Filter|n-shot|Metric|   |Value|   |Stderr|
+|--------------|-------|------|-----:|------|---|----:|---|-----:|
+|commonsense_qa|Yaml   |none  |     0|acc   |↑  |0.439|±  |0.0142|
+

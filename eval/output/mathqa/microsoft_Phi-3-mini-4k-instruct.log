@@ -1,0 +1,195 @@
+INFO 06-20 15:08:34 [importing.py:53] Triton module has been replaced with a placeholder.
+INFO 06-20 15:08:36 [__init__.py:239] Automatically detected platform cuda.
+2025-06-20:15:08:40 INFO     [__main__:440] Selected Tasks: ['mathqa']
+2025-06-20:15:08:40 WARNING  [evaluator:159] Instruct model detected, but chat template not applied. Recommend setting `apply_chat_template` (optionally `fewshot_as_multiturn`).
+2025-06-20:15:08:40 INFO     [evaluator:185] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+2025-06-20:15:08:40 INFO     [evaluator:223] Initializing vllm model, with arguments: {'pretrained': 'microsoft/Phi-3-mini-4k-instruct', 'tensor_parallel_size': 1, 'dtype': 'auto', 'gpu_memory_utilization': 0.8}
+INFO 06-20 15:08:50 [config.py:717] This model supports multiple tasks: {'embed', 'classify', 'generate', 'score', 'reward'}. Defaulting to 'generate'.
+INFO 06-20 15:08:51 [config.py:2003] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 06-20 15:08:58 [importing.py:53] Triton module has been replaced with a placeholder.
+INFO 06-20 15:08:58 [__init__.py:239] Automatically detected platform cuda.
+INFO 06-20 15:09:01 [core.py:58] Initializing a V1 LLM engine (v0.8.5.post1) with config: model='microsoft/Phi-3-mini-4k-instruct', speculative_config=None, tokenizer='microsoft/Phi-3-mini-4k-instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=4096, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='auto', reasoning_backend=None), observability_config=ObservabilityConfig(show_hidden_metrics=False, otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=1234, served_model_name=microsoft/Phi-3-mini-4k-instruct, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"level":3,"custom_ops":["none"],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output"],"use_inductor":true,"compile_sizes":[],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":512}
+2025-06-20 15:09:01,347 - INFO - flashinfer.jit: Prebuilt kernels not found, using JIT backend
+WARNING 06-20 15:09:01 [utils.py:2522] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7fe150bff470>
+INFO 06-20 15:09:03 [parallel_state.py:1004] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0
+INFO 06-20 15:09:03 [cuda.py:221] Using Flash Attention backend on V1 engine.
+INFO 06-20 15:09:03 [topk_topp_sampler.py:44] Currently, FlashInfer top-p & top-k sampling sampler is disabled because FlashInfer>=v0.2.3 is not backward compatible. Falling back to the PyTorch-native implementation of top-p & top-k sampling.
+INFO 06-20 15:09:05 [gpu_model_runner.py:1329] Starting to load model microsoft/Phi-3-mini-4k-instruct...
+INFO 06-20 15:09:06 [weight_utils.py:265] Using model weights format ['*.safetensors']
+Loading safetensors checkpoint shards:   0% Completed | 0/2 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:  50% Completed | 1/2 [00:00<00:00,  1.31it/s]
+Loading safetensors checkpoint shards: 100% Completed | 2/2 [00:02<00:00,  1.15s/it]
+Loading safetensors checkpoint shards: 100% Completed | 2/2 [00:02<00:00,  1.09s/it]
+
+INFO 06-20 15:09:09 [loader.py:458] Loading weights took 2.24 seconds
+INFO 06-20 15:09:09 [gpu_model_runner.py:1347] Model loading took 7.1184 GiB and 4.076872 seconds
+INFO 06-20 15:09:17 [backends.py:420] Using cache directory: /mnt/raid6/hst/.cache/vllm/torch_compile_cache/777c2f74f5/rank_0_0 for vLLM's torch.compile
+INFO 06-20 15:09:18 [backends.py:430] Dynamo bytecode transform time: 8.08 s
+INFO 06-20 15:09:45 [backends.py:118] Directly load the compiled graph(s) for shape None from the cache, took 26.633 s
+INFO 06-20 15:09:47 [monitor.py:33] torch.compile takes 8.08 s in total
+INFO 06-20 15:09:49 [kv_cache_utils.py:634] GPU KV cache size: 81,088 tokens
+INFO 06-20 15:09:49 [kv_cache_utils.py:637] Maximum concurrency for 4,096 tokens per request: 19.80x
+INFO 06-20 15:11:15 [gpu_model_runner.py:1686] Graph capturing finished in 86 secs, took 1.45 GiB
+INFO 06-20 15:11:15 [core.py:159] init engine (profile, create kv cache, warmup model) took 125.79 seconds
+INFO 06-20 15:11:15 [core_client.py:439] Core engine process 0 ready.
+2025-06-20:15:11:22 INFO     [api.task:434] Building contexts for mathqa on rank 0...
+  0%|          | 0/2985 [00:00<?, ?it/s]  9%|▉         | 278/2985 [00:00<00:00, 2774.19it/s] 19%|█▊        | 557/2985 [00:00<00:00, 2780.88it/s] 28%|██▊       | 837/2985 [00:00<00:00, 2787.24it/s] 37%|███▋      | 1116/2985 [00:00<00:00, 2787.29it/s] 47%|████▋     | 1395/2985 [00:00<00:00, 2786.32it/s] 56%|█████▌    | 1674/2985 [00:00<00:00, 2761.73it/s] 65%|██████▌   | 1952/2985 [00:00<00:00, 2766.10it/s] 75%|███████▍  | 2229/2985 [00:00<00:00, 2760.50it/s] 84%|████████▍ | 2507/2985 [00:00<00:00, 2764.47it/s] 93%|█████████▎| 2786/2985 [00:01<00:00, 2769.73it/s]100%|██████████| 2985/2985 [00:01<00:00, 2772.34it/s]
+2025-06-20:15:11:24 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=mathqa,output_type=multiple_choice,num_fewshot=0,num_samples=2985); document 0; context prompt (starting on next line):    
+Question: a shopkeeper sold an article offering a discount of 5 % and earned a profit of 31.1 % . what would have been the percentage of profit earned if no discount had been offered ?
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+0
+(end of target on previous line)
+2025-06-20:15:11:24 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'Problem': 'a shopkeeper sold an article offering a discount of 5 % and earned a profit of 31.1 % . what would have been the percentage of profit earned if no discount had been offered ?', 'Rationale': '"giving no discount to customer implies selling the product on printed price . suppose the cost price of the article is 100 . then printed price = 100 ã — ( 100 + 31.1 ) / ( 100 â ˆ ’ 5 ) = 138 hence , required % profit = 138 â € “ 100 = 38 % answer a"', 'options': 'a ) 38 , b ) 27.675 , c ) 30 , d ) data inadequate , e ) none of these', 'correct': 'a', 'annotated_formula': 'subtract(divide(multiply(add(const_100, 31.1), const_100), subtract(const_100, 5)), const_100)', 'linear_formula': 'add(n1,const_100)|subtract(const_100,n0)|multiply(#0,const_100)|divide(#2,#1)|subtract(#3,const_100)|', 'category': 'gain'}, arguments=('Question: a shopkeeper sold an article offering a discount of 5 % and earned a profit of 31.1 % . what would have been the percentage of profit earned if no discount had been offered ?\nAnswer:', ' 38'), idx=0, metadata=('mathqa', 0, 1), resps=[], filtered_resps={}, task_name='mathqa', doc_id=0, repeats=1)
+2025-06-20:15:11:24 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=mathqa,output_type=multiple_choice,num_fewshot=0,num_samples=2985); document 0; context prompt (starting on next line):    
+Question: a shopkeeper sold an article offering a discount of 5 % and earned a profit of 31.1 % . what would have been the percentage of profit earned if no discount had been offered ?
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+0
+(end of target on previous line)
+2025-06-20:15:11:24 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'Problem': 'a shopkeeper sold an article offering a discount of 5 % and earned a profit of 31.1 % . what would have been the percentage of profit earned if no discount had been offered ?', 'Rationale': '"giving no discount to customer implies selling the product on printed price . suppose the cost price of the article is 100 . then printed price = 100 ã — ( 100 + 31.1 ) / ( 100 â ˆ ’ 5 ) = 138 hence , required % profit = 138 â € “ 100 = 38 % answer a"', 'options': 'a ) 38 , b ) 27.675 , c ) 30 , d ) data inadequate , e ) none of these', 'correct': 'a', 'annotated_formula': 'subtract(divide(multiply(add(const_100, 31.1), const_100), subtract(const_100, 5)), const_100)', 'linear_formula': 'add(n1,const_100)|subtract(const_100,n0)|multiply(#0,const_100)|divide(#2,#1)|subtract(#3,const_100)|', 'category': 'gain'}, arguments=('Question: a shopkeeper sold an article offering a discount of 5 % and earned a profit of 31.1 % . what would have been the percentage of profit earned if no discount had been offered ?\nAnswer:', ' 27.675'), idx=1, metadata=('mathqa', 0, 1), resps=[], filtered_resps={}, task_name='mathqa', doc_id=0, repeats=1)
+2025-06-20:15:11:24 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=mathqa,output_type=multiple_choice,num_fewshot=0,num_samples=2985); document 0; context prompt (starting on next line):    
+Question: a shopkeeper sold an article offering a discount of 5 % and earned a profit of 31.1 % . what would have been the percentage of profit earned if no discount had been offered ?
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+0
+(end of target on previous line)
+2025-06-20:15:11:24 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'Problem': 'a shopkeeper sold an article offering a discount of 5 % and earned a profit of 31.1 % . what would have been the percentage of profit earned if no discount had been offered ?', 'Rationale': '"giving no discount to customer implies selling the product on printed price . suppose the cost price of the article is 100 . then printed price = 100 ã — ( 100 + 31.1 ) / ( 100 â ˆ ’ 5 ) = 138 hence , required % profit = 138 â € “ 100 = 38 % answer a"', 'options': 'a ) 38 , b ) 27.675 , c ) 30 , d ) data inadequate , e ) none of these', 'correct': 'a', 'annotated_formula': 'subtract(divide(multiply(add(const_100, 31.1), const_100), subtract(const_100, 5)), const_100)', 'linear_formula': 'add(n1,const_100)|subtract(const_100,n0)|multiply(#0,const_100)|divide(#2,#1)|subtract(#3,const_100)|', 'category': 'gain'}, arguments=('Question: a shopkeeper sold an article offering a discount of 5 % and earned a profit of 31.1 % . what would have been the percentage of profit earned if no discount had been offered ?\nAnswer:', ' 30'), idx=2, metadata=('mathqa', 0, 1), resps=[], filtered_resps={}, task_name='mathqa', doc_id=0, repeats=1)
+2025-06-20:15:11:24 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=mathqa,output_type=multiple_choice,num_fewshot=0,num_samples=2985); document 0; context prompt (starting on next line):    
+Question: a shopkeeper sold an article offering a discount of 5 % and earned a profit of 31.1 % . what would have been the percentage of profit earned if no discount had been offered ?
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+0
+(end of target on previous line)
+2025-06-20:15:11:24 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'Problem': 'a shopkeeper sold an article offering a discount of 5 % and earned a profit of 31.1 % . what would have been the percentage of profit earned if no discount had been offered ?', 'Rationale': '"giving no discount to customer implies selling the product on printed price . suppose the cost price of the article is 100 . then printed price = 100 ã — ( 100 + 31.1 ) / ( 100 â ˆ ’ 5 ) = 138 hence , required % profit = 138 â € “ 100 = 38 % answer a"', 'options': 'a ) 38 , b ) 27.675 , c ) 30 , d ) data inadequate , e ) none of these', 'correct': 'a', 'annotated_formula': 'subtract(divide(multiply(add(const_100, 31.1), const_100), subtract(const_100, 5)), const_100)', 'linear_formula': 'add(n1,const_100)|subtract(const_100,n0)|multiply(#0,const_100)|divide(#2,#1)|subtract(#3,const_100)|', 'category': 'gain'}, arguments=('Question: a shopkeeper sold an article offering a discount of 5 % and earned a profit of 31.1 % . what would have been the percentage of profit earned if no discount had been offered ?\nAnswer:', ' data inadequate'), idx=3, metadata=('mathqa', 0, 1), resps=[], filtered_resps={}, task_name='mathqa', doc_id=0, repeats=1)
+2025-06-20:15:11:24 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=mathqa,output_type=multiple_choice,num_fewshot=0,num_samples=2985); document 0; context prompt (starting on next line):    
+Question: a shopkeeper sold an article offering a discount of 5 % and earned a profit of 31.1 % . what would have been the percentage of profit earned if no discount had been offered ?
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+0
+(end of target on previous line)
+2025-06-20:15:11:24 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'Problem': 'a shopkeeper sold an article offering a discount of 5 % and earned a profit of 31.1 % . what would have been the percentage of profit earned if no discount had been offered ?', 'Rationale': '"giving no discount to customer implies selling the product on printed price . suppose the cost price of the article is 100 . then printed price = 100 ã — ( 100 + 31.1 ) / ( 100 â ˆ ’ 5 ) = 138 hence , required % profit = 138 â € “ 100 = 38 % answer a"', 'options': 'a ) 38 , b ) 27.675 , c ) 30 , d ) data inadequate , e ) none of these', 'correct': 'a', 'annotated_formula': 'subtract(divide(multiply(add(const_100, 31.1), const_100), subtract(const_100, 5)), const_100)', 'linear_formula': 'add(n1,const_100)|subtract(const_100,n0)|multiply(#0,const_100)|divide(#2,#1)|subtract(#3,const_100)|', 'category': 'gain'}, arguments=('Question: a shopkeeper sold an article offering a discount of 5 % and earned a profit of 31.1 % . what would have been the percentage of profit earned if no discount had been offered ?\nAnswer:', ' none of these'), idx=4, metadata=('mathqa', 0, 1), resps=[], filtered_resps={}, task_name='mathqa', doc_id=0, repeats=1)
+2025-06-20:15:11:24 INFO     [evaluator:559] Running loglikelihood requests
+Running loglikelihood requests:   0%|          | 0/14925 [00:00<?, ?it/s]
+Processed prompts:   0%|          | 0/14925 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts:   0%|          | 4/14925 [00:01<1:05:54,  3.77it/s, est. speed input: 758.37 toks/s, output: 3.77 toks/s][A
+Processed prompts:   0%|          | 55/14925 [00:01<06:23, 38.73it/s, est. speed input: 5159.85 toks/s, output: 32.22 toks/s][A
+Processed prompts:   1%|          | 118/14925 [00:02<03:55, 62.95it/s, est. speed input: 7295.87 toks/s, output: 50.56 toks/s][A
+Processed prompts:   1%|          | 185/14925 [00:02<03:05, 79.31it/s, est. speed input: 8572.76 toks/s, output: 62.76 toks/s][A
+Processed prompts:   2%|▏         | 254/14925 [00:03<02:44, 89.20it/s, est. speed input: 9326.01 toks/s, output: 70.82 toks/s][A
+Processed prompts:   2%|▏         | 325/14925 [00:04<02:30, 96.84it/s, est. speed input: 9866.83 toks/s, output: 77.06 toks/s][A
+Processed prompts:   3%|▎         | 399/14925 [00:05<02:41, 90.17it/s, est. speed input: 9701.84 toks/s, output: 77.65 toks/s][A
+Processed prompts:   3%|▎         | 474/14925 [00:05<02:07, 113.37it/s, est. speed input: 10593.86 toks/s, output: 86.58 toks/s][A
+Processed prompts:   4%|▎         | 552/14925 [00:06<02:03, 116.70it/s, est. speed input: 10851.59 toks/s, output: 90.43 toks/s][A
+Processed prompts:   4%|▍         | 631/14925 [00:06<01:59, 119.49it/s, est. speed input: 11054.01 toks/s, output: 93.71 toks/s][A
+Processed prompts:   5%|▍         | 711/14925 [00:07<01:56, 122.47it/s, est. speed input: 11232.31 toks/s, output: 96.71 toks/s][A
+Processed prompts:   5%|▌         | 792/14925 [00:07<01:53, 124.51it/s, est. speed input: 11369.89 toks/s, output: 99.25 toks/s][A
+Processed prompts:   6%|▌         | 875/14925 [00:08<01:50, 127.34it/s, est. speed input: 11507.25 toks/s, output: 101.75 toks/s][A
+Processed prompts:   6%|▋         | 959/14925 [00:09<01:48, 129.27it/s, est. speed input: 11607.58 toks/s, output: 103.93 toks/s][A
+Processed prompts:   7%|▋         | 1046/14925 [00:09<01:45, 132.16it/s, est. speed input: 11708.81 toks/s, output: 106.15 toks/s][A
+Processed prompts:   8%|▊         | 1133/14925 [00:10<01:42, 134.35it/s, est. speed input: 11790.15 toks/s, output: 108.13 toks/s][A
+Processed prompts:   8%|▊         | 1221/14925 [00:11<01:40, 135.95it/s, est. speed input: 11855.16 toks/s, output: 109.91 toks/s][A
+Processed prompts:   9%|▉         | 1311/14925 [00:11<01:38, 138.48it/s, est. speed input: 11924.91 toks/s, output: 111.75 toks/s][A
+Processed prompts:   9%|▉         | 1402/14925 [00:12<01:36, 139.82it/s, est. speed input: 11975.20 toks/s, output: 113.35 toks/s][A
+Processed prompts:  10%|█         | 1494/14925 [00:13<01:50, 122.01it/s, est. speed input: 11721.15 toks/s, output: 112.02 toks/s][A
+Processed prompts:  11%|█         | 1587/14925 [00:13<01:28, 150.89it/s, est. speed input: 12072.27 toks/s, output: 116.46 toks/s][A
+Processed prompts:  11%|█▏        | 1680/14925 [00:14<01:28, 148.85it/s, est. speed input: 12099.97 toks/s, output: 117.72 toks/s][A
+Processed prompts:  12%|█▏        | 1774/14925 [00:15<01:36, 136.88it/s, est. speed input: 11990.39 toks/s, output: 117.62 toks/s][A
+Processed prompts:  13%|█▎        | 1870/14925 [00:15<01:33, 140.14it/s, est. speed input: 12020.91 toks/s, output: 118.87 toks/s][A
+Processed prompts:  13%|█▎        | 1966/14925 [00:16<01:30, 143.13it/s, est. speed input: 12051.15 toks/s, output: 120.10 toks/s][A
+Processed prompts:  14%|█▍        | 2063/14925 [00:17<01:28, 145.25it/s, est. speed input: 12072.10 toks/s, output: 121.25 toks/s][A
+Processed prompts:  14%|█▍        | 2163/14925 [00:17<01:26, 148.08it/s, est. speed input: 12098.44 toks/s, output: 122.47 toks/s][A
+Processed prompts:  15%|█▌        | 2263/14925 [00:18<01:23, 151.20it/s, est. speed input: 12126.82 toks/s, output: 123.72 toks/s][A
+Processed prompts:  16%|█▌        | 2365/14925 [00:18<01:21, 154.16it/s, est. speed input: 12155.44 toks/s, output: 124.98 toks/s][A
+Processed prompts:  17%|█▋        | 2468/14925 [00:19<01:20, 154.98it/s, est. speed input: 12166.37 toks/s, output: 126.04 toks/s][A
+Processed prompts:  17%|█▋        | 2573/14925 [00:20<01:18, 157.79it/s, est. speed input: 12188.24 toks/s, output: 127.26 toks/s][A
+Processed prompts:  18%|█▊        | 2679/14925 [00:20<01:16, 159.34it/s, est. speed input: 12200.09 toks/s, output: 128.37 toks/s][A
+Processed prompts:  19%|█▊        | 2787/14925 [00:21<01:15, 161.73it/s, est. speed input: 12214.61 toks/s, output: 129.54 toks/s][A
+Processed prompts:  19%|█▉        | 2897/14925 [00:22<01:13, 164.39it/s, est. speed input: 12229.15 toks/s, output: 130.73 toks/s][A
+Processed prompts:  20%|██        | 3008/14925 [00:22<01:11, 166.38it/s, est. speed input: 12238.14 toks/s, output: 131.88 toks/s][A
+Processed prompts:  21%|██        | 3121/14925 [00:23<01:24, 139.59it/s, est. speed input: 12018.10 toks/s, output: 130.54 toks/s][A
+Processed prompts:  22%|██▏       | 3236/14925 [00:24<01:04, 182.49it/s, est. speed input: 12259.21 toks/s, output: 134.22 toks/s][A
+Processed prompts:  22%|██▏       | 3352/14925 [00:24<01:03, 182.94it/s, est. speed input: 12278.75 toks/s, output: 135.49 toks/s][A
+Processed prompts:  23%|██▎       | 3469/14925 [00:25<01:03, 180.47it/s, est. speed input: 12278.32 toks/s, output: 136.53 toks/s][A
+Processed prompts:  24%|██▍       | 3587/14925 [00:26<01:02, 182.20it/s, est. speed input: 12292.25 toks/s, output: 137.74 toks/s][A
+Processed prompts:  25%|██▍       | 3707/14925 [00:26<01:02, 179.01it/s, est. speed input: 12278.76 toks/s, output: 138.64 toks/s][A
+Processed prompts:  26%|██▌       | 3828/14925 [00:27<01:01, 180.34it/s, est. speed input: 12283.35 toks/s, output: 139.72 toks/s][A
+Processed prompts:  26%|██▋       | 3950/14925 [00:28<00:59, 185.01it/s, est. speed input: 12302.85 toks/s, output: 140.98 toks/s][A
+Processed prompts:  27%|██▋       | 4072/14925 [00:28<00:59, 181.15it/s, est. speed input: 12284.84 toks/s, output: 141.76 toks/s][A
+Processed prompts:  28%|██▊       | 4196/14925 [00:29<00:57, 185.98it/s, est. speed input: 12301.42 toks/s, output: 142.96 toks/s][A
+Processed prompts:  29%|██▉       | 4321/14925 [00:30<00:57, 184.18it/s, est. speed input: 12290.52 toks/s, output: 143.82 toks/s][A
+Processed prompts:  30%|██▉       | 4447/14925 [00:30<00:56, 184.93it/s, est. speed input: 12287.05 toks/s, output: 144.76 toks/s][A
+Processed prompts:  31%|███       | 4575/14925 [00:31<00:54, 190.33it/s, est. speed input: 12303.20 toks/s, output: 145.94 toks/s][A
+Processed prompts:  32%|███▏      | 4703/14925 [00:32<00:54, 187.23it/s, est. speed input: 12285.98 toks/s, output: 146.71 toks/s][A
+Processed prompts:  32%|███▏      | 4833/14925 [00:32<00:52, 193.53it/s, est. speed input: 12303.24 toks/s, output: 147.90 toks/s][A
+Processed prompts:  33%|███▎      | 4964/14925 [00:33<00:51, 193.60it/s, est. speed input: 12299.74 toks/s, output: 148.83 toks/s][A
+Processed prompts:  34%|███▍      | 5096/14925 [00:34<00:50, 195.39it/s, est. speed input: 12301.19 toks/s, output: 149.82 toks/s][A
+Processed prompts:  35%|███▌      | 5229/14925 [00:34<00:49, 197.64it/s, est. speed input: 12304.34 toks/s, output: 150.82 toks/s][A
+Processed prompts:  36%|███▌      | 5364/14925 [00:35<00:47, 200.33it/s, est. speed input: 12309.94 toks/s, output: 151.85 toks/s][A
+Processed prompts:  37%|███▋      | 5500/14925 [00:36<00:57, 165.16it/s, est. speed input: 12145.75 toks/s, output: 150.79 toks/s][A
+Processed prompts:  38%|███▊      | 5637/14925 [00:36<00:41, 223.53it/s, est. speed input: 12329.89 toks/s, output: 154.03 toks/s][A
+Processed prompts:  39%|███▊      | 5775/14925 [00:37<00:42, 215.33it/s, est. speed input: 12318.81 toks/s, output: 154.87 toks/s][A
+Processed prompts:  40%|███▉      | 5914/14925 [00:37<00:41, 214.61it/s, est. speed input: 12322.52 toks/s, output: 155.87 toks/s][A
+Processed prompts:  41%|████      | 6056/14925 [00:38<00:42, 211.10it/s, est. speed input: 12313.29 toks/s, output: 156.73 toks/s][A
+Processed prompts:  42%|████▏     | 6198/14925 [00:39<00:40, 212.90it/s, est. speed input: 12316.21 toks/s, output: 157.73 toks/s][A
+Processed prompts:  42%|████▏     | 6342/14925 [00:39<00:40, 212.62it/s, est. speed input: 12312.23 toks/s, output: 158.66 toks/s][A
+Processed prompts:  43%|████▎     | 6487/14925 [00:40<00:39, 214.97it/s, est. speed input: 12314.09 toks/s, output: 159.66 toks/s][A
+Processed prompts:  44%|████▍     | 6633/14925 [00:41<00:37, 220.19it/s, est. speed input: 12325.26 toks/s, output: 160.77 toks/s][A
+Processed prompts:  45%|████▌     | 6781/14925 [00:41<00:37, 215.85it/s, est. speed input: 12310.53 toks/s, output: 161.55 toks/s][A
+Processed prompts:  46%|████▋     | 6930/14925 [00:42<00:36, 218.92it/s, est. speed input: 12312.55 toks/s, output: 162.55 toks/s][A
+Processed prompts:  47%|████▋     | 7079/14925 [00:43<00:35, 220.71it/s, est. speed input: 12312.96 toks/s, output: 163.51 toks/s][A
+Processed prompts:  48%|████▊     | 7231/14925 [00:43<00:34, 222.91it/s, est. speed input: 12312.99 toks/s, output: 164.49 toks/s][A
+Processed prompts:  49%|████▉     | 7384/14925 [00:44<00:33, 224.77it/s, est. speed input: 12312.09 toks/s, output: 165.45 toks/s][A
+Processed prompts:  51%|█████     | 7539/14925 [00:45<00:32, 227.20it/s, est. speed input: 12312.53 toks/s, output: 166.44 toks/s][A
+Processed prompts:  52%|█████▏    | 7696/14925 [00:45<00:31, 229.02it/s, est. speed input: 12310.37 toks/s, output: 167.42 toks/s][A
+Processed prompts:  53%|█████▎    | 7853/14925 [00:46<00:30, 234.61it/s, est. speed input: 12318.58 toks/s, output: 168.52 toks/s][A
+Processed prompts:  54%|█████▎    | 8013/14925 [00:47<00:29, 231.52it/s, est. speed input: 12306.83 toks/s, output: 169.37 toks/s][A
+Processed prompts:  55%|█████▍    | 8174/14925 [00:47<00:28, 233.99it/s, est. speed input: 12305.73 toks/s, output: 170.35 toks/s][A
+Processed prompts:  56%|█████▌    | 8337/14925 [00:48<00:27, 240.13it/s, est. speed input: 12312.61 toks/s, output: 171.47 toks/s][A
+Processed prompts:  57%|█████▋    | 8501/14925 [00:49<00:26, 238.02it/s, est. speed input: 12303.45 toks/s, output: 172.35 toks/s][A
+Processed prompts:  58%|█████▊    | 8667/14925 [00:49<00:25, 242.35it/s, est. speed input: 12305.02 toks/s, output: 173.41 toks/s][A
+Processed prompts:  59%|█████▉    | 8834/14925 [00:50<00:25, 243.40it/s, est. speed input: 12301.41 toks/s, output: 174.38 toks/s][A
+Processed prompts:  60%|██████    | 9005/14925 [00:51<00:30, 194.98it/s, est. speed input: 12159.41 toks/s, output: 173.42 toks/s][A
+Processed prompts:  63%|██████▎   | 9351/14925 [00:52<00:20, 266.69it/s, est. speed input: 12294.00 toks/s, output: 177.47 toks/s][A
+Processed prompts:  64%|██████▍   | 9526/14925 [00:53<00:20, 264.21it/s, est. speed input: 12290.59 toks/s, output: 178.49 toks/s][A
+Processed prompts:  65%|██████▌   | 9705/14925 [00:54<00:19, 264.85it/s, est. speed input: 12290.25 toks/s, output: 179.58 toks/s][A
+Processed prompts:  66%|██████▌   | 9884/14925 [00:54<00:19, 263.70it/s, est. speed input: 12285.15 toks/s, output: 180.60 toks/s][A
+Processed prompts:  67%|██████▋   | 10066/14925 [00:55<00:18, 267.58it/s, est. speed input: 12287.63 toks/s, output: 181.75 toks/s][A
+Processed prompts:  69%|██████▊   | 10251/14925 [00:56<00:17, 265.56it/s, est. speed input: 12278.56 toks/s, output: 182.75 toks/s][A
+Processed prompts:  70%|██████▉   | 10437/14925 [00:56<00:16, 269.48it/s, est. speed input: 12278.47 toks/s, output: 183.88 toks/s][A
+Processed prompts:  71%|███████   | 10628/14925 [00:57<00:15, 270.76it/s, est. speed input: 12272.31 toks/s, output: 184.97 toks/s][A
+Processed prompts:  72%|███████▏  | 10820/14925 [00:58<00:14, 275.86it/s, est. speed input: 12272.95 toks/s, output: 186.15 toks/s][A
+Processed prompts:  74%|███████▍  | 11015/14925 [00:58<00:14, 273.34it/s, est. speed input: 12260.24 toks/s, output: 187.16 toks/s][A
+Processed prompts:  75%|███████▌  | 11212/14925 [00:59<00:13, 276.84it/s, est. speed input: 12255.29 toks/s, output: 188.30 toks/s][A
+Processed prompts:  76%|███████▋  | 11413/14925 [01:00<00:12, 280.51it/s, est. speed input: 12249.84 toks/s, output: 189.46 toks/s][A
+Processed prompts:  78%|███████▊  | 11618/14925 [01:00<00:11, 284.73it/s, est. speed input: 12244.52 toks/s, output: 190.67 toks/s][A
+Processed prompts:  79%|███████▉  | 11825/14925 [01:01<00:10, 289.21it/s, est. speed input: 12239.78 toks/s, output: 191.89 toks/s][A
+Processed prompts:  81%|████████  | 12036/14925 [01:02<00:09, 292.70it/s, est. speed input: 12233.95 toks/s, output: 193.11 toks/s][A
+Processed prompts:  82%|████████▏ | 12251/14925 [01:03<00:08, 298.61it/s, est. speed input: 12230.06 toks/s, output: 194.42 toks/s][A
+Processed prompts:  84%|████████▎ | 12472/14925 [01:03<00:08, 300.19it/s, est. speed input: 12219.31 toks/s, output: 195.66 toks/s][A
+Processed prompts:  85%|████████▌ | 12697/14925 [01:04<00:07, 305.22it/s, est. speed input: 12211.34 toks/s, output: 197.00 toks/s][A
+Processed prompts:  87%|████████▋ | 12930/14925 [01:05<00:06, 312.37it/s, est. speed input: 12204.45 toks/s, output: 198.43 toks/s][A
+Processed prompts:  88%|████████▊ | 13169/14925 [01:05<00:05, 317.37it/s, est. speed input: 12193.96 toks/s, output: 199.87 toks/s][A
+Processed prompts:  90%|████████▉ | 13417/14925 [01:06<00:04, 323.98it/s, est. speed input: 12183.30 toks/s, output: 201.40 toks/s][A
+Processed prompts:  92%|█████████▏| 13673/14925 [01:07<00:03, 338.38it/s, est. speed input: 12179.52 toks/s, output: 203.15 toks/s][A
+Processed prompts:  93%|█████████▎| 13929/14925 [01:07<00:02, 352.67it/s, est. speed input: 12174.84 toks/s, output: 204.95 toks/s][A
+Processed prompts:  95%|█████████▌| 14185/14925 [01:08<00:01, 370.85it/s, est. speed input: 12171.93 toks/s, output: 206.86 toks/s][A
+Processed prompts:  97%|█████████▋| 14441/14925 [01:09<00:01, 395.06it/s, est. speed input: 12172.18 toks/s, output: 208.91 toks/s][A
+Processed prompts:  98%|█████████▊| 14697/14925 [01:10<00:00, 317.19it/s, est. speed input: 12054.61 toks/s, output: 209.07 toks/s][AProcessed prompts: 100%|██████████| 14925/14925 [01:10<00:00, 212.31it/s, est. speed input: 12117.20 toks/s, output: 212.31 toks/s]
+Running loglikelihood requests:   0%|          | 1/14925 [01:11<297:11:12, 71.69s/it]Running loglikelihood requests:  25%|██▍       | 3690/14925 [01:11<02:33, 73.38it/s] Running loglikelihood requests:  60%|██████    | 9007/14925 [01:11<00:26, 223.81it/s]Running loglikelihood requests: 100%|██████████| 14925/14925 [01:11<00:00, 207.38it/s]
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+[rank0]:[W620 15:12:55.408798911 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+2025-06-20:15:12:58 INFO     [loggers.evaluation_tracker:209] Saving results aggregated
+2025-06-20:15:12:58 INFO     [loggers.evaluation_tracker:298] Saving per-sample results for: mathqa
+vllm (pretrained=microsoft/Phi-3-mini-4k-instruct,tensor_parallel_size=1,dtype=auto,gpu_memory_utilization=0.8), gen_kwargs: (None), limit: None, num_fewshot: None, batch_size: auto
+|Tasks |Version|Filter|n-shot| Metric |   |Value |   |Stderr|
+|------|------:|------|-----:|--------|---|-----:|---|-----:|
+|mathqa|      1|none  |     0|acc     |↑  |0.4037|±  | 0.009|
+|      |       |none  |     0|acc_norm|↑  |0.3987|±  | 0.009|
+

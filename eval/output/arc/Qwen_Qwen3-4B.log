@@ -1,0 +1,107 @@
+INFO 06-20 15:19:51 [importing.py:53] Triton module has been replaced with a placeholder.
+INFO 06-20 15:19:52 [__init__.py:239] Automatically detected platform cuda.
+2025-06-20:15:19:57 INFO     [__main__:440] Selected Tasks: ['arc_challenge']
+2025-06-20:15:19:57 INFO     [evaluator:185] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+2025-06-20:15:19:57 INFO     [evaluator:223] Initializing vllm model, with arguments: {'pretrained': 'Qwen/Qwen3-4B', 'tensor_parallel_size': 1, 'dtype': 'auto', 'gpu_memory_utilization': 0.8}
+INFO 06-20 15:20:07 [config.py:717] This model supports multiple tasks: {'classify', 'embed', 'reward', 'generate', 'score'}. Defaulting to 'generate'.
+INFO 06-20 15:20:09 [config.py:2003] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 06-20 15:20:18 [importing.py:53] Triton module has been replaced with a placeholder.
+INFO 06-20 15:20:18 [__init__.py:239] Automatically detected platform cuda.
+INFO 06-20 15:20:21 [core.py:58] Initializing a V1 LLM engine (v0.8.5.post1) with config: model='Qwen/Qwen3-4B', speculative_config=None, tokenizer='Qwen/Qwen3-4B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=40960, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='auto', reasoning_backend=None), observability_config=ObservabilityConfig(show_hidden_metrics=False, otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=1234, served_model_name=Qwen/Qwen3-4B, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"level":3,"custom_ops":["none"],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output"],"use_inductor":true,"compile_sizes":[],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":512}
+2025-06-20 15:20:22,091 - INFO - flashinfer.jit: Prebuilt kernels not found, using JIT backend
+WARNING 06-20 15:20:22 [utils.py:2522] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7f567820e510>
+INFO 06-20 15:20:24 [parallel_state.py:1004] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0
+INFO 06-20 15:20:24 [cuda.py:221] Using Flash Attention backend on V1 engine.
+INFO 06-20 15:20:24 [topk_topp_sampler.py:44] Currently, FlashInfer top-p & top-k sampling sampler is disabled because FlashInfer>=v0.2.3 is not backward compatible. Falling back to the PyTorch-native implementation of top-p & top-k sampling.
+INFO 06-20 15:20:25 [gpu_model_runner.py:1329] Starting to load model Qwen/Qwen3-4B...
+INFO 06-20 15:20:28 [weight_utils.py:265] Using model weights format ['*.safetensors']
+Loading safetensors checkpoint shards:   0% Completed | 0/3 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:  33% Completed | 1/3 [00:00<00:01,  1.01it/s]
+Loading safetensors checkpoint shards:  67% Completed | 2/3 [00:02<00:01,  1.03s/it]
+Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:02<00:00,  1.63it/s]
+Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:02<00:00,  1.39it/s]
+
+INFO 06-20 15:20:31 [loader.py:458] Loading weights took 2.17 seconds
+INFO 06-20 15:20:31 [gpu_model_runner.py:1347] Model loading took 7.5552 GiB and 6.105061 seconds
+INFO 06-20 15:20:43 [backends.py:420] Using cache directory: /mnt/raid6/hst/.cache/vllm/torch_compile_cache/947a79113e/rank_0_0 for vLLM's torch.compile
+INFO 06-20 15:20:43 [backends.py:430] Dynamo bytecode transform time: 11.41 s
+INFO 06-20 15:21:24 [backends.py:118] Directly load the compiled graph(s) for shape None from the cache, took 40.740 s
+INFO 06-20 15:21:27 [monitor.py:33] torch.compile takes 11.41 s in total
+INFO 06-20 15:21:29 [kv_cache_utils.py:634] GPU KV cache size: 207,200 tokens
+INFO 06-20 15:21:29 [kv_cache_utils.py:637] Maximum concurrency for 40,960 tokens per request: 5.06x
+INFO 06-20 15:23:12 [gpu_model_runner.py:1686] Graph capturing finished in 102 secs, took 2.11 GiB
+INFO 06-20 15:23:12 [core.py:159] init engine (profile, create kv cache, warmup model) took 160.83 seconds
+INFO 06-20 15:23:12 [core_client.py:439] Core engine process 0 ready.
+2025-06-20:15:23:21 INFO     [api.task:434] Building contexts for arc_challenge on rank 0...
+  0%|          | 0/1172 [00:00<?, ?it/s] 11%|█         | 128/1172 [00:00<00:00, 1276.00it/s] 23%|██▎       | 265/1172 [00:00<00:00, 1331.16it/s] 34%|███▍      | 399/1172 [00:00<00:00, 1318.80it/s] 46%|████▌     | 537/1172 [00:00<00:00, 1340.08it/s] 58%|█████▊    | 675/1172 [00:00<00:00, 1353.77it/s] 69%|██████▉   | 814/1172 [00:00<00:00, 1363.50it/s] 81%|████████▏ | 953/1172 [00:00<00:00, 1369.88it/s] 93%|█████████▎| 1091/1172 [00:00<00:00, 1369.08it/s]100%|██████████| 1172/1172 [00:00<00:00, 1350.88it/s]
+2025-06-20:15:23:22 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=arc_challenge,output_type=multiple_choice,num_fewshot=0,num_samples=1172); document 0; context prompt (starting on next line):    
+Question: An astronomer observes that a planet rotates faster after a meteorite impact. Which is the most likely effect of this increase in rotation?
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+2
+(end of target on previous line)
+2025-06-20:15:23:22 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'id': 'Mercury_7175875', 'question': 'An astronomer observes that a planet rotates faster after a meteorite impact. Which is the most likely effect of this increase in rotation?', 'choices': {'text': ['Planetary density will decrease.', 'Planetary years will become longer.', 'Planetary days will become shorter.', 'Planetary gravity will become stronger.'], 'label': ['A', 'B', 'C', 'D']}, 'answerKey': 'C'}, arguments=('Question: An astronomer observes that a planet rotates faster after a meteorite impact. Which is the most likely effect of this increase in rotation?\nAnswer:', ' Planetary density will decrease.'), idx=0, metadata=('arc_challenge', 0, 1), resps=[], filtered_resps={}, task_name='arc_challenge', doc_id=0, repeats=1)
+2025-06-20:15:23:22 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=arc_challenge,output_type=multiple_choice,num_fewshot=0,num_samples=1172); document 0; context prompt (starting on next line):    
+Question: An astronomer observes that a planet rotates faster after a meteorite impact. Which is the most likely effect of this increase in rotation?
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+2
+(end of target on previous line)
+2025-06-20:15:23:22 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'id': 'Mercury_7175875', 'question': 'An astronomer observes that a planet rotates faster after a meteorite impact. Which is the most likely effect of this increase in rotation?', 'choices': {'text': ['Planetary density will decrease.', 'Planetary years will become longer.', 'Planetary days will become shorter.', 'Planetary gravity will become stronger.'], 'label': ['A', 'B', 'C', 'D']}, 'answerKey': 'C'}, arguments=('Question: An astronomer observes that a planet rotates faster after a meteorite impact. Which is the most likely effect of this increase in rotation?\nAnswer:', ' Planetary years will become longer.'), idx=1, metadata=('arc_challenge', 0, 1), resps=[], filtered_resps={}, task_name='arc_challenge', doc_id=0, repeats=1)
+2025-06-20:15:23:22 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=arc_challenge,output_type=multiple_choice,num_fewshot=0,num_samples=1172); document 0; context prompt (starting on next line):    
+Question: An astronomer observes that a planet rotates faster after a meteorite impact. Which is the most likely effect of this increase in rotation?
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+2
+(end of target on previous line)
+2025-06-20:15:23:22 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'id': 'Mercury_7175875', 'question': 'An astronomer observes that a planet rotates faster after a meteorite impact. Which is the most likely effect of this increase in rotation?', 'choices': {'text': ['Planetary density will decrease.', 'Planetary years will become longer.', 'Planetary days will become shorter.', 'Planetary gravity will become stronger.'], 'label': ['A', 'B', 'C', 'D']}, 'answerKey': 'C'}, arguments=('Question: An astronomer observes that a planet rotates faster after a meteorite impact. Which is the most likely effect of this increase in rotation?\nAnswer:', ' Planetary days will become shorter.'), idx=2, metadata=('arc_challenge', 0, 1), resps=[], filtered_resps={}, task_name='arc_challenge', doc_id=0, repeats=1)
+2025-06-20:15:23:22 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=arc_challenge,output_type=multiple_choice,num_fewshot=0,num_samples=1172); document 0; context prompt (starting on next line):    
+Question: An astronomer observes that a planet rotates faster after a meteorite impact. Which is the most likely effect of this increase in rotation?
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+2
+(end of target on previous line)
+2025-06-20:15:23:22 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'id': 'Mercury_7175875', 'question': 'An astronomer observes that a planet rotates faster after a meteorite impact. Which is the most likely effect of this increase in rotation?', 'choices': {'text': ['Planetary density will decrease.', 'Planetary years will become longer.', 'Planetary days will become shorter.', 'Planetary gravity will become stronger.'], 'label': ['A', 'B', 'C', 'D']}, 'answerKey': 'C'}, arguments=('Question: An astronomer observes that a planet rotates faster after a meteorite impact. Which is the most likely effect of this increase in rotation?\nAnswer:', ' Planetary gravity will become stronger.'), idx=3, metadata=('arc_challenge', 0, 1), resps=[], filtered_resps={}, task_name='arc_challenge', doc_id=0, repeats=1)
+2025-06-20:15:23:22 INFO     [evaluator:559] Running loglikelihood requests
+Running loglikelihood requests:   0%|          | 0/4687 [00:00<?, ?it/s]
+Processed prompts:   0%|          | 0/4687 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts:   0%|          | 2/4687 [00:00<33:25,  2.34it/s, est. speed input: 415.92 toks/s, output: 2.34 toks/s][A
+Processed prompts:   2%|▏         | 77/4687 [00:01<01:28, 52.25it/s, est. speed input: 4887.30 toks/s, output: 44.79 toks/s][A
+Processed prompts:   4%|▍         | 180/4687 [00:02<01:03, 70.46it/s, est. speed input: 5684.41 toks/s, output: 61.72 toks/s][A
+Processed prompts:   6%|▋         | 296/4687 [00:03<00:41, 106.36it/s, est. speed input: 7117.59 toks/s, output: 85.01 toks/s][A
+Processed prompts:   9%|▉         | 423/4687 [00:04<00:35, 121.46it/s, est. speed input: 7590.70 toks/s, output: 97.39 toks/s][A
+Processed prompts:  12%|█▏        | 562/4687 [00:05<00:31, 131.97it/s, est. speed input: 7817.99 toks/s, output: 106.73 toks/s][A
+Processed prompts:  15%|█▌        | 711/4687 [00:06<00:28, 140.48it/s, est. speed input: 7936.25 toks/s, output: 114.35 toks/s][A
+Processed prompts:  19%|█▊        | 869/4687 [00:07<00:25, 151.56it/s, est. speed input: 8086.53 toks/s, output: 122.06 toks/s][A
+Processed prompts:  22%|██▏       | 1033/4687 [00:08<00:22, 159.34it/s, est. speed input: 8162.60 toks/s, output: 128.29 toks/s][A
+Processed prompts:  26%|██▌       | 1209/4687 [00:08<00:20, 167.86it/s, est. speed input: 8215.27 toks/s, output: 134.37 toks/s][A
+Processed prompts:  30%|██▉       | 1396/4687 [00:09<00:18, 176.22it/s, est. speed input: 8244.50 toks/s, output: 140.17 toks/s][A
+Processed prompts:  34%|███▍      | 1594/4687 [00:11<00:18, 168.48it/s, est. speed input: 8040.94 toks/s, output: 141.90 toks/s][A
+Processed prompts:  38%|███▊      | 1804/4687 [00:11<00:14, 197.93it/s, est. speed input: 8251.16 toks/s, output: 151.10 toks/s][A
+Processed prompts:  43%|████▎     | 2026/4687 [00:12<00:13, 203.79it/s, est. speed input: 8227.96 toks/s, output: 156.25 toks/s][A
+Processed prompts:  48%|████▊     | 2265/4687 [00:14<00:11, 212.02it/s, est. speed input: 8202.39 toks/s, output: 161.71 toks/s][A
+Processed prompts:  54%|█████▍    | 2521/4687 [00:15<00:09, 224.98it/s, est. speed input: 8195.48 toks/s, output: 167.93 toks/s][A
+Processed prompts:  59%|█████▉    | 2777/4687 [00:15<00:07, 239.54it/s, est. speed input: 8194.50 toks/s, output: 174.21 toks/s][A
+Processed prompts:  65%|██████▍   | 3033/4687 [00:16<00:06, 249.97it/s, est. speed input: 8158.18 toks/s, output: 179.78 toks/s][A
+Processed prompts:  70%|███████   | 3289/4687 [00:17<00:05, 262.93it/s, est. speed input: 8127.65 toks/s, output: 185.47 toks/s][A
+Processed prompts:  76%|███████▌  | 3545/4687 [00:18<00:04, 274.29it/s, est. speed input: 8084.58 toks/s, output: 190.82 toks/s][A
+Processed prompts:  81%|████████  | 3801/4687 [00:19<00:03, 285.57it/s, est. speed input: 8039.43 toks/s, output: 196.03 toks/s][A
+Processed prompts:  87%|████████▋ | 4057/4687 [00:20<00:02, 296.76it/s, est. speed input: 7990.41 toks/s, output: 201.08 toks/s][A
+Processed prompts:  92%|█████████▏| 4313/4687 [00:20<00:01, 313.33it/s, est. speed input: 7951.73 toks/s, output: 206.48 toks/s][A
+Processed prompts:  97%|█████████▋| 4569/4687 [00:21<00:00, 395.61it/s, est. speed input: 8055.00 toks/s, output: 216.10 toks/s][AProcessed prompts: 100%|██████████| 4687/4687 [00:21<00:00, 221.63it/s, est. speed input: 8127.06 toks/s, output: 221.63 toks/s]
+Running loglikelihood requests:   0%|          | 1/4687 [00:21<27:55:33, 21.45s/it]Running loglikelihood requests: 100%|██████████| 4687/4687 [00:21<00:00, 217.56it/s]
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+[rank0]:[W620 15:23:57.472531253 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+2025-06-20:15:24:00 INFO     [loggers.evaluation_tracker:209] Saving results aggregated
+2025-06-20:15:24:00 INFO     [loggers.evaluation_tracker:298] Saving per-sample results for: arc_challenge
+vllm (pretrained=Qwen/Qwen3-4B,tensor_parallel_size=1,dtype=auto,gpu_memory_utilization=0.8), gen_kwargs: (None), limit: None, num_fewshot: None, batch_size: auto
+|    Tasks    |Version|Filter|n-shot| Metric |   |Value |   |Stderr|
+|-------------|------:|------|-----:|--------|---|-----:|---|-----:|
+|arc_challenge|      1|none  |     0|acc     |↑  |0.5077|±  |0.0146|
+|             |       |none  |     0|acc_norm|↑  |0.5418|±  |0.0146|
+

@@ -1,0 +1,77 @@
+INFO 05-23 21:06:55 [importing.py:53] Triton module has been replaced with a placeholder.
+INFO 05-23 21:06:57 [__init__.py:239] Automatically detected platform cuda.
+2025-05-23:21:07:01 INFO     [__main__:440] Selected Tasks: ['medmcqa']
+2025-05-23:21:07:01 INFO     [evaluator:185] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+2025-05-23:21:07:01 INFO     [evaluator:223] Initializing hf model, with arguments: {'pretrained': 'google/medgemma-4b-it'}
+2025-05-23:21:07:03 INFO     [models.huggingface:137] Using device 'cuda'
+2025-05-23:21:07:05 INFO     [models.huggingface:382] Model parallel was set to False, max memory was not set, and device map was set to {'': 'cuda'}
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:05<00:05,  5.43s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:06<00:00,  3.02s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:06<00:00,  3.38s/it]
+2025-05-23:21:07:13 INFO     [models.huggingface:226] Model type is 'gemma3', part of the Gemma family--a BOS token will be used as Gemma underperforms without it.
+2025-05-23:21:07:35 INFO     [api.task:434] Building contexts for medmcqa on rank 0...
+  0%|          | 0/4183 [00:00<?, ?it/s] 12%|█▏        | 484/4183 [00:00<00:02, 1714.35it/s]100%|██████████| 4183/4183 [00:00<00:00, 13212.16it/s]
+2025-05-23:21:07:36 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=medmcqa,output_type=multiple_choice,num_fewshot=0,num_samples=4183); document 0; context prompt (starting on next line):    
+Question: Which of the following is not true for myelinated nerve fibers:
+Choices:
+A. Impulse through myelinated fibers is slower than non-myelinated fibers
+B. Membrane currents are generated at nodes of Ranvier
+C. Saltatory conduction of impulses is seen
+D. Local anesthesia is effective only when the nerve is not covered by myelin sheath
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+0
+(end of target on previous line)
+2025-05-23:21:07:36 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'id': '45258d3d-b974-44dd-a161-c3fccbdadd88', 'question': 'Which of the following is not true for myelinated nerve fibers:', 'opa': 'Impulse through myelinated fibers is slower than non-myelinated fibers', 'opb': 'Membrane currents are generated at nodes of Ranvier', 'opc': 'Saltatory conduction of impulses is seen', 'opd': 'Local anesthesia is effective only when the nerve is not covered by myelin sheath', 'cop': 0, 'choice_type': 'multi', 'exp': None, 'subject_name': 'Physiology', 'topic_name': None}, arguments=('Question: Which of the following is not true for myelinated nerve fibers:\nChoices:\nA. Impulse through myelinated fibers is slower than non-myelinated fibers\nB. Membrane currents are generated at nodes of Ranvier\nC. Saltatory conduction of impulses is seen\nD. Local anesthesia is effective only when the nerve is not covered by myelin sheath\nAnswer:', ' A'), idx=0, metadata=('medmcqa', 0, 1), resps=[], filtered_resps={}, task_name='medmcqa', doc_id=0, repeats=1)
+2025-05-23:21:07:36 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=medmcqa,output_type=multiple_choice,num_fewshot=0,num_samples=4183); document 0; context prompt (starting on next line):    
+Question: Which of the following is not true for myelinated nerve fibers:
+Choices:
+A. Impulse through myelinated fibers is slower than non-myelinated fibers
+B. Membrane currents are generated at nodes of Ranvier
+C. Saltatory conduction of impulses is seen
+D. Local anesthesia is effective only when the nerve is not covered by myelin sheath
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+0
+(end of target on previous line)
+2025-05-23:21:07:36 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'id': '45258d3d-b974-44dd-a161-c3fccbdadd88', 'question': 'Which of the following is not true for myelinated nerve fibers:', 'opa': 'Impulse through myelinated fibers is slower than non-myelinated fibers', 'opb': 'Membrane currents are generated at nodes of Ranvier', 'opc': 'Saltatory conduction of impulses is seen', 'opd': 'Local anesthesia is effective only when the nerve is not covered by myelin sheath', 'cop': 0, 'choice_type': 'multi', 'exp': None, 'subject_name': 'Physiology', 'topic_name': None}, arguments=('Question: Which of the following is not true for myelinated nerve fibers:\nChoices:\nA. Impulse through myelinated fibers is slower than non-myelinated fibers\nB. Membrane currents are generated at nodes of Ranvier\nC. Saltatory conduction of impulses is seen\nD. Local anesthesia is effective only when the nerve is not covered by myelin sheath\nAnswer:', ' B'), idx=1, metadata=('medmcqa', 0, 1), resps=[], filtered_resps={}, task_name='medmcqa', doc_id=0, repeats=1)
+2025-05-23:21:07:36 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=medmcqa,output_type=multiple_choice,num_fewshot=0,num_samples=4183); document 0; context prompt (starting on next line):    
+Question: Which of the following is not true for myelinated nerve fibers:
+Choices:
+A. Impulse through myelinated fibers is slower than non-myelinated fibers
+B. Membrane currents are generated at nodes of Ranvier
+C. Saltatory conduction of impulses is seen
+D. Local anesthesia is effective only when the nerve is not covered by myelin sheath
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+0
+(end of target on previous line)
+2025-05-23:21:07:36 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'id': '45258d3d-b974-44dd-a161-c3fccbdadd88', 'question': 'Which of the following is not true for myelinated nerve fibers:', 'opa': 'Impulse through myelinated fibers is slower than non-myelinated fibers', 'opb': 'Membrane currents are generated at nodes of Ranvier', 'opc': 'Saltatory conduction of impulses is seen', 'opd': 'Local anesthesia is effective only when the nerve is not covered by myelin sheath', 'cop': 0, 'choice_type': 'multi', 'exp': None, 'subject_name': 'Physiology', 'topic_name': None}, arguments=('Question: Which of the following is not true for myelinated nerve fibers:\nChoices:\nA. Impulse through myelinated fibers is slower than non-myelinated fibers\nB. Membrane currents are generated at nodes of Ranvier\nC. Saltatory conduction of impulses is seen\nD. Local anesthesia is effective only when the nerve is not covered by myelin sheath\nAnswer:', ' C'), idx=2, metadata=('medmcqa', 0, 1), resps=[], filtered_resps={}, task_name='medmcqa', doc_id=0, repeats=1)
+2025-05-23:21:07:36 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=medmcqa,output_type=multiple_choice,num_fewshot=0,num_samples=4183); document 0; context prompt (starting on next line):    
+Question: Which of the following is not true for myelinated nerve fibers:
+Choices:
+A. Impulse through myelinated fibers is slower than non-myelinated fibers
+B. Membrane currents are generated at nodes of Ranvier
+C. Saltatory conduction of impulses is seen
+D. Local anesthesia is effective only when the nerve is not covered by myelin sheath
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+0
+(end of target on previous line)
+2025-05-23:21:07:36 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'id': '45258d3d-b974-44dd-a161-c3fccbdadd88', 'question': 'Which of the following is not true for myelinated nerve fibers:', 'opa': 'Impulse through myelinated fibers is slower than non-myelinated fibers', 'opb': 'Membrane currents are generated at nodes of Ranvier', 'opc': 'Saltatory conduction of impulses is seen', 'opd': 'Local anesthesia is effective only when the nerve is not covered by myelin sheath', 'cop': 0, 'choice_type': 'multi', 'exp': None, 'subject_name': 'Physiology', 'topic_name': None}, arguments=('Question: Which of the following is not true for myelinated nerve fibers:\nChoices:\nA. Impulse through myelinated fibers is slower than non-myelinated fibers\nB. Membrane currents are generated at nodes of Ranvier\nC. Saltatory conduction of impulses is seen\nD. Local anesthesia is effective only when the nerve is not covered by myelin sheath\nAnswer:', ' D'), idx=3, metadata=('medmcqa', 0, 1), resps=[], filtered_resps={}, task_name='medmcqa', doc_id=0, repeats=1)
+2025-05-23:21:07:36 INFO     [evaluator:559] Running loglikelihood requests
+Running loglikelihood requests:   0%|          | 0/16732 [00:00<?, ?it/s]Running loglikelihood requests:   0%|          | 1/16732 [00:18<84:20:21, 18.15s/it]Running loglikelihood requests:   2%|▏         | 257/16732 [00:19<15:21, 17.88it/s] Running loglikelihood requests:   3%|▎         | 513/16732 [00:20<06:48, 39.66it/s]Running loglikelihood requests:   5%|▍         | 769/16732 [00:21<04:04, 65.35it/s]Running loglikelihood requests:   6%|▌         | 1025/16732 [00:22<02:44, 95.26it/s]Running loglikelihood requests:   8%|▊         | 1281/16732 [00:23<02:00, 128.14it/s]Running loglikelihood requests:   9%|▉         | 1537/16732 [00:23<01:32, 163.43it/s]Running loglikelihood requests:  11%|█         | 1793/16732 [00:24<01:15, 198.63it/s]Running loglikelihood requests:  12%|█▏        | 2049/16732 [00:25<01:03, 230.73it/s]Running loglikelihood requests:  14%|█▍        | 2305/16732 [00:26<00:55, 260.07it/s]Running loglikelihood requests:  15%|█▌        | 2561/16732 [00:26<00:49, 287.12it/s]Running loglikelihood requests:  17%|█▋        | 2817/16732 [00:27<00:44, 311.12it/s]Running loglikelihood requests:  18%|█▊        | 3073/16732 [00:28<00:41, 332.76it/s]Running loglikelihood requests:  20%|█▉        | 3329/16732 [00:28<00:38, 350.96it/s]Running loglikelihood requests:  21%|██▏       | 3585/16732 [00:29<00:35, 366.00it/s]Running loglikelihood requests:  23%|██▎       | 3841/16732 [00:29<00:34, 379.05it/s]Running loglikelihood requests:  24%|██▍       | 4097/16732 [00:30<00:32, 393.25it/s]Running loglikelihood requests:  26%|██▌       | 4353/16732 [00:31<00:30, 406.24it/s]Running loglikelihood requests:  28%|██▊       | 4609/16732 [00:31<00:29, 417.74it/s]Running loglikelihood requests:  29%|██▉       | 4865/16732 [00:32<00:27, 429.99it/s]Running loglikelihood requests:  31%|███       | 5121/16732 [00:32<00:26, 439.11it/s]Running loglikelihood requests:  32%|███▏      | 5377/16732 [00:33<00:25, 447.03it/s]Running loglikelihood requests:  34%|███▎      | 5633/16732 [00:33<00:24, 454.49it/s]Running loglikelihood requests:  35%|███▌      | 5889/16732 [00:34<00:23, 462.76it/s]Running loglikelihood requests:  37%|███▋      | 6145/16732 [00:34<00:22, 469.42it/s]Running loglikelihood requests:  38%|███▊      | 6401/16732 [00:35<00:21, 474.57it/s]Running loglikelihood requests:  40%|███▉      | 6657/16732 [00:36<00:20, 479.91it/s]Running loglikelihood requests:  41%|████▏     | 6913/16732 [00:36<00:20, 485.40it/s]Running loglikelihood requests:  43%|████▎     | 7169/16732 [00:37<00:19, 489.85it/s]Running loglikelihood requests:  44%|████▍     | 7425/16732 [00:37<00:18, 496.51it/s]Running loglikelihood requests:  46%|████▌     | 7681/16732 [00:38<00:18, 492.01it/s]Running loglikelihood requests:  47%|████▋     | 7937/16732 [00:38<00:17, 492.13it/s]Running loglikelihood requests:  49%|████▉     | 8193/16732 [00:39<00:17, 495.54it/s]Running loglikelihood requests:  50%|█████     | 8449/16732 [00:39<00:16, 497.90it/s]Running loglikelihood requests:  52%|█████▏    | 8705/16732 [00:40<00:15, 503.56it/s]Running loglikelihood requests:  54%|█████▎    | 8961/16732 [00:40<00:15, 507.66it/s]Running loglikelihood requests:  55%|█████▌    | 9217/16732 [00:41<00:14, 518.49it/s]Running loglikelihood requests:  57%|█████▋    | 9473/16732 [00:41<00:13, 526.15it/s]Running loglikelihood requests:  58%|█████▊    | 9729/16732 [00:42<00:13, 533.04it/s]Running loglikelihood requests:  60%|█████▉    | 9985/16732 [00:42<00:12, 538.02it/s]Running loglikelihood requests:  61%|██████    | 10241/16732 [00:42<00:11, 543.94it/s]Running loglikelihood requests:  63%|██████▎   | 10497/16732 [00:43<00:11, 548.26it/s]Running loglikelihood requests:  64%|██████▍   | 10753/16732 [00:43<00:10, 550.79it/s]Running loglikelihood requests:  66%|██████▌   | 11009/16732 [00:44<00:10, 554.70it/s]Running loglikelihood requests:  67%|██████▋   | 11265/16732 [00:44<00:09, 557.66it/s]Running loglikelihood requests:  69%|██████▉   | 11521/16732 [00:45<00:09, 564.95it/s]Running loglikelihood requests:  70%|███████   | 11777/16732 [00:45<00:08, 570.25it/s]Running loglikelihood requests:  72%|███████▏  | 12033/16732 [00:46<00:08, 576.08it/s]Running loglikelihood requests:  73%|███████▎  | 12289/16732 [00:46<00:07, 580.27it/s]Running loglikelihood requests:  75%|███████▍  | 12545/16732 [00:46<00:07, 582.71it/s]Running loglikelihood requests:  77%|███████▋  | 12801/16732 [00:47<00:06, 587.86it/s]Running loglikelihood requests:  78%|███████▊  | 13057/16732 [00:47<00:06, 591.51it/s]Running loglikelihood requests:  80%|███████▉  | 13313/16732 [00:48<00:05, 596.57it/s]Running loglikelihood requests:  81%|████████  | 13569/16732 [00:48<00:05, 600.36it/s]Running loglikelihood requests:  83%|████████▎ | 13825/16732 [00:49<00:04, 602.06it/s]Running loglikelihood requests:  84%|████████▍ | 14081/16732 [00:49<00:04, 610.68it/s]Running loglikelihood requests:  86%|████████▌ | 14337/16732 [00:49<00:03, 616.75it/s]Running loglikelihood requests:  87%|████████▋ | 14593/16732 [00:50<00:03, 622.63it/s]Running loglikelihood requests:  89%|████████▊ | 14849/16732 [00:50<00:03, 627.57it/s]Running loglikelihood requests:  90%|█████████ | 15105/16732 [00:51<00:02, 634.62it/s]Running loglikelihood requests:  92%|█████████▏| 15361/16732 [00:51<00:02, 639.98it/s]Running loglikelihood requests:  93%|█████████▎| 15617/16732 [00:51<00:01, 632.44it/s]Running loglikelihood requests:  95%|█████████▍| 15873/16732 [00:52<00:01, 646.60it/s]Running loglikelihood requests:  96%|█████████▋| 16129/16732 [00:52<00:00, 659.78it/s]Running loglikelihood requests:  98%|█████████▊| 16385/16732 [00:52<00:00, 675.86it/s]Running loglikelihood requests:  99%|█████████▉| 16641/16732 [00:53<00:00, 798.95it/s]Running loglikelihood requests: 100%|██████████| 16732/16732 [00:53<00:00, 314.71it/s]
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+2025-05-23:21:08:44 INFO     [loggers.evaluation_tracker:209] Saving results aggregated
+2025-05-23:21:08:44 INFO     [loggers.evaluation_tracker:298] Saving per-sample results for: medmcqa
+Passed argument batch_size = auto:1. Detecting largest batch size
+Determined largest batch size: 64
+hf (pretrained=google/medgemma-4b-it), gen_kwargs: (None), limit: None, num_fewshot: None, batch_size: auto (64)
+| Tasks |Version|Filter|n-shot| Metric |   |Value |   |Stderr|
+|-------|-------|------|-----:|--------|---|-----:|---|-----:|
+|medmcqa|Yaml   |none  |     0|acc     |↑  |0.5195|±  |0.0077|
+|       |       |none  |     0|acc_norm|↑  |0.5195|±  |0.0077|
+

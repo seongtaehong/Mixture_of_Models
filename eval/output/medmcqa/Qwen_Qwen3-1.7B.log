@@ -1,0 +1,218 @@
+INFO 06-20 14:54:05 [importing.py:53] Triton module has been replaced with a placeholder.
+INFO 06-20 14:54:06 [__init__.py:239] Automatically detected platform cuda.
+2025-06-20:14:54:12 INFO     [__main__:440] Selected Tasks: ['medmcqa']
+2025-06-20:14:54:12 INFO     [evaluator:185] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+2025-06-20:14:54:12 INFO     [evaluator:223] Initializing vllm model, with arguments: {'pretrained': 'Qwen/Qwen3-1.7B', 'tensor_parallel_size': 1, 'dtype': 'auto', 'gpu_memory_utilization': 0.8}
+INFO 06-20 14:54:24 [config.py:717] This model supports multiple tasks: {'generate', 'score', 'classify', 'embed', 'reward'}. Defaulting to 'generate'.
+INFO 06-20 14:54:25 [config.py:2003] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 06-20 14:54:35 [importing.py:53] Triton module has been replaced with a placeholder.
+INFO 06-20 14:54:35 [__init__.py:239] Automatically detected platform cuda.
+INFO 06-20 14:54:37 [core.py:58] Initializing a V1 LLM engine (v0.8.5.post1) with config: model='Qwen/Qwen3-1.7B', speculative_config=None, tokenizer='Qwen/Qwen3-1.7B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=40960, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='auto', reasoning_backend=None), observability_config=ObservabilityConfig(show_hidden_metrics=False, otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=1234, served_model_name=Qwen/Qwen3-1.7B, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"level":3,"custom_ops":["none"],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output"],"use_inductor":true,"compile_sizes":[],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":512}
+2025-06-20 14:54:37,943 - INFO - flashinfer.jit: Prebuilt kernels not found, using JIT backend
+WARNING 06-20 14:54:38 [utils.py:2522] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7f565d50a4e0>
+INFO 06-20 14:54:41 [parallel_state.py:1004] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0
+INFO 06-20 14:54:41 [cuda.py:221] Using Flash Attention backend on V1 engine.
+INFO 06-20 14:54:41 [topk_topp_sampler.py:44] Currently, FlashInfer top-p & top-k sampling sampler is disabled because FlashInfer>=v0.2.3 is not backward compatible. Falling back to the PyTorch-native implementation of top-p & top-k sampling.
+INFO 06-20 14:54:42 [gpu_model_runner.py:1329] Starting to load model Qwen/Qwen3-1.7B...
+INFO 06-20 14:54:45 [weight_utils.py:265] Using model weights format ['*.safetensors']
+Loading safetensors checkpoint shards:   0% Completed | 0/2 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards: 100% Completed | 2/2 [00:00<00:00,  2.02it/s]
+Loading safetensors checkpoint shards: 100% Completed | 2/2 [00:00<00:00,  2.02it/s]
+
+INFO 06-20 14:54:46 [loader.py:458] Loading weights took 1.08 seconds
+INFO 06-20 14:54:47 [gpu_model_runner.py:1347] Model loading took 3.2152 GiB and 4.785830 seconds
+INFO 06-20 14:54:55 [backends.py:420] Using cache directory: /mnt/raid6/hst/.cache/vllm/torch_compile_cache/221c7c3b3b/rank_0_0 for vLLM's torch.compile
+INFO 06-20 14:54:55 [backends.py:430] Dynamo bytecode transform time: 8.57 s
+INFO 06-20 14:55:28 [backends.py:118] Directly load the compiled graph(s) for shape None from the cache, took 32.479 s
+INFO 06-20 14:55:31 [monitor.py:33] torch.compile takes 8.57 s in total
+INFO 06-20 14:55:33 [kv_cache_utils.py:634] GPU KV cache size: 309,024 tokens
+INFO 06-20 14:55:33 [kv_cache_utils.py:637] Maximum concurrency for 40,960 tokens per request: 7.54x
+INFO 06-20 14:57:03 [gpu_model_runner.py:1686] Graph capturing finished in 89 secs, took 1.64 GiB
+INFO 06-20 14:57:03 [core.py:159] init engine (profile, create kv cache, warmup model) took 136.78 seconds
+INFO 06-20 14:57:03 [core_client.py:439] Core engine process 0 ready.
+2025-06-20:14:57:33 INFO     [api.task:434] Building contexts for medmcqa on rank 0...
+  0%|          | 0/4183 [00:00<?, ?it/s]100%|██████████| 4183/4183 [00:00<00:00, 107829.15it/s]
+2025-06-20:14:57:33 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=medmcqa,output_type=multiple_choice,num_fewshot=0,num_samples=4183); document 0; context prompt (starting on next line):    
+Question: Which of the following is not true for myelinated nerve fibers:
+Choices:
+A. Impulse through myelinated fibers is slower than non-myelinated fibers
+B. Membrane currents are generated at nodes of Ranvier
+C. Saltatory conduction of impulses is seen
+D. Local anesthesia is effective only when the nerve is not covered by myelin sheath
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+0
+(end of target on previous line)
+2025-06-20:14:57:33 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'id': '45258d3d-b974-44dd-a161-c3fccbdadd88', 'question': 'Which of the following is not true for myelinated nerve fibers:', 'opa': 'Impulse through myelinated fibers is slower than non-myelinated fibers', 'opb': 'Membrane currents are generated at nodes of Ranvier', 'opc': 'Saltatory conduction of impulses is seen', 'opd': 'Local anesthesia is effective only when the nerve is not covered by myelin sheath', 'cop': 0, 'choice_type': 'multi', 'exp': None, 'subject_name': 'Physiology', 'topic_name': None}, arguments=('Question: Which of the following is not true for myelinated nerve fibers:\nChoices:\nA. Impulse through myelinated fibers is slower than non-myelinated fibers\nB. Membrane currents are generated at nodes of Ranvier\nC. Saltatory conduction of impulses is seen\nD. Local anesthesia is effective only when the nerve is not covered by myelin sheath\nAnswer:', ' A'), idx=0, metadata=('medmcqa', 0, 1), resps=[], filtered_resps={}, task_name='medmcqa', doc_id=0, repeats=1)
+2025-06-20:14:57:33 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=medmcqa,output_type=multiple_choice,num_fewshot=0,num_samples=4183); document 0; context prompt (starting on next line):    
+Question: Which of the following is not true for myelinated nerve fibers:
+Choices:
+A. Impulse through myelinated fibers is slower than non-myelinated fibers
+B. Membrane currents are generated at nodes of Ranvier
+C. Saltatory conduction of impulses is seen
+D. Local anesthesia is effective only when the nerve is not covered by myelin sheath
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+0
+(end of target on previous line)
+2025-06-20:14:57:33 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'id': '45258d3d-b974-44dd-a161-c3fccbdadd88', 'question': 'Which of the following is not true for myelinated nerve fibers:', 'opa': 'Impulse through myelinated fibers is slower than non-myelinated fibers', 'opb': 'Membrane currents are generated at nodes of Ranvier', 'opc': 'Saltatory conduction of impulses is seen', 'opd': 'Local anesthesia is effective only when the nerve is not covered by myelin sheath', 'cop': 0, 'choice_type': 'multi', 'exp': None, 'subject_name': 'Physiology', 'topic_name': None}, arguments=('Question: Which of the following is not true for myelinated nerve fibers:\nChoices:\nA. Impulse through myelinated fibers is slower than non-myelinated fibers\nB. Membrane currents are generated at nodes of Ranvier\nC. Saltatory conduction of impulses is seen\nD. Local anesthesia is effective only when the nerve is not covered by myelin sheath\nAnswer:', ' B'), idx=1, metadata=('medmcqa', 0, 1), resps=[], filtered_resps={}, task_name='medmcqa', doc_id=0, repeats=1)
+2025-06-20:14:57:33 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=medmcqa,output_type=multiple_choice,num_fewshot=0,num_samples=4183); document 0; context prompt (starting on next line):    
+Question: Which of the following is not true for myelinated nerve fibers:
+Choices:
+A. Impulse through myelinated fibers is slower than non-myelinated fibers
+B. Membrane currents are generated at nodes of Ranvier
+C. Saltatory conduction of impulses is seen
+D. Local anesthesia is effective only when the nerve is not covered by myelin sheath
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+0
+(end of target on previous line)
+2025-06-20:14:57:33 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'id': '45258d3d-b974-44dd-a161-c3fccbdadd88', 'question': 'Which of the following is not true for myelinated nerve fibers:', 'opa': 'Impulse through myelinated fibers is slower than non-myelinated fibers', 'opb': 'Membrane currents are generated at nodes of Ranvier', 'opc': 'Saltatory conduction of impulses is seen', 'opd': 'Local anesthesia is effective only when the nerve is not covered by myelin sheath', 'cop': 0, 'choice_type': 'multi', 'exp': None, 'subject_name': 'Physiology', 'topic_name': None}, arguments=('Question: Which of the following is not true for myelinated nerve fibers:\nChoices:\nA. Impulse through myelinated fibers is slower than non-myelinated fibers\nB. Membrane currents are generated at nodes of Ranvier\nC. Saltatory conduction of impulses is seen\nD. Local anesthesia is effective only when the nerve is not covered by myelin sheath\nAnswer:', ' C'), idx=2, metadata=('medmcqa', 0, 1), resps=[], filtered_resps={}, task_name='medmcqa', doc_id=0, repeats=1)
+2025-06-20:14:57:33 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=medmcqa,output_type=multiple_choice,num_fewshot=0,num_samples=4183); document 0; context prompt (starting on next line):    
+Question: Which of the following is not true for myelinated nerve fibers:
+Choices:
+A. Impulse through myelinated fibers is slower than non-myelinated fibers
+B. Membrane currents are generated at nodes of Ranvier
+C. Saltatory conduction of impulses is seen
+D. Local anesthesia is effective only when the nerve is not covered by myelin sheath
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+0
+(end of target on previous line)
+2025-06-20:14:57:33 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'id': '45258d3d-b974-44dd-a161-c3fccbdadd88', 'question': 'Which of the following is not true for myelinated nerve fibers:', 'opa': 'Impulse through myelinated fibers is slower than non-myelinated fibers', 'opb': 'Membrane currents are generated at nodes of Ranvier', 'opc': 'Saltatory conduction of impulses is seen', 'opd': 'Local anesthesia is effective only when the nerve is not covered by myelin sheath', 'cop': 0, 'choice_type': 'multi', 'exp': None, 'subject_name': 'Physiology', 'topic_name': None}, arguments=('Question: Which of the following is not true for myelinated nerve fibers:\nChoices:\nA. Impulse through myelinated fibers is slower than non-myelinated fibers\nB. Membrane currents are generated at nodes of Ranvier\nC. Saltatory conduction of impulses is seen\nD. Local anesthesia is effective only when the nerve is not covered by myelin sheath\nAnswer:', ' D'), idx=3, metadata=('medmcqa', 0, 1), resps=[], filtered_resps={}, task_name='medmcqa', doc_id=0, repeats=1)
+2025-06-20:14:57:33 INFO     [evaluator:559] Running loglikelihood requests
+Running loglikelihood requests:   0%|          | 0/16732 [00:00<?, ?it/s]
+Processed prompts:   0%|          | 0/16732 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts:   0%|          | 21/16732 [00:00<03:13, 86.19it/s, est. speed input: 17831.39 toks/s, output: 86.19 toks/s][A
+Processed prompts:   0%|          | 68/16732 [00:00<03:02, 91.15it/s, est. speed input: 16533.60 toks/s, output: 90.67 toks/s][A
+Processed prompts:   1%|          | 123/16732 [00:01<02:39, 104.33it/s, est. speed input: 16908.57 toks/s, output: 101.04 toks/s][A
+Processed prompts:   1%|          | 185/16732 [00:01<02:16, 121.14it/s, est. speed input: 17623.44 toks/s, output: 112.97 toks/s][A
+Processed prompts:   1%|▏         | 249/16732 [00:02<02:42, 101.46it/s, est. speed input: 15327.68 toks/s, output: 103.10 toks/s][A
+Processed prompts:   2%|▏         | 315/16732 [00:02<01:53, 144.06it/s, est. speed input: 17668.01 toks/s, output: 123.24 toks/s][A
+Processed prompts:   2%|▏         | 384/16732 [00:03<01:52, 145.79it/s, est. speed input: 17680.96 toks/s, output: 127.19 toks/s][A
+Processed prompts:   3%|▎         | 455/16732 [00:03<01:48, 149.67it/s, est. speed input: 17753.37 toks/s, output: 131.14 toks/s][A
+Processed prompts:   3%|▎         | 528/16732 [00:03<01:46, 152.26it/s, est. speed input: 17736.01 toks/s, output: 134.25 toks/s][A
+Processed prompts:   4%|▎         | 604/16732 [00:04<01:43, 156.50it/s, est. speed input: 17748.08 toks/s, output: 137.54 toks/s][A
+Processed prompts:   4%|▍         | 682/16732 [00:04<01:40, 160.36it/s, est. speed input: 17748.59 toks/s, output: 140.52 toks/s][A
+Processed prompts:   5%|▍         | 761/16732 [00:05<01:36, 165.03it/s, est. speed input: 17778.09 toks/s, output: 143.51 toks/s][A
+Processed prompts:   5%|▌         | 843/16732 [00:05<01:36, 165.32it/s, est. speed input: 17681.30 toks/s, output: 145.42 toks/s][A
+Processed prompts:   6%|▌         | 927/16732 [00:06<01:33, 168.89it/s, est. speed input: 17654.73 toks/s, output: 147.81 toks/s][A
+Processed prompts:   6%|▌         | 1012/16732 [00:06<01:30, 173.69it/s, est. speed input: 17666.75 toks/s, output: 150.35 toks/s][A
+Processed prompts:   7%|▋         | 1098/16732 [00:07<01:30, 173.33it/s, est. speed input: 17575.41 toks/s, output: 151.88 toks/s][A
+Processed prompts:   7%|▋         | 1187/16732 [00:08<01:46, 145.38it/s, est. speed input: 16799.92 toks/s, output: 147.38 toks/s][A
+Processed prompts:   8%|▊         | 1276/16732 [00:08<01:19, 193.85it/s, est. speed input: 17544.22 toks/s, output: 156.08 toks/s][A
+Processed prompts:   8%|▊         | 1367/16732 [00:08<01:19, 193.36it/s, est. speed input: 17533.46 toks/s, output: 158.06 toks/s][A
+Processed prompts:   9%|▊         | 1459/16732 [00:09<01:20, 190.64it/s, est. speed input: 17475.88 toks/s, output: 159.52 toks/s][A
+Processed prompts:   9%|▉         | 1552/16732 [00:09<01:20, 188.31it/s, est. speed input: 17404.56 toks/s, output: 160.77 toks/s][A
+Processed prompts:  10%|▉         | 1647/16732 [00:10<01:19, 190.62it/s, est. speed input: 17386.27 toks/s, output: 162.45 toks/s][A
+Processed prompts:  10%|█         | 1742/16732 [00:10<01:16, 195.21it/s, est. speed input: 17401.94 toks/s, output: 164.36 toks/s][A
+Processed prompts:  11%|█         | 1839/16732 [00:11<01:17, 192.24it/s, est. speed input: 17324.89 toks/s, output: 165.37 toks/s][A
+Processed prompts:  12%|█▏        | 1936/16732 [00:11<01:16, 193.84it/s, est. speed input: 17292.18 toks/s, output: 166.73 toks/s][A
+Processed prompts:  12%|█▏        | 2035/16732 [00:12<01:22, 177.99it/s, est. speed input: 17031.22 toks/s, output: 165.86 toks/s][A
+Processed prompts:  13%|█▎        | 2136/16732 [00:12<01:18, 185.98it/s, est. speed input: 17025.50 toks/s, output: 167.42 toks/s][A
+Processed prompts:  13%|█▎        | 2237/16732 [00:13<01:15, 193.01it/s, est. speed input: 17027.08 toks/s, output: 169.00 toks/s][A
+Processed prompts:  14%|█▍        | 2339/16732 [00:13<01:13, 195.40it/s, est. speed input: 16991.66 toks/s, output: 170.18 toks/s][A
+Processed prompts:  15%|█▍        | 2443/16732 [00:14<01:10, 201.76it/s, est. speed input: 16998.27 toks/s, output: 171.77 toks/s][A
+Processed prompts:  15%|█▌        | 2548/16732 [00:15<01:29, 158.14it/s, est. speed input: 16436.26 toks/s, output: 167.54 toks/s][A
+Processed prompts:  17%|█▋        | 2761/16732 [00:15<01:03, 218.94it/s, est. speed input: 16895.59 toks/s, output: 175.16 toks/s][A
+Processed prompts:  17%|█▋        | 2870/16732 [00:16<01:03, 218.80it/s, est. speed input: 16881.68 toks/s, output: 176.49 toks/s][A
+Processed prompts:  18%|█▊        | 2980/16732 [00:16<01:02, 218.58it/s, est. speed input: 16862.83 toks/s, output: 177.74 toks/s][A
+Processed prompts:  18%|█▊        | 3091/16732 [00:17<01:02, 219.28it/s, est. speed input: 16848.20 toks/s, output: 179.00 toks/s][A
+Processed prompts:  19%|█▉        | 3203/16732 [00:17<01:01, 218.67it/s, est. speed input: 16819.39 toks/s, output: 180.10 toks/s][A
+Processed prompts:  20%|█▉        | 3316/16732 [00:18<01:00, 221.97it/s, est. speed input: 16816.71 toks/s, output: 181.45 toks/s][A
+Processed prompts:  20%|██        | 3430/16732 [00:18<01:00, 220.37it/s, est. speed input: 16782.66 toks/s, output: 182.44 toks/s][A
+Processed prompts:  21%|██        | 3545/16732 [00:19<00:59, 222.01it/s, est. speed input: 16764.09 toks/s, output: 183.59 toks/s][A
+Processed prompts:  22%|██▏       | 3661/16732 [00:19<00:58, 223.09it/s, est. speed input: 16741.89 toks/s, output: 184.68 toks/s][A
+Processed prompts:  23%|██▎       | 3778/16732 [00:20<00:57, 225.08it/s, est. speed input: 16725.46 toks/s, output: 185.81 toks/s][A
+Processed prompts:  23%|██▎       | 3897/16732 [00:20<00:56, 226.01it/s, est. speed input: 16700.97 toks/s, output: 186.86 toks/s][A
+Processed prompts:  24%|██▍       | 4016/16732 [00:21<00:55, 227.33it/s, est. speed input: 16678.22 toks/s, output: 187.92 toks/s][A
+Processed prompts:  25%|██▍       | 4137/16732 [00:21<00:55, 228.06it/s, est. speed input: 16652.77 toks/s, output: 188.92 toks/s][A
+Processed prompts:  25%|██▌       | 4259/16732 [00:22<00:54, 230.29it/s, est. speed input: 16632.90 toks/s, output: 190.00 toks/s][A
+Processed prompts:  26%|██▌       | 4382/16732 [00:22<00:53, 231.23it/s, est. speed input: 16607.34 toks/s, output: 191.00 toks/s][A
+Processed prompts:  27%|██▋       | 4506/16732 [00:23<00:52, 233.39it/s, est. speed input: 16588.03 toks/s, output: 192.05 toks/s][A
+Processed prompts:  28%|██▊       | 4632/16732 [00:24<01:06, 183.18it/s, est. speed input: 16231.67 toks/s, output: 189.18 toks/s][A
+Processed prompts:  29%|██▉       | 4886/16732 [00:25<00:46, 256.53it/s, est. speed input: 16534.84 toks/s, output: 195.23 toks/s][A
+Processed prompts:  30%|██▉       | 5014/16732 [00:25<00:45, 255.20it/s, est. speed input: 16524.57 toks/s, output: 196.35 toks/s][A
+Processed prompts:  31%|███       | 5144/16732 [00:26<00:45, 252.22it/s, est. speed input: 16501.61 toks/s, output: 197.33 toks/s][A
+Processed prompts:  32%|███▏      | 5275/16732 [00:26<00:45, 250.41it/s, est. speed input: 16480.30 toks/s, output: 198.31 toks/s][A
+Processed prompts:  32%|███▏      | 5407/16732 [00:27<00:45, 250.82it/s, est. speed input: 16463.57 toks/s, output: 199.34 toks/s][A
+Processed prompts:  33%|███▎      | 5540/16732 [00:27<00:44, 253.34it/s, est. speed input: 16454.37 toks/s, output: 200.46 toks/s][A
+Processed prompts:  34%|███▍      | 5674/16732 [00:28<00:44, 250.32it/s, est. speed input: 16422.98 toks/s, output: 201.30 toks/s][A
+Processed prompts:  35%|███▍      | 5810/16732 [00:28<00:43, 252.16it/s, est. speed input: 16405.29 toks/s, output: 202.32 toks/s][A
+Processed prompts:  36%|███▌      | 5947/16732 [00:29<00:42, 251.83it/s, est. speed input: 16380.29 toks/s, output: 203.23 toks/s][A
+Processed prompts:  36%|███▋      | 6085/16732 [00:29<00:41, 256.87it/s, est. speed input: 16373.32 toks/s, output: 204.36 toks/s][A
+Processed prompts:  37%|███▋      | 6224/16732 [00:30<00:40, 256.82it/s, est. speed input: 16351.41 toks/s, output: 205.30 toks/s][A
+Processed prompts:  38%|███▊      | 6363/16732 [00:30<00:39, 261.06it/s, est. speed input: 16344.74 toks/s, output: 206.40 toks/s][A
+Processed prompts:  39%|███▉      | 6504/16732 [00:31<00:39, 257.51it/s, est. speed input: 16311.34 toks/s, output: 207.18 toks/s][A
+Processed prompts:  40%|███▉      | 6646/16732 [00:31<00:38, 259.43it/s, est. speed input: 16294.42 toks/s, output: 208.13 toks/s][A
+Processed prompts:  41%|████      | 6788/16732 [00:32<00:38, 260.80it/s, est. speed input: 16275.57 toks/s, output: 209.06 toks/s][A
+Processed prompts:  41%|████▏     | 6932/16732 [00:33<00:37, 263.00it/s, est. speed input: 16259.42 toks/s, output: 210.02 toks/s][A
+Processed prompts:  42%|████▏     | 7076/16732 [00:33<00:36, 264.12it/s, est. speed input: 16242.44 toks/s, output: 210.93 toks/s][A
+Processed prompts:  43%|████▎     | 7222/16732 [00:34<00:35, 267.80it/s, est. speed input: 16230.74 toks/s, output: 211.95 toks/s][A
+Processed prompts:  44%|████▍     | 7368/16732 [00:34<00:34, 268.67it/s, est. speed input: 16214.03 toks/s, output: 212.86 toks/s][A
+Processed prompts:  45%|████▍     | 7515/16732 [00:35<00:34, 269.70it/s, est. speed input: 16199.02 toks/s, output: 213.77 toks/s][A
+Processed prompts:  46%|████▌     | 7663/16732 [00:36<00:44, 202.55it/s, est. speed input: 15911.74 toks/s, output: 211.10 toks/s][A
+Processed prompts:  48%|████▊     | 7962/16732 [00:36<00:29, 295.80it/s, est. speed input: 16150.08 toks/s, output: 216.47 toks/s][A
+Processed prompts:  48%|████▊     | 8113/16732 [00:37<00:29, 290.77it/s, est. speed input: 16132.51 toks/s, output: 217.35 toks/s][A
+Processed prompts:  49%|████▉     | 8265/16732 [00:37<00:29, 288.13it/s, est. speed input: 16118.89 toks/s, output: 218.26 toks/s][A
+Processed prompts:  50%|█████     | 8417/16732 [00:38<00:29, 283.65it/s, est. speed input: 16098.06 toks/s, output: 219.05 toks/s][A
+Processed prompts:  51%|█████     | 8572/16732 [00:38<00:28, 283.57it/s, est. speed input: 16082.92 toks/s, output: 219.95 toks/s][A
+Processed prompts:  52%|█████▏    | 8726/16732 [00:39<00:28, 282.25it/s, est. speed input: 16064.86 toks/s, output: 220.77 toks/s][A
+Processed prompts:  53%|█████▎    | 8881/16732 [00:40<00:27, 281.45it/s, est. speed input: 16047.36 toks/s, output: 221.59 toks/s][A
+Processed prompts:  54%|█████▍    | 9039/16732 [00:40<00:27, 282.21it/s, est. speed input: 16029.84 toks/s, output: 222.44 toks/s][A
+Processed prompts:  55%|█████▍    | 9196/16732 [00:41<00:27, 278.31it/s, est. speed input: 16001.39 toks/s, output: 223.11 toks/s][A
+Processed prompts:  56%|█████▌    | 9354/16732 [00:41<00:26, 281.09it/s, est. speed input: 15987.63 toks/s, output: 223.96 toks/s][A
+Processed prompts:  57%|█████▋    | 9514/16732 [00:42<00:25, 282.46it/s, est. speed input: 15968.86 toks/s, output: 224.77 toks/s][A
+Processed prompts:  58%|█████▊    | 9675/16732 [00:42<00:24, 288.91it/s, est. speed input: 15963.69 toks/s, output: 225.76 toks/s][A
+Processed prompts:  59%|█████▉    | 9836/16732 [00:43<00:24, 284.53it/s, est. speed input: 15937.51 toks/s, output: 226.42 toks/s][A
+Processed prompts:  60%|█████▉    | 9998/16732 [00:43<00:23, 286.79it/s, est. speed input: 15922.45 toks/s, output: 227.25 toks/s][A
+Processed prompts:  61%|██████    | 10162/16732 [00:44<00:22, 288.63it/s, est. speed input: 15906.40 toks/s, output: 228.08 toks/s][A
+Processed prompts:  62%|██████▏   | 10326/16732 [00:45<00:22, 290.12it/s, est. speed input: 15891.21 toks/s, output: 228.89 toks/s][A
+Processed prompts:  63%|██████▎   | 10490/16732 [00:45<00:21, 289.49it/s, est. speed input: 15871.66 toks/s, output: 229.63 toks/s][A
+Processed prompts:  64%|██████▎   | 10658/16732 [00:46<00:20, 292.87it/s, est. speed input: 15857.98 toks/s, output: 230.49 toks/s][A
+Processed prompts:  65%|██████▍   | 10825/16732 [00:46<00:20, 292.29it/s, est. speed input: 15838.36 toks/s, output: 231.23 toks/s][A
+Processed prompts:  66%|██████▌   | 10992/16732 [00:47<00:19, 293.07it/s, est. speed input: 15821.76 toks/s, output: 231.99 toks/s][A
+Processed prompts:  67%|██████▋   | 11161/16732 [00:47<00:18, 294.44it/s, est. speed input: 15804.74 toks/s, output: 232.77 toks/s][A
+Processed prompts:  68%|██████▊   | 11332/16732 [00:48<00:18, 296.28it/s, est. speed input: 15788.58 toks/s, output: 233.56 toks/s][A
+Processed prompts:  69%|██████▊   | 11503/16732 [00:49<00:17, 296.90it/s, est. speed input: 15771.43 toks/s, output: 234.32 toks/s][A
+Processed prompts:  70%|██████▉   | 11675/16732 [00:49<00:16, 298.11it/s, est. speed input: 15754.41 toks/s, output: 235.08 toks/s][A
+Processed prompts:  71%|███████   | 11850/16732 [00:50<00:22, 217.73it/s, est. speed input: 15515.62 toks/s, output: 232.55 toks/s][A
+Processed prompts:  73%|███████▎  | 12201/16732 [00:51<00:13, 331.12it/s, est. speed input: 15703.88 toks/s, output: 237.43 toks/s][A
+Processed prompts:  74%|███████▍  | 12379/16732 [00:51<00:13, 326.19it/s, est. speed input: 15689.28 toks/s, output: 238.25 toks/s][A
+Processed prompts:  75%|███████▌  | 12557/16732 [00:52<00:12, 323.68it/s, est. speed input: 15677.42 toks/s, output: 239.09 toks/s][A
+Processed prompts:  76%|███████▌  | 12737/16732 [00:53<00:12, 318.71it/s, est. speed input: 15658.78 toks/s, output: 239.83 toks/s][A
+Processed prompts:  77%|███████▋  | 12919/16732 [00:53<00:12, 316.99it/s, est. speed input: 15641.60 toks/s, output: 240.63 toks/s][A
+Processed prompts:  78%|███████▊  | 13101/16732 [00:54<00:11, 317.72it/s, est. speed input: 15628.35 toks/s, output: 241.45 toks/s][A
+Processed prompts:  79%|███████▉  | 13286/16732 [00:54<00:10, 316.30it/s, est. speed input: 15609.12 toks/s, output: 242.22 toks/s][A
+Processed prompts:  81%|████████  | 13472/16732 [00:55<00:10, 316.92it/s, est. speed input: 15592.25 toks/s, output: 243.03 toks/s][A
+Processed prompts:  82%|████████▏ | 13658/16732 [00:56<00:09, 316.69it/s, est. speed input: 15574.59 toks/s, output: 243.79 toks/s][A
+Processed prompts:  83%|████████▎ | 13848/16732 [00:56<00:08, 320.93it/s, est. speed input: 15561.42 toks/s, output: 244.68 toks/s][A
+Processed prompts:  84%|████████▍ | 14039/16732 [00:57<00:08, 322.86it/s, est. speed input: 15546.27 toks/s, output: 245.52 toks/s][A
+Processed prompts:  85%|████████▌ | 14229/16732 [00:57<00:07, 321.81it/s, est. speed input: 15527.62 toks/s, output: 246.28 toks/s][A
+Processed prompts:  86%|████████▌ | 14423/16732 [00:58<00:07, 323.74it/s, est. speed input: 15510.57 toks/s, output: 247.11 toks/s][A
+Processed prompts:  87%|████████▋ | 14618/16732 [00:58<00:06, 322.95it/s, est. speed input: 15489.76 toks/s, output: 247.88 toks/s][A
+Processed prompts:  89%|████████▊ | 14816/16732 [00:59<00:05, 323.54it/s, est. speed input: 15469.08 toks/s, output: 248.66 toks/s][A
+Processed prompts:  90%|████████▉ | 15016/16732 [01:00<00:05, 327.99it/s, est. speed input: 15453.47 toks/s, output: 249.55 toks/s][A
+Processed prompts:  91%|█████████ | 15216/16732 [01:00<00:04, 327.59it/s, est. speed input: 15432.39 toks/s, output: 250.32 toks/s][A
+Processed prompts:  92%|█████████▏| 15421/16732 [01:01<00:03, 329.86it/s, est. speed input: 15412.16 toks/s, output: 251.17 toks/s][A
+Processed prompts:  93%|█████████▎| 15627/16732 [01:01<00:03, 333.51it/s, est. speed input: 15394.60 toks/s, output: 252.05 toks/s][A
+Processed prompts:  95%|█████████▍| 15837/16732 [01:02<00:02, 332.73it/s, est. speed input: 15369.42 toks/s, output: 252.85 toks/s][A
+Processed prompts:  96%|█████████▌| 16051/16732 [01:03<00:02, 337.38it/s, est. speed input: 15349.51 toks/s, output: 253.78 toks/s][A
+Processed prompts:  97%|█████████▋| 16270/16732 [01:03<00:01, 343.59it/s, est. speed input: 15330.87 toks/s, output: 254.78 toks/s][A
+Processed prompts:  99%|█████████▊| 16496/16732 [01:04<00:00, 346.94it/s, est. speed input: 15306.41 toks/s, output: 255.76 toks/s][AProcessed prompts: 100%|██████████| 16732/16732 [01:04<00:00, 259.41it/s, est. speed input: 15429.00 toks/s, output: 259.41 toks/s]
+Running loglikelihood requests:   0%|          | 1/16732 [01:06<307:09:12, 66.09s/it]Running loglikelihood requests:  19%|█▊        | 3108/16732 [01:06<03:23, 67.03it/s] Running loglikelihood requests:  45%|████▍     | 7515/16732 [01:06<00:45, 202.20it/s]Running loglikelihood requests:  74%|███████▍  | 12378/16732 [01:06<00:10, 413.79it/s]Running loglikelihood requests: 100%|██████████| 16732/16732 [01:06<00:00, 251.72it/s]
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+[rank0]:[W620 14:58:57.352567784 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+2025-06-20:14:58:59 INFO     [loggers.evaluation_tracker:209] Saving results aggregated
+2025-06-20:14:58:59 INFO     [loggers.evaluation_tracker:298] Saving per-sample results for: medmcqa
+vllm (pretrained=Qwen/Qwen3-1.7B,tensor_parallel_size=1,dtype=auto,gpu_memory_utilization=0.8), gen_kwargs: (None), limit: None, num_fewshot: None, batch_size: auto
+| Tasks |Version|Filter|n-shot| Metric |   |Value |   |Stderr|
+|-------|-------|------|-----:|--------|---|-----:|---|-----:|
+|medmcqa|Yaml   |none  |     0|acc     |↑  |0.4208|±  |0.0076|
+|       |       |none  |     0|acc_norm|↑  |0.4208|±  |0.0076|
+

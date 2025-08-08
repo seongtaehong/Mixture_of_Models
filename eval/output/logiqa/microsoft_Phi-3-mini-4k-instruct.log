@@ -1,0 +1,184 @@
+INFO 06-20 14:49:23 [importing.py:53] Triton module has been replaced with a placeholder.
+INFO 06-20 14:49:23 [__init__.py:239] Automatically detected platform cuda.
+2025-06-20:14:49:28 INFO     [__main__:440] Selected Tasks: ['logiqa']
+2025-06-20:14:49:28 WARNING  [evaluator:159] Instruct model detected, but chat template not applied. Recommend setting `apply_chat_template` (optionally `fewshot_as_multiturn`).
+2025-06-20:14:49:28 INFO     [evaluator:185] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+2025-06-20:14:49:28 INFO     [evaluator:223] Initializing vllm model, with arguments: {'pretrained': 'microsoft/Phi-3-mini-4k-instruct', 'tensor_parallel_size': 1, 'dtype': 'auto', 'gpu_memory_utilization': 0.8}
+INFO 06-20 14:49:40 [config.py:717] This model supports multiple tasks: {'classify', 'score', 'reward', 'generate', 'embed'}. Defaulting to 'generate'.
+INFO 06-20 14:49:41 [config.py:2003] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 06-20 14:49:48 [importing.py:53] Triton module has been replaced with a placeholder.
+INFO 06-20 14:49:48 [__init__.py:239] Automatically detected platform cuda.
+INFO 06-20 14:49:51 [core.py:58] Initializing a V1 LLM engine (v0.8.5.post1) with config: model='microsoft/Phi-3-mini-4k-instruct', speculative_config=None, tokenizer='microsoft/Phi-3-mini-4k-instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=4096, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='auto', reasoning_backend=None), observability_config=ObservabilityConfig(show_hidden_metrics=False, otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=1234, served_model_name=microsoft/Phi-3-mini-4k-instruct, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"level":3,"custom_ops":["none"],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output"],"use_inductor":true,"compile_sizes":[],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":512}
+2025-06-20 14:49:51,255 - INFO - flashinfer.jit: Prebuilt kernels not found, using JIT backend
+WARNING 06-20 14:49:51 [utils.py:2522] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7fcd215b6150>
+INFO 06-20 14:49:54 [parallel_state.py:1004] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0
+INFO 06-20 14:49:54 [cuda.py:221] Using Flash Attention backend on V1 engine.
+INFO 06-20 14:49:54 [topk_topp_sampler.py:44] Currently, FlashInfer top-p & top-k sampling sampler is disabled because FlashInfer>=v0.2.3 is not backward compatible. Falling back to the PyTorch-native implementation of top-p & top-k sampling.
+INFO 06-20 14:49:54 [gpu_model_runner.py:1329] Starting to load model microsoft/Phi-3-mini-4k-instruct...
+INFO 06-20 14:49:58 [weight_utils.py:265] Using model weights format ['*.safetensors']
+Loading safetensors checkpoint shards:   0% Completed | 0/2 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:  50% Completed | 1/2 [00:00<00:00,  1.50it/s]
+Loading safetensors checkpoint shards: 100% Completed | 2/2 [00:01<00:00,  1.02s/it]
+Loading safetensors checkpoint shards: 100% Completed | 2/2 [00:01<00:00,  1.03it/s]
+
+INFO 06-20 14:50:00 [loader.py:458] Loading weights took 2.00 seconds
+INFO 06-20 14:50:01 [gpu_model_runner.py:1347] Model loading took 7.1184 GiB and 6.464075 seconds
+INFO 06-20 14:50:09 [backends.py:420] Using cache directory: /mnt/raid6/hst/.cache/vllm/torch_compile_cache/777c2f74f5/rank_0_0 for vLLM's torch.compile
+INFO 06-20 14:50:09 [backends.py:430] Dynamo bytecode transform time: 8.10 s
+INFO 06-20 14:50:37 [backends.py:118] Directly load the compiled graph(s) for shape None from the cache, took 27.832 s
+INFO 06-20 14:50:40 [monitor.py:33] torch.compile takes 8.10 s in total
+INFO 06-20 14:50:42 [kv_cache_utils.py:634] GPU KV cache size: 81,088 tokens
+INFO 06-20 14:50:42 [kv_cache_utils.py:637] Maximum concurrency for 4,096 tokens per request: 19.80x
+INFO 06-20 14:52:15 [gpu_model_runner.py:1686] Graph capturing finished in 92 secs, took 1.45 GiB
+INFO 06-20 14:52:15 [core.py:159] init engine (profile, create kv cache, warmup model) took 134.62 seconds
+INFO 06-20 14:52:15 [core_client.py:439] Core engine process 0 ready.
+2025-06-20:14:52:22 INFO     [api.task:434] Building contexts for logiqa on rank 0...
+  0%|          | 0/651 [00:00<?, ?it/s] 46%|████▌     | 297/651 [00:00<00:00, 2964.12it/s] 91%|█████████ | 594/651 [00:00<00:00, 2957.93it/s]100%|██████████| 651/651 [00:00<00:00, 2950.93it/s]
+2025-06-20:14:52:22 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=logiqa,output_type=multiple_choice,num_fewshot=0,num_samples=651); document 0; context prompt (starting on next line):    
+Passage: In the planning of a new district in a township, it was decided to build a special community in the southeast, northwest, centered on the citizen park. These four communities are designated as cultural area, leisure area, commercial area and administrative service area. It is known that the administrative service area is southwest of the cultural area, and the cultural area is southeast of the leisure area.
+Question: Based on the above statement, which of the following can be derived?
+Choices:
+A. Civic Park is north of the administrative service area
+B. The leisure area is southwest of the cultural area
+C. The cultural district is in the northeast of the business district
+D. The business district is southeast of the leisure area
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+0
+(end of target on previous line)
+2025-06-20:14:52:22 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'label': 'a', 'context': 'In the planning of a new district in a township, it was decided to build a special community in the southeast, northwest, centered on the citizen park. These four communities are designated as cultural area, leisure area, commercial area and administrative service area. It is known that the administrative service area is southwest of the cultural area, and the cultural area is southeast of the leisure area.', 'question': 'Based on the above statement, which of the following can be derived?', 'options': ['Civic Park is north of the administrative service area', 'The leisure area is southwest of the cultural area', 'The cultural district is in the northeast of the business district', 'The business district is southeast of the leisure area']}, arguments=('Passage: In the planning of a new district in a township, it was decided to build a special community in the southeast, northwest, centered on the citizen park. These four communities are designated as cultural area, leisure area, commercial area and administrative service area. It is known that the administrative service area is southwest of the cultural area, and the cultural area is southeast of the leisure area.\nQuestion: Based on the above statement, which of the following can be derived?\nChoices:\nA. Civic Park is north of the administrative service area\nB. The leisure area is southwest of the cultural area\nC. The cultural district is in the northeast of the business district\nD. The business district is southeast of the leisure area\nAnswer:', ' Civic Park is north of the administrative service area'), idx=0, metadata=('logiqa', 0, 1), resps=[], filtered_resps={}, task_name='logiqa', doc_id=0, repeats=1)
+2025-06-20:14:52:22 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=logiqa,output_type=multiple_choice,num_fewshot=0,num_samples=651); document 0; context prompt (starting on next line):    
+Passage: In the planning of a new district in a township, it was decided to build a special community in the southeast, northwest, centered on the citizen park. These four communities are designated as cultural area, leisure area, commercial area and administrative service area. It is known that the administrative service area is southwest of the cultural area, and the cultural area is southeast of the leisure area.
+Question: Based on the above statement, which of the following can be derived?
+Choices:
+A. Civic Park is north of the administrative service area
+B. The leisure area is southwest of the cultural area
+C. The cultural district is in the northeast of the business district
+D. The business district is southeast of the leisure area
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+0
+(end of target on previous line)
+2025-06-20:14:52:22 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'label': 'a', 'context': 'In the planning of a new district in a township, it was decided to build a special community in the southeast, northwest, centered on the citizen park. These four communities are designated as cultural area, leisure area, commercial area and administrative service area. It is known that the administrative service area is southwest of the cultural area, and the cultural area is southeast of the leisure area.', 'question': 'Based on the above statement, which of the following can be derived?', 'options': ['Civic Park is north of the administrative service area', 'The leisure area is southwest of the cultural area', 'The cultural district is in the northeast of the business district', 'The business district is southeast of the leisure area']}, arguments=('Passage: In the planning of a new district in a township, it was decided to build a special community in the southeast, northwest, centered on the citizen park. These four communities are designated as cultural area, leisure area, commercial area and administrative service area. It is known that the administrative service area is southwest of the cultural area, and the cultural area is southeast of the leisure area.\nQuestion: Based on the above statement, which of the following can be derived?\nChoices:\nA. Civic Park is north of the administrative service area\nB. The leisure area is southwest of the cultural area\nC. The cultural district is in the northeast of the business district\nD. The business district is southeast of the leisure area\nAnswer:', ' The leisure area is southwest of the cultural area'), idx=1, metadata=('logiqa', 0, 1), resps=[], filtered_resps={}, task_name='logiqa', doc_id=0, repeats=1)
+2025-06-20:14:52:22 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=logiqa,output_type=multiple_choice,num_fewshot=0,num_samples=651); document 0; context prompt (starting on next line):    
+Passage: In the planning of a new district in a township, it was decided to build a special community in the southeast, northwest, centered on the citizen park. These four communities are designated as cultural area, leisure area, commercial area and administrative service area. It is known that the administrative service area is southwest of the cultural area, and the cultural area is southeast of the leisure area.
+Question: Based on the above statement, which of the following can be derived?
+Choices:
+A. Civic Park is north of the administrative service area
+B. The leisure area is southwest of the cultural area
+C. The cultural district is in the northeast of the business district
+D. The business district is southeast of the leisure area
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+0
+(end of target on previous line)
+2025-06-20:14:52:22 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'label': 'a', 'context': 'In the planning of a new district in a township, it was decided to build a special community in the southeast, northwest, centered on the citizen park. These four communities are designated as cultural area, leisure area, commercial area and administrative service area. It is known that the administrative service area is southwest of the cultural area, and the cultural area is southeast of the leisure area.', 'question': 'Based on the above statement, which of the following can be derived?', 'options': ['Civic Park is north of the administrative service area', 'The leisure area is southwest of the cultural area', 'The cultural district is in the northeast of the business district', 'The business district is southeast of the leisure area']}, arguments=('Passage: In the planning of a new district in a township, it was decided to build a special community in the southeast, northwest, centered on the citizen park. These four communities are designated as cultural area, leisure area, commercial area and administrative service area. It is known that the administrative service area is southwest of the cultural area, and the cultural area is southeast of the leisure area.\nQuestion: Based on the above statement, which of the following can be derived?\nChoices:\nA. Civic Park is north of the administrative service area\nB. The leisure area is southwest of the cultural area\nC. The cultural district is in the northeast of the business district\nD. The business district is southeast of the leisure area\nAnswer:', ' The cultural district is in the northeast of the business district'), idx=2, metadata=('logiqa', 0, 1), resps=[], filtered_resps={}, task_name='logiqa', doc_id=0, repeats=1)
+2025-06-20:14:52:22 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=logiqa,output_type=multiple_choice,num_fewshot=0,num_samples=651); document 0; context prompt (starting on next line):    
+Passage: In the planning of a new district in a township, it was decided to build a special community in the southeast, northwest, centered on the citizen park. These four communities are designated as cultural area, leisure area, commercial area and administrative service area. It is known that the administrative service area is southwest of the cultural area, and the cultural area is southeast of the leisure area.
+Question: Based on the above statement, which of the following can be derived?
+Choices:
+A. Civic Park is north of the administrative service area
+B. The leisure area is southwest of the cultural area
+C. The cultural district is in the northeast of the business district
+D. The business district is southeast of the leisure area
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+0
+(end of target on previous line)
+2025-06-20:14:52:22 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'label': 'a', 'context': 'In the planning of a new district in a township, it was decided to build a special community in the southeast, northwest, centered on the citizen park. These four communities are designated as cultural area, leisure area, commercial area and administrative service area. It is known that the administrative service area is southwest of the cultural area, and the cultural area is southeast of the leisure area.', 'question': 'Based on the above statement, which of the following can be derived?', 'options': ['Civic Park is north of the administrative service area', 'The leisure area is southwest of the cultural area', 'The cultural district is in the northeast of the business district', 'The business district is southeast of the leisure area']}, arguments=('Passage: In the planning of a new district in a township, it was decided to build a special community in the southeast, northwest, centered on the citizen park. These four communities are designated as cultural area, leisure area, commercial area and administrative service area. It is known that the administrative service area is southwest of the cultural area, and the cultural area is southeast of the leisure area.\nQuestion: Based on the above statement, which of the following can be derived?\nChoices:\nA. Civic Park is north of the administrative service area\nB. The leisure area is southwest of the cultural area\nC. The cultural district is in the northeast of the business district\nD. The business district is southeast of the leisure area\nAnswer:', ' The business district is southeast of the leisure area'), idx=3, metadata=('logiqa', 0, 1), resps=[], filtered_resps={}, task_name='logiqa', doc_id=0, repeats=1)
+2025-06-20:14:52:22 INFO     [evaluator:559] Running loglikelihood requests
+Running loglikelihood requests:   0%|          | 0/2604 [00:00<?, ?it/s]
+Processed prompts:   0%|          | 0/2604 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts:   0%|          | 1/2604 [00:01<53:51,  1.24s/it, est. speed input: 454.31 toks/s, output: 0.81 toks/s][A
+Processed prompts:   1%|          | 18/2604 [00:01<03:36, 11.96it/s, est. speed input: 4582.04 toks/s, output: 9.72 toks/s][A
+Processed prompts:   1%|▏         | 37/2604 [00:02<02:16, 18.79it/s, est. speed input: 6628.85 toks/s, output: 14.88 toks/s][A
+Processed prompts:   2%|▏         | 57/2604 [00:03<02:10, 19.55it/s, est. speed input: 7104.28 toks/s, output: 16.45 toks/s][A
+Processed prompts:   3%|▎         | 78/2604 [00:03<01:28, 28.57it/s, est. speed input: 8811.81 toks/s, output: 20.94 toks/s][A
+Processed prompts:   4%|▍         | 100/2604 [00:04<01:21, 30.63it/s, est. speed input: 9442.90 toks/s, output: 22.94 toks/s][A
+Processed prompts:   5%|▍         | 122/2604 [00:04<01:16, 32.31it/s, est. speed input: 9905.60 toks/s, output: 24.53 toks/s][A
+Processed prompts:   6%|▌         | 145/2604 [00:05<01:12, 34.01it/s, est. speed input: 10300.05 toks/s, output: 25.98 toks/s][A
+Processed prompts:   6%|▋         | 168/2604 [00:06<01:09, 35.08it/s, est. speed input: 10578.07 toks/s, output: 27.11 toks/s][A
+Processed prompts:   7%|▋         | 192/2604 [00:06<01:06, 36.31it/s, est. speed input: 10837.14 toks/s, output: 28.19 toks/s][A
+Processed prompts:   8%|▊         | 217/2604 [00:07<01:03, 37.75it/s, est. speed input: 11087.16 toks/s, output: 29.25 toks/s][A
+Processed prompts:   9%|▉         | 241/2604 [00:08<01:01, 38.35it/s, est. speed input: 11241.89 toks/s, output: 30.04 toks/s][A
+Processed prompts:  10%|█         | 266/2604 [00:08<01:09, 33.88it/s, est. speed input: 10991.03 toks/s, output: 29.73 toks/s][A
+Processed prompts:  11%|█         | 292/2604 [00:09<00:55, 42.00it/s, est. speed input: 11529.62 toks/s, output: 31.57 toks/s][A
+Processed prompts:  12%|█▏        | 318/2604 [00:09<00:54, 42.04it/s, est. speed input: 11638.47 toks/s, output: 32.23 toks/s][A
+Processed prompts:  13%|█▎        | 344/2604 [00:10<00:53, 41.99it/s, est. speed input: 11718.85 toks/s, output: 32.80 toks/s][A
+Processed prompts:  14%|█▍        | 371/2604 [00:11<00:52, 42.66it/s, est. speed input: 11821.09 toks/s, output: 33.43 toks/s][A
+Processed prompts:  15%|█▌        | 398/2604 [00:11<00:51, 43.21it/s, est. speed input: 11910.90 toks/s, output: 34.00 toks/s][A
+Processed prompts:  16%|█▋        | 425/2604 [00:12<00:50, 43.42it/s, est. speed input: 11977.62 toks/s, output: 34.49 toks/s][A
+Processed prompts:  17%|█▋        | 453/2604 [00:12<00:48, 44.21it/s, est. speed input: 12059.13 toks/s, output: 35.04 toks/s][A
+Processed prompts:  18%|█▊        | 480/2604 [00:13<00:48, 44.13it/s, est. speed input: 12099.84 toks/s, output: 35.44 toks/s][A
+Processed prompts:  20%|█▉        | 509/2604 [00:14<00:46, 45.19it/s, est. speed input: 12176.71 toks/s, output: 35.97 toks/s][A
+Processed prompts:  21%|██        | 537/2604 [00:14<00:45, 44.95it/s, est. speed input: 12203.12 toks/s, output: 36.33 toks/s][A
+Processed prompts:  22%|██▏       | 566/2604 [00:15<00:44, 45.73it/s, est. speed input: 12257.06 toks/s, output: 36.77 toks/s][A
+Processed prompts:  23%|██▎       | 595/2604 [00:16<00:51, 39.03it/s, est. speed input: 12016.18 toks/s, output: 36.32 toks/s][A
+Processed prompts:  24%|██▍       | 624/2604 [00:16<00:40, 49.17it/s, est. speed input: 12326.62 toks/s, output: 37.54 toks/s][A
+Processed prompts:  25%|██▌       | 654/2604 [00:17<00:39, 49.10it/s, est. speed input: 12367.44 toks/s, output: 37.95 toks/s][A
+Processed prompts:  26%|██▋       | 684/2604 [00:17<00:39, 48.94it/s, est. speed input: 12398.33 toks/s, output: 38.32 toks/s][A
+Processed prompts:  27%|██▋       | 714/2604 [00:18<00:38, 48.94it/s, est. speed input: 12427.24 toks/s, output: 38.67 toks/s][A
+Processed prompts:  29%|██▊       | 745/2604 [00:19<00:37, 49.64it/s, est. speed input: 12470.38 toks/s, output: 39.07 toks/s][A
+Processed prompts:  30%|██▉       | 775/2604 [00:19<00:37, 48.73it/s, est. speed input: 12469.41 toks/s, output: 39.32 toks/s][A
+Processed prompts:  31%|███       | 806/2604 [00:20<00:36, 48.94it/s, est. speed input: 12487.33 toks/s, output: 39.63 toks/s][A
+Processed prompts:  32%|███▏      | 838/2604 [00:20<00:35, 49.73it/s, est. speed input: 12517.30 toks/s, output: 39.98 toks/s][A
+Processed prompts:  33%|███▎      | 869/2604 [00:21<00:34, 49.62it/s, est. speed input: 12525.75 toks/s, output: 40.26 toks/s][A
+Processed prompts:  35%|███▍      | 901/2604 [00:22<00:33, 50.45it/s, est. speed input: 12551.87 toks/s, output: 40.59 toks/s][A
+Processed prompts:  36%|███▌      | 933/2604 [00:22<00:32, 51.12it/s, est. speed input: 12576.05 toks/s, output: 40.91 toks/s][A
+Processed prompts:  37%|███▋      | 966/2604 [00:23<00:31, 52.02it/s, est. speed input: 12604.82 toks/s, output: 41.26 toks/s][A
+Processed prompts:  38%|███▊      | 998/2604 [00:24<00:30, 51.96it/s, est. speed input: 12615.79 toks/s, output: 41.53 toks/s][A
+Processed prompts:  40%|███▉      | 1031/2604 [00:25<00:36, 43.32it/s, est. speed input: 12416.66 toks/s, output: 41.11 toks/s][A
+Processed prompts:  41%|████      | 1064/2604 [00:25<00:27, 56.72it/s, est. speed input: 12654.79 toks/s, output: 42.14 toks/s][A
+Processed prompts:  42%|████▏     | 1098/2604 [00:25<00:26, 56.13it/s, est. speed input: 12673.25 toks/s, output: 42.44 toks/s][A
+Processed prompts:  43%|████▎     | 1132/2604 [00:26<00:26, 55.82it/s, est. speed input: 12688.60 toks/s, output: 42.74 toks/s][A
+Processed prompts:  45%|████▍     | 1166/2604 [00:27<00:25, 55.45it/s, est. speed input: 12698.41 toks/s, output: 43.01 toks/s][A
+Processed prompts:  46%|████▌     | 1200/2604 [00:27<00:25, 54.95it/s, est. speed input: 12701.05 toks/s, output: 43.26 toks/s][A
+Processed prompts:  47%|████▋     | 1235/2604 [00:28<00:24, 55.28it/s, est. speed input: 12713.32 toks/s, output: 43.54 toks/s][A
+Processed prompts:  49%|████▉     | 1270/2604 [00:28<00:23, 55.96it/s, est. speed input: 12730.07 toks/s, output: 43.83 toks/s][A
+Processed prompts:  50%|█████     | 1305/2604 [00:29<00:22, 56.49it/s, est. speed input: 12744.57 toks/s, output: 44.12 toks/s][A
+Processed prompts:  51%|█████▏    | 1340/2604 [00:30<00:22, 56.66it/s, est. speed input: 12753.61 toks/s, output: 44.38 toks/s][A
+Processed prompts:  53%|█████▎    | 1376/2604 [00:30<00:21, 56.84it/s, est. speed input: 12760.87 toks/s, output: 44.64 toks/s][A
+Processed prompts:  54%|█████▍    | 1412/2604 [00:31<00:20, 57.69it/s, est. speed input: 12775.34 toks/s, output: 44.93 toks/s][A
+Processed prompts:  56%|█████▌    | 1449/2604 [00:32<00:19, 58.36it/s, est. speed input: 12787.50 toks/s, output: 45.22 toks/s][A
+Processed prompts:  57%|█████▋    | 1486/2604 [00:32<00:18, 59.00it/s, est. speed input: 12799.96 toks/s, output: 45.51 toks/s][A
+Processed prompts:  58%|█████▊    | 1523/2604 [00:33<00:18, 59.25it/s, est. speed input: 12807.55 toks/s, output: 45.77 toks/s][A
+Processed prompts:  60%|█████▉    | 1560/2604 [00:33<00:17, 59.77it/s, est. speed input: 12817.15 toks/s, output: 46.05 toks/s][A
+Processed prompts:  61%|██████▏   | 1598/2604 [00:34<00:16, 60.71it/s, est. speed input: 12831.90 toks/s, output: 46.34 toks/s][A
+Processed prompts:  63%|██████▎   | 1636/2604 [00:35<00:19, 48.84it/s, est. speed input: 12656.23 toks/s, output: 45.95 toks/s][A
+Processed prompts:  64%|██████▍   | 1675/2604 [00:35<00:14, 65.81it/s, est. speed input: 12841.35 toks/s, output: 46.87 toks/s][A
+Processed prompts:  66%|██████▌   | 1713/2604 [00:36<00:13, 64.61it/s, est. speed input: 12845.97 toks/s, output: 47.12 toks/s][A
+Processed prompts:  67%|██████▋   | 1752/2604 [00:36<00:13, 64.07it/s, est. speed input: 12851.95 toks/s, output: 47.39 toks/s][A
+Processed prompts:  69%|██████▉   | 1792/2604 [00:37<00:12, 64.31it/s, est. speed input: 12862.61 toks/s, output: 47.67 toks/s][A
+Processed prompts:  70%|███████   | 1831/2604 [00:38<00:12, 63.82it/s, est. speed input: 12863.60 toks/s, output: 47.92 toks/s][A
+Processed prompts:  72%|███████▏  | 1872/2604 [00:38<00:11, 65.03it/s, est. speed input: 12879.35 toks/s, output: 48.23 toks/s][A
+Processed prompts:  73%|███████▎  | 1912/2604 [00:39<00:10, 64.76it/s, est. speed input: 12880.92 toks/s, output: 48.48 toks/s][A
+Processed prompts:  75%|███████▌  | 1953/2604 [00:40<00:09, 65.30it/s, est. speed input: 12887.83 toks/s, output: 48.76 toks/s][A
+Processed prompts:  77%|███████▋  | 1994/2604 [00:40<00:09, 65.39it/s, est. speed input: 12888.77 toks/s, output: 49.02 toks/s][A
+Processed prompts:  78%|███████▊  | 2037/2604 [00:41<00:08, 66.91it/s, est. speed input: 12900.66 toks/s, output: 49.33 toks/s][A
+Processed prompts:  80%|███████▉  | 2079/2604 [00:41<00:07, 66.84it/s, est. speed input: 12898.52 toks/s, output: 49.60 toks/s][A
+Processed prompts:  82%|████████▏ | 2123/2604 [00:42<00:07, 68.33it/s, est. speed input: 12907.48 toks/s, output: 49.92 toks/s][A
+Processed prompts:  83%|████████▎ | 2167/2604 [00:43<00:06, 68.79it/s, est. speed input: 12907.39 toks/s, output: 50.21 toks/s][A
+Processed prompts:  85%|████████▍ | 2212/2604 [00:43<00:05, 69.05it/s, est. speed input: 12902.97 toks/s, output: 50.49 toks/s][A
+Processed prompts:  87%|████████▋ | 2259/2604 [00:44<00:04, 71.24it/s, est. speed input: 12911.75 toks/s, output: 50.85 toks/s][A
+Processed prompts:  89%|████████▊ | 2306/2604 [00:45<00:04, 71.72it/s, est. speed input: 12907.07 toks/s, output: 51.17 toks/s][A
+Processed prompts:  90%|█████████ | 2355/2604 [00:45<00:03, 73.59it/s, est. speed input: 12909.65 toks/s, output: 51.54 toks/s][A
+Processed prompts:  92%|█████████▏| 2405/2604 [00:46<00:02, 75.80it/s, est. speed input: 12914.85 toks/s, output: 51.93 toks/s][A
+Processed prompts:  94%|█████████▍| 2456/2604 [00:46<00:01, 76.88it/s, est. speed input: 12910.41 toks/s, output: 52.30 toks/s][A
+Processed prompts:  96%|█████████▋| 2510/2604 [00:47<00:01, 79.59it/s, est. speed input: 12912.98 toks/s, output: 52.75 toks/s][A
+Processed prompts:  99%|█████████▊| 2570/2604 [00:47<00:00, 103.22it/s, est. speed input: 13017.22 toks/s, output: 53.73 toks/s][AProcessed prompts: 100%|██████████| 2604/2604 [00:47<00:00, 54.44it/s, est. speed input: 13088.83 toks/s, output: 54.44 toks/s] 
+Running loglikelihood requests:   0%|          | 1/2604 [00:48<34:44:37, 48.05s/it]Running loglikelihood requests:  17%|█▋        | 433/2604 [00:48<02:49, 12.83it/s] Running loglikelihood requests:  51%|█████     | 1329/2604 [00:48<00:25, 50.55it/s]Running loglikelihood requests: 100%|██████████| 2604/2604 [00:48<00:00, 53.87it/s]
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+[rank0]:[W620 14:53:22.256462425 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+2025-06-20:14:53:24 INFO     [loggers.evaluation_tracker:209] Saving results aggregated
+2025-06-20:14:53:24 INFO     [loggers.evaluation_tracker:298] Saving per-sample results for: logiqa
+vllm (pretrained=microsoft/Phi-3-mini-4k-instruct,tensor_parallel_size=1,dtype=auto,gpu_memory_utilization=0.8), gen_kwargs: (None), limit: None, num_fewshot: None, batch_size: auto
+|Tasks |Version|Filter|n-shot| Metric |   |Value |   |Stderr|
+|------|------:|------|-----:|--------|---|-----:|---|-----:|
+|logiqa|      1|none  |     0|acc     |↑  |0.3349|±  |0.0185|
+|      |       |none  |     0|acc_norm|↑  |0.3594|±  |0.0188|
+

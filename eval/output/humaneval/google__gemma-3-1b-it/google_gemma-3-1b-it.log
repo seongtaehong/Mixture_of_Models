@@ -1,0 +1,241 @@
+INFO 05-25 02:50:16 [importing.py:53] Triton module has been replaced with a placeholder.
+INFO 05-25 02:50:16 [__init__.py:239] Automatically detected platform cuda.
+2025-05-25:02:50:20 INFO     [__main__:440] Selected Tasks: ['humaneval_instruct']
+2025-05-25:02:50:20 INFO     [evaluator:185] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+2025-05-25:02:50:20 INFO     [evaluator:223] Initializing hf model, with arguments: {'pretrained': 'google/gemma-3-1b-it'}
+2025-05-25:02:50:22 INFO     [models.huggingface:137] Using device 'cuda'
+2025-05-25:02:50:24 INFO     [models.huggingface:382] Model parallel was set to False, max memory was not set, and device map was set to {'': 'cuda'}
+2025-05-25:02:50:32 INFO     [models.huggingface:226] Model type is 'gemma3_text', part of the Gemma family--a BOS token will be used as Gemma underperforms without it.
+2025-05-25:02:50:43 INFO     [evaluator:286] humaneval_instruct: Using gen_kwargs: {'until': ['\nclass', '\ndef', '\n#', '\nif', '\nprint'], 'max_gen_toks': 1024, 'do_sample': False}
+2025-05-25:02:50:43 INFO     [api.task:434] Building contexts for humaneval_instruct on rank 0...
+  0%|          | 0/164 [00:00<?, ?it/s] 88%|████████▊ | 144/164 [00:00<00:00, 1439.36it/s]100%|██████████| 164/164 [00:00<00:00, 1446.70it/s]
+2025-05-25:02:50:43 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=humaneval_instruct,output_type=generate_until,num_fewshot=0,num_samples=164); document 0; context prompt (starting on next line):    
+Write a solution to the following problem and make sure that it passes the tests:
+```from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """ Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """
+ Here is the completed function:
+```python
+from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """ Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """
+
+
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.3) == True
+    assert candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.05) == False
+    assert candidate([1.0, 2.0, 5.9, 4.0, 5.0], 0.95) == True
+    assert candidate([1.0, 2.0, 5.9, 4.0, 5.0], 0.8) == False
+    assert candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.0], 0.1) == True
+    assert candidate([1.1, 2.2, 3.1, 4.1, 5.1], 1.0) == True
+    assert candidate([1.1, 2.2, 3.1, 4.1, 5.1], 0.5) == False
+
+
+check(has_close_elements)
+(end of target on previous line)
+2025-05-25:02:50:43 INFO     [evaluator_utils:210] Request: Instance(request_type='generate_until', doc={'task_id': 'HumanEval/0', 'prompt': 'from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    """ Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    """\n', 'canonical_solution': '    for idx, elem in enumerate(numbers):\n        for idx2, elem2 in enumerate(numbers):\n            if idx != idx2:\n                distance = abs(elem - elem2)\n                if distance < threshold:\n                    return True\n\n    return False\n', 'test': "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.3) == True\n    assert candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.05) == False\n    assert candidate([1.0, 2.0, 5.9, 4.0, 5.0], 0.95) == True\n    assert candidate([1.0, 2.0, 5.9, 4.0, 5.0], 0.8) == False\n    assert candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.0], 0.1) == True\n    assert candidate([1.1, 2.2, 3.1, 4.1, 5.1], 1.0) == True\n    assert candidate([1.1, 2.2, 3.1, 4.1, 5.1], 0.5) == False\n\n", 'entry_point': 'has_close_elements'}, arguments=('Write a solution to the following problem and make sure that it passes the tests:\n```from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    """ Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    """\n Here is the completed function:\n```python\nfrom typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    """ Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    """\n\n', {'until': ['\nclass', '\ndef', '\n#', '\nif', '\nprint'], 'max_gen_toks': 1024, 'do_sample': False}), idx=0, metadata=('humaneval_instruct', 0, 1), resps=[], filtered_resps={}, task_name='humaneval_instruct', doc_id=0, repeats=1)
+2025-05-25:02:50:43 INFO     [evaluator:559] Running generate_until requests
+Running generate_until requests:   0%|          | 0/164 [00:00<?, ?it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+/mnt/raid6/hst/miniconda3/envs/em/lib/python3.12/site-packages/torch/_inductor/compile_fx.py:194: UserWarning: TensorFloat32 tensor cores for float32 matrix multiplication available but not enabled. Consider setting `torch.set_float32_matmul_precision('high')` for better performance.
+  warnings.warn(
+Running generate_until requests:   1%|          | 1/164 [01:42<4:39:03, 102.72s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:   1%|          | 2/164 [01:43<1:55:48, 42.89s/it] The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:   2%|▏         | 3/164 [01:44<1:03:27, 23.65s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:   2%|▏         | 4/164 [01:44<38:32, 14.45s/it]  The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:   3%|▎         | 5/164 [01:46<25:59,  9.81s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:   4%|▎         | 6/164 [01:46<17:33,  6.67s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:   4%|▍         | 7/164 [01:47<12:00,  4.59s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:   5%|▍         | 8/164 [01:48<09:10,  3.53s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:   5%|▌         | 9/164 [01:49<06:49,  2.64s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:   6%|▌         | 10/164 [01:50<05:21,  2.09s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:   7%|▋         | 11/164 [01:52<05:20,  2.09s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:   7%|▋         | 12/164 [01:52<04:08,  1.63s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:   8%|▊         | 13/164 [01:53<03:26,  1.37s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:   9%|▊         | 14/164 [01:54<03:14,  1.30s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:   9%|▉         | 15/164 [01:55<02:35,  1.04s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  10%|▉         | 16/164 [01:56<02:31,  1.02s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  10%|█         | 17/164 [01:56<02:04,  1.18it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  11%|█         | 18/164 [01:57<01:47,  1.35it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  12%|█▏        | 19/164 [01:57<01:45,  1.37it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  12%|█▏        | 20/164 [01:58<01:31,  1.57it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  13%|█▎        | 21/164 [02:00<02:28,  1.04s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  13%|█▎        | 22/164 [02:00<01:51,  1.27it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  14%|█▍        | 23/164 [02:00<01:35,  1.47it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  15%|█▍        | 24/164 [02:01<01:43,  1.36it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  15%|█▌        | 25/164 [02:02<01:49,  1.26it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  16%|█▌        | 26/164 [02:04<02:40,  1.17s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  16%|█▋        | 27/164 [02:05<02:12,  1.03it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  17%|█▋        | 28/164 [02:05<01:51,  1.22it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  18%|█▊        | 29/164 [02:06<01:37,  1.39it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  18%|█▊        | 30/164 [02:06<01:36,  1.39it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  19%|█▉        | 31/164 [02:07<01:38,  1.36it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  20%|█▉        | 32/164 [02:08<01:37,  1.35it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  20%|██        | 33/164 [02:08<01:33,  1.41it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  21%|██        | 34/164 [02:09<01:17,  1.68it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  21%|██▏       | 35/164 [02:10<01:29,  1.45it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  22%|██▏       | 36/164 [02:11<01:40,  1.27it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  23%|██▎       | 37/164 [02:11<01:34,  1.34it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  23%|██▎       | 38/164 [02:12<01:31,  1.38it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  24%|██▍       | 39/164 [02:13<01:38,  1.27it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  24%|██▍       | 40/164 [02:14<01:37,  1.27it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  25%|██▌       | 41/164 [02:15<01:42,  1.20it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  26%|██▌       | 42/164 [02:16<01:49,  1.11it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  26%|██▌       | 43/164 [02:17<01:46,  1.13it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  27%|██▋       | 44/164 [02:17<01:34,  1.27it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  27%|██▋       | 45/164 [02:18<01:30,  1.32it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  28%|██▊       | 46/164 [02:18<01:11,  1.65it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  29%|██▊       | 47/164 [02:19<01:12,  1.60it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  29%|██▉       | 48/164 [02:19<01:06,  1.75it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  30%|██▉       | 49/164 [02:20<01:16,  1.49it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  30%|███       | 50/164 [02:23<02:28,  1.30s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  31%|███       | 51/164 [02:24<02:17,  1.22s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  32%|███▏      | 52/164 [02:24<01:51,  1.00it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  32%|███▏      | 53/164 [02:26<01:56,  1.05s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  33%|███▎      | 54/164 [02:26<01:39,  1.10it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  34%|███▎      | 55/164 [02:27<01:38,  1.10it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  34%|███▍      | 56/164 [02:28<01:41,  1.06it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  35%|███▍      | 57/164 [02:29<01:26,  1.23it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  35%|███▌      | 58/164 [02:29<01:22,  1.28it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  36%|███▌      | 59/164 [02:34<03:15,  1.86s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  37%|███▋      | 60/164 [02:34<02:34,  1.48s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  37%|███▋      | 61/164 [02:35<01:58,  1.15s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  38%|███▊      | 62/164 [02:35<01:40,  1.02it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  38%|███▊      | 63/164 [02:36<01:24,  1.20it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  39%|███▉      | 64/164 [02:36<01:09,  1.44it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  40%|███▉      | 65/164 [02:37<01:05,  1.52it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  40%|████      | 66/164 [02:38<01:21,  1.21it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  41%|████      | 67/164 [02:39<01:22,  1.18it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  41%|████▏     | 68/164 [02:39<01:10,  1.36it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  42%|████▏     | 69/164 [02:40<01:03,  1.51it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  43%|████▎     | 70/164 [02:40<00:52,  1.81it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  43%|████▎     | 71/164 [02:41<00:54,  1.72it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  44%|████▍     | 72/164 [02:42<01:00,  1.53it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  45%|████▍     | 73/164 [02:42<01:03,  1.43it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  45%|████▌     | 74/164 [02:43<00:56,  1.59it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  46%|████▌     | 75/164 [02:43<00:55,  1.61it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  46%|████▋     | 76/164 [02:44<00:53,  1.65it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  47%|████▋     | 77/164 [02:44<00:45,  1.90it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  48%|████▊     | 78/164 [02:45<00:47,  1.82it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  48%|████▊     | 79/164 [02:45<00:43,  1.94it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  49%|████▉     | 80/164 [02:46<00:47,  1.75it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  49%|████▉     | 81/164 [02:47<00:48,  1.71it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  50%|█████     | 82/164 [02:48<00:55,  1.47it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  51%|█████     | 83/164 [02:48<00:59,  1.35it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  51%|█████     | 84/164 [02:49<00:51,  1.54it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  52%|█████▏    | 85/164 [02:49<00:43,  1.80it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  52%|█████▏    | 86/164 [02:50<00:51,  1.52it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  53%|█████▎    | 87/164 [02:51<00:47,  1.63it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  54%|█████▎    | 88/164 [02:51<00:48,  1.56it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  54%|█████▍    | 89/164 [02:52<00:44,  1.69it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  55%|█████▍    | 90/164 [02:53<01:05,  1.13it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  55%|█████▌    | 91/164 [02:54<00:54,  1.34it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  56%|█████▌    | 92/164 [02:54<00:41,  1.72it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  57%|█████▋    | 93/164 [02:55<00:44,  1.59it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  57%|█████▋    | 94/164 [02:55<00:44,  1.56it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  58%|█████▊    | 95/164 [02:57<01:01,  1.12it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  59%|█████▊    | 96/164 [02:57<00:51,  1.33it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  59%|█████▉    | 97/164 [02:58<00:41,  1.62it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  60%|█████▉    | 98/164 [02:58<00:36,  1.79it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  60%|██████    | 99/164 [02:58<00:32,  1.98it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  61%|██████    | 100/164 [02:59<00:33,  1.92it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  62%|██████▏   | 101/164 [03:00<00:33,  1.89it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  62%|██████▏   | 102/164 [03:00<00:36,  1.70it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  63%|██████▎   | 103/164 [03:01<00:35,  1.70it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  63%|██████▎   | 104/164 [03:02<00:38,  1.58it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  64%|██████▍   | 105/164 [03:02<00:35,  1.66it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  65%|██████▍   | 106/164 [03:02<00:29,  1.99it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  65%|██████▌   | 107/164 [03:03<00:35,  1.62it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  66%|██████▌   | 108/164 [03:04<00:34,  1.65it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  66%|██████▋   | 109/164 [03:04<00:29,  1.88it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  67%|██████▋   | 110/164 [03:05<00:26,  2.00it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  68%|██████▊   | 111/164 [03:05<00:24,  2.20it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  68%|██████▊   | 112/164 [03:05<00:22,  2.32it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  69%|██████▉   | 113/164 [03:06<00:31,  1.60it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  70%|██████▉   | 114/164 [03:07<00:27,  1.80it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  70%|███████   | 115/164 [03:07<00:27,  1.81it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  71%|███████   | 116/164 [03:08<00:24,  1.92it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  71%|███████▏  | 117/164 [03:08<00:24,  1.91it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  72%|███████▏  | 118/164 [03:09<00:26,  1.75it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  73%|███████▎  | 119/164 [03:09<00:24,  1.86it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  73%|███████▎  | 120/164 [03:10<00:21,  2.06it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  74%|███████▍  | 121/164 [03:10<00:18,  2.37it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  74%|███████▍  | 122/164 [03:11<00:26,  1.61it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  75%|███████▌  | 123/164 [03:12<00:24,  1.67it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  76%|███████▌  | 124/164 [03:12<00:20,  1.94it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  76%|███████▌  | 125/164 [03:13<00:19,  2.04it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  77%|███████▋  | 126/164 [03:13<00:17,  2.21it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  77%|███████▋  | 127/164 [03:13<00:14,  2.47it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  78%|███████▊  | 128/164 [03:13<00:13,  2.60it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  79%|███████▊  | 129/164 [03:14<00:13,  2.50it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  79%|███████▉  | 130/164 [03:14<00:13,  2.58it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  80%|███████▉  | 131/164 [03:15<00:12,  2.65it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  80%|████████  | 132/164 [03:15<00:11,  2.82it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  81%|████████  | 133/164 [03:15<00:11,  2.59it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  82%|████████▏ | 134/164 [03:16<00:14,  2.07it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  82%|████████▏ | 135/164 [03:17<00:14,  2.01it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  83%|████████▎ | 136/164 [03:17<00:13,  2.12it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  84%|████████▎ | 137/164 [03:17<00:10,  2.53it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  84%|████████▍ | 138/164 [03:18<00:10,  2.42it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  85%|████████▍ | 139/164 [03:18<00:11,  2.15it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  85%|████████▌ | 140/164 [03:19<00:11,  2.09it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  86%|████████▌ | 141/164 [03:19<00:10,  2.17it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  87%|████████▋ | 142/164 [03:19<00:08,  2.51it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  87%|████████▋ | 143/164 [03:20<00:08,  2.34it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  88%|████████▊ | 144/164 [03:20<00:08,  2.38it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  88%|████████▊ | 145/164 [03:21<00:08,  2.12it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  89%|████████▉ | 146/164 [03:21<00:08,  2.17it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  90%|████████▉ | 147/164 [03:22<00:07,  2.19it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  90%|█████████ | 148/164 [03:23<00:08,  1.89it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  91%|█████████ | 149/164 [03:23<00:06,  2.16it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  91%|█████████▏| 150/164 [03:23<00:06,  2.16it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  92%|█████████▏| 151/164 [03:24<00:05,  2.38it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  93%|█████████▎| 152/164 [03:24<00:04,  2.48it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  93%|█████████▎| 153/164 [03:24<00:03,  2.90it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  94%|█████████▍| 154/164 [03:25<00:03,  2.98it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  95%|█████████▍| 155/164 [03:25<00:02,  3.11it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  95%|█████████▌| 156/164 [03:25<00:02,  3.47it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  96%|█████████▌| 157/164 [03:26<00:02,  2.94it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  96%|█████████▋| 158/164 [03:26<00:02,  2.37it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  97%|█████████▋| 159/164 [03:26<00:01,  3.00it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  98%|█████████▊| 160/164 [03:27<00:01,  2.55it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  98%|█████████▊| 161/164 [03:27<00:01,  2.69it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  99%|█████████▉| 162/164 [03:27<00:00,  3.13it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  99%|█████████▉| 163/164 [03:29<00:00,  1.70it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests: 100%|██████████| 164/164 [03:29<00:00,  2.13it/s]Running generate_until requests: 100%|██████████| 164/164 [03:29<00:00,  1.28s/it]
+Passed argument batch_size = auto. Detecting largest batch size
+Determined Largest batch size: 1
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+2025-05-25:02:55:05 INFO     [loggers.evaluation_tracker:209] Saving results aggregated
+2025-05-25:02:55:05 INFO     [loggers.evaluation_tracker:298] Saving per-sample results for: humaneval_instruct
+hf (pretrained=google/gemma-3-1b-it), gen_kwargs: (None), limit: None, num_fewshot: None, batch_size: auto
+|      Tasks       |Version|  Filter   |n-shot|Metric|   |Value|   |Stderr|
+|------------------|------:|-----------|-----:|------|---|----:|---|-----:|
+|humaneval_instruct|      2|create_test|     0|pass@1|   | 0.25|±  |0.0339|
+

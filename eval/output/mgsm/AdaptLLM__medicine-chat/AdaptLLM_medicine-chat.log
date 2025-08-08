@@ -1,0 +1,67 @@
+INFO 05-24 21:38:29 [importing.py:53] Triton module has been replaced with a placeholder.
+INFO 05-24 21:38:29 [__init__.py:239] Automatically detected platform cuda.
+2025-05-24:21:38:33 INFO     [__main__:440] Selected Tasks: ['mgsm_direct_en']
+2025-05-24:21:38:33 INFO     [evaluator:185] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+2025-05-24:21:38:33 INFO     [evaluator:223] Initializing hf model, with arguments: {'pretrained': 'AdaptLLM/medicine-chat'}
+2025-05-24:21:38:35 INFO     [models.huggingface:137] Using device 'cuda'
+2025-05-24:21:38:36 INFO     [models.huggingface:382] Model parallel was set to False, max memory was not set, and device map was set to {'': 'cuda'}
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:05<00:10,  5.31s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:13<00:07,  7.07s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:20<00:00,  6.80s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:20<00:00,  6.70s/it]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+2025-05-24:21:39:00 INFO     [evaluator:286] mgsm_direct_en: Using gen_kwargs: {'do_sample': False, 'until': ['Question:', '</s>', '<|im_end|>']}
+2025-05-24:21:39:00 INFO     [api.task:434] Building contexts for mgsm_direct_en on rank 0...
+  0%|          | 0/250 [00:00<?, ?it/s] 48%|████▊     | 120/250 [00:00<00:00, 1197.04it/s] 96%|█████████▋| 241/250 [00:00<00:00, 1202.94it/s]100%|██████████| 250/250 [00:00<00:00, 1192.16it/s]
+2025-05-24:21:39:01 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=mgsm_direct_en,output_type=generate_until,num_fewshot=0,num_samples=250); document 0; context prompt (starting on next line):    
+Question: Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+18
+(end of target on previous line)
+2025-05-24:21:39:01 INFO     [evaluator_utils:210] Request: Instance(request_type='generate_until', doc={'question': "Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?", 'answer': None, 'answer_number': 18, 'equation_solution': None}, arguments=("Question: Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?\nAnswer:", {'do_sample': False, 'until': ['Question:', '</s>', '<|im_end|>']}), idx=0, metadata=('mgsm_direct_en', 0, 1), resps=[], filtered_resps={}, task_name='mgsm_direct_en', doc_id=0, repeats=1)
+2025-05-24:21:39:01 INFO     [evaluator:559] Running generate_until requests
+Running generate_until requests:   0%|          | 0/250 [00:00<?, ?it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:   0%|          | 1/250 [01:04<4:28:38, 64.73s/it]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:   4%|▎         | 9/250 [01:12<24:42,  6.15s/it]  The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:   7%|▋         | 17/250 [01:21<12:33,  3.23s/it]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  10%|█         | 25/250 [01:29<08:22,  2.24s/it]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  13%|█▎        | 33/250 [01:37<06:20,  1.75s/it]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  16%|█▋        | 41/250 [01:45<05:09,  1.48s/it]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  20%|█▉        | 49/250 [01:53<04:24,  1.32s/it]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  23%|██▎       | 57/250 [02:00<03:53,  1.21s/it]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  26%|██▌       | 65/250 [02:08<03:30,  1.14s/it]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  29%|██▉       | 73/250 [02:16<03:13,  1.09s/it]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  32%|███▏      | 81/250 [02:24<02:58,  1.06s/it]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  36%|███▌      | 89/250 [02:32<02:46,  1.03s/it]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  39%|███▉      | 97/250 [02:40<02:35,  1.02s/it]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  42%|████▏     | 105/250 [02:48<02:25,  1.01s/it]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  45%|████▌     | 113/250 [02:55<02:16,  1.00it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  48%|████▊     | 121/250 [03:03<02:07,  1.01it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  52%|█████▏    | 129/250 [03:11<01:59,  1.01it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  55%|█████▍    | 137/250 [03:19<01:51,  1.02it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  58%|█████▊    | 145/250 [03:27<01:42,  1.02it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  61%|██████    | 153/250 [03:34<01:33,  1.03it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  64%|██████▍   | 161/250 [03:42<01:26,  1.03it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  68%|██████▊   | 169/250 [03:50<01:18,  1.03it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  71%|███████   | 177/250 [03:57<01:10,  1.03it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  74%|███████▍  | 185/250 [04:05<01:02,  1.04it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  77%|███████▋  | 193/250 [04:13<00:54,  1.04it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  80%|████████  | 201/250 [04:20<00:47,  1.04it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  84%|████████▎ | 209/250 [04:28<00:39,  1.04it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  87%|████████▋ | 217/250 [04:36<00:31,  1.04it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  90%|█████████ | 225/250 [04:43<00:23,  1.04it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  93%|█████████▎| 233/250 [04:51<00:16,  1.05it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  96%|█████████▋| 241/250 [04:58<00:08,  1.09it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests: 100%|█████████▉| 249/250 [05:06<00:00,  1.05it/s]Running generate_until requests: 100%|██████████| 250/250 [05:06<00:00,  1.22s/it]
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+2025-05-24:21:44:15 INFO     [loggers.evaluation_tracker:209] Saving results aggregated
+2025-05-24:21:44:15 INFO     [loggers.evaluation_tracker:298] Saving per-sample results for: mgsm_direct_en
+Passed argument batch_size = auto. Detecting largest batch size
+Determined Largest batch size: 8
+hf (pretrained=AdaptLLM/medicine-chat), gen_kwargs: (None), limit: None, num_fewshot: None, batch_size: auto
+|    Tasks     |Version|     Filter      |n-shot|  Metric   |   |Value|   |Stderr|
+|--------------|------:|-----------------|-----:|-----------|---|----:|---|-----:|
+|mgsm_direct_en|      3|flexible-extract |     0|exact_match|↑  |0.116|±  |0.0203|
+|              |       |remove_whitespace|     0|exact_match|↑  |0.000|±  |0.0000|
+

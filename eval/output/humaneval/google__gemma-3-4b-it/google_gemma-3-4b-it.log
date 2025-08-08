@@ -1,0 +1,97 @@
+INFO 05-25 02:50:16 [importing.py:53] Triton module has been replaced with a placeholder.
+INFO 05-25 02:50:16 [__init__.py:239] Automatically detected platform cuda.
+2025-05-25:02:50:20 INFO     [__main__:440] Selected Tasks: ['humaneval_instruct']
+2025-05-25:02:50:20 INFO     [evaluator:185] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+2025-05-25:02:50:20 INFO     [evaluator:223] Initializing hf model, with arguments: {'pretrained': 'google/gemma-3-4b-it'}
+2025-05-25:02:50:22 INFO     [models.huggingface:137] Using device 'cuda'
+2025-05-25:02:50:24 INFO     [models.huggingface:382] Model parallel was set to False, max memory was not set, and device map was set to {'': 'cuda'}
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:03<00:03,  3.78s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:04<00:00,  2.23s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:04<00:00,  2.46s/it]
+2025-05-25:02:50:31 INFO     [models.huggingface:226] Model type is 'gemma3', part of the Gemma family--a BOS token will be used as Gemma underperforms without it.
+2025-05-25:02:50:43 INFO     [evaluator:286] humaneval_instruct: Using gen_kwargs: {'until': ['\nclass', '\ndef', '\n#', '\nif', '\nprint'], 'max_gen_toks': 1024, 'do_sample': False}
+2025-05-25:02:50:43 INFO     [api.task:434] Building contexts for humaneval_instruct on rank 0...
+  0%|          | 0/164 [00:00<?, ?it/s] 88%|████████▊ | 145/164 [00:00<00:00, 1440.89it/s]100%|██████████| 164/164 [00:00<00:00, 1440.28it/s]
+2025-05-25:02:50:44 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=humaneval_instruct,output_type=generate_until,num_fewshot=0,num_samples=164); document 0; context prompt (starting on next line):    
+Write a solution to the following problem and make sure that it passes the tests:
+```from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """ Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """
+ Here is the completed function:
+```python
+from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """ Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """
+
+
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.3) == True
+    assert candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.05) == False
+    assert candidate([1.0, 2.0, 5.9, 4.0, 5.0], 0.95) == True
+    assert candidate([1.0, 2.0, 5.9, 4.0, 5.0], 0.8) == False
+    assert candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.0], 0.1) == True
+    assert candidate([1.1, 2.2, 3.1, 4.1, 5.1], 1.0) == True
+    assert candidate([1.1, 2.2, 3.1, 4.1, 5.1], 0.5) == False
+
+
+check(has_close_elements)
+(end of target on previous line)
+2025-05-25:02:50:44 INFO     [evaluator_utils:210] Request: Instance(request_type='generate_until', doc={'task_id': 'HumanEval/0', 'prompt': 'from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    """ Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    """\n', 'canonical_solution': '    for idx, elem in enumerate(numbers):\n        for idx2, elem2 in enumerate(numbers):\n            if idx != idx2:\n                distance = abs(elem - elem2)\n                if distance < threshold:\n                    return True\n\n    return False\n', 'test': "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.3) == True\n    assert candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.05) == False\n    assert candidate([1.0, 2.0, 5.9, 4.0, 5.0], 0.95) == True\n    assert candidate([1.0, 2.0, 5.9, 4.0, 5.0], 0.8) == False\n    assert candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.0], 0.1) == True\n    assert candidate([1.1, 2.2, 3.1, 4.1, 5.1], 1.0) == True\n    assert candidate([1.1, 2.2, 3.1, 4.1, 5.1], 0.5) == False\n\n", 'entry_point': 'has_close_elements'}, arguments=('Write a solution to the following problem and make sure that it passes the tests:\n```from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    """ Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    """\n Here is the completed function:\n```python\nfrom typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    """ Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    """\n\n', {'until': ['\nclass', '\ndef', '\n#', '\nif', '\nprint'], 'max_gen_toks': 1024, 'do_sample': False}), idx=0, metadata=('humaneval_instruct', 0, 1), resps=[], filtered_resps={}, task_name='humaneval_instruct', doc_id=0, repeats=1)
+2025-05-25:02:50:44 INFO     [evaluator:559] Running generate_until requests
+Running generate_until requests:   0%|          | 0/164 [00:00<?, ?it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:   1%|          | 1/164 [01:32<4:11:39, 92.63s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:   5%|▌         | 9/164 [01:44<22:49,  8.83s/it]  The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  10%|█         | 17/164 [01:50<10:27,  4.27s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  15%|█▌        | 25/164 [01:56<06:06,  2.64s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  20%|██        | 33/164 [02:01<04:05,  1.87s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  25%|██▌       | 41/164 [02:04<02:46,  1.36s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  30%|██▉       | 49/164 [02:08<02:01,  1.06s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  35%|███▍      | 57/164 [02:13<01:36,  1.10it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  40%|███▉      | 65/164 [02:18<01:19,  1.24it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  45%|████▍     | 73/164 [02:24<01:13,  1.24it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  49%|████▉     | 81/164 [02:28<00:58,  1.42it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  54%|█████▍    | 89/164 [02:34<00:54,  1.39it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  59%|█████▉    | 97/164 [02:43<00:57,  1.16it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  64%|██████▍   | 105/164 [02:48<00:45,  1.28it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  69%|██████▉   | 113/164 [02:51<00:33,  1.53it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  74%|███████▍  | 121/164 [03:23<01:11,  1.67s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  79%|███████▊  | 129/164 [03:47<01:11,  2.06s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  84%|████████▎ | 137/164 [04:20<01:12,  2.67s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  88%|████████▊ | 145/164 [04:29<00:41,  2.21s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  93%|█████████▎| 153/164 [04:36<00:20,  1.83s/it]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Running generate_until requests:  98%|█████████▊| 161/164 [05:25<00:09,  3.10s/it]Running generate_until requests: 100%|██████████| 164/164 [05:25<00:00,  1.98s/it]
+Passed argument batch_size = auto. Detecting largest batch size
+Determined Largest batch size: 8
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+2025-05-25:02:56:57 INFO     [loggers.evaluation_tracker:209] Saving results aggregated
+2025-05-25:02:56:57 INFO     [loggers.evaluation_tracker:298] Saving per-sample results for: humaneval_instruct
+hf (pretrained=google/gemma-3-4b-it), gen_kwargs: (None), limit: None, num_fewshot: None, batch_size: auto
+|      Tasks       |Version|  Filter   |n-shot|Metric|   |Value|   |Stderr|
+|------------------|------:|-----------|-----:|------|---|----:|---|-----:|
+|humaneval_instruct|      2|create_test|     0|pass@1|   |0.628|±  |0.0379|
+

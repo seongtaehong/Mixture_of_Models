@@ -1,0 +1,125 @@
+INFO 05-24 21:25:37 [importing.py:53] Triton module has been replaced with a placeholder.
+INFO 05-24 21:25:37 [__init__.py:239] Automatically detected platform cuda.
+2025-05-24:21:25:42 INFO     [__main__:440] Selected Tasks: ['mgsm_direct_en']
+2025-05-24:21:25:42 INFO     [evaluator:185] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+2025-05-24:21:25:42 INFO     [evaluator:223] Initializing vllm model, with arguments: {'pretrained': 'mistralai/Ministral-8B-Instruct-2410', 'tensor_parallel_size': 1, 'dtype': 'auto', 'gpu_memory_utilization': 0.7}
+INFO 05-24 21:25:52 [config.py:717] This model supports multiple tasks: {'reward', 'generate', 'classify', 'embed', 'score'}. Defaulting to 'generate'.
+INFO 05-24 21:25:54 [config.py:2003] Chunked prefill is enabled with max_num_batched_tokens=8192.
+/mnt/raid6/hst/miniconda3/envs/em/lib/python3.12/site-packages/vllm/transformers_utils/tokenizer_group.py:23: FutureWarning: It is strongly recommended to run mistral models with `--tokenizer-mode "mistral"` to ensure correct encoding and decoding.
+  self.tokenizer = get_tokenizer(self.tokenizer_id, **tokenizer_config)
+You are using the default legacy behaviour of the <class 'transformers.models.llama.tokenization_llama_fast.LlamaTokenizerFast'>. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565 - if you loaded a llama tokenizer from a GGUF file you can ignore this message.
+INFO 05-24 21:25:56 [core.py:58] Initializing a V1 LLM engine (v0.8.5.post1) with config: model='mistralai/Ministral-8B-Instruct-2410', speculative_config=None, tokenizer='mistralai/Ministral-8B-Instruct-2410', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=32768, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='auto', reasoning_backend=None), observability_config=ObservabilityConfig(show_hidden_metrics=False, otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=1234, served_model_name=mistralai/Ministral-8B-Instruct-2410, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"level":3,"custom_ops":["none"],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output"],"use_inductor":true,"compile_sizes":[],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":512}
+2025-05-24 21:26:00,389 - INFO - flashinfer.jit: Prebuilt kernels not found, using JIT backend
+WARNING 05-24 21:26:00 [utils.py:2522] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7f12c2987140>
+INFO 05-24 21:26:02 [parallel_state.py:1004] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0
+INFO 05-24 21:26:02 [cuda.py:221] Using Flash Attention backend on V1 engine.
+INFO 05-24 21:26:02 [topk_topp_sampler.py:44] Currently, FlashInfer top-p & top-k sampling sampler is disabled because FlashInfer>=v0.2.3 is not backward compatible. Falling back to the PyTorch-native implementation of top-p & top-k sampling.
+INFO 05-24 21:26:03 [gpu_model_runner.py:1329] Starting to load model mistralai/Ministral-8B-Instruct-2410...
+INFO 05-24 21:26:06 [weight_utils.py:265] Using model weights format ['*.safetensors']
+INFO 05-24 21:26:07 [weight_utils.py:281] Time spent downloading weights for mistralai/Ministral-8B-Instruct-2410: 0.536788 seconds
+Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:00,  3.65it/s]
+Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:01<00:01,  1.13it/s]
+Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:03<00:01,  1.18s/it]
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:04<00:00,  1.44s/it]
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:04<00:00,  1.24s/it]
+
+INFO 05-24 21:26:13 [loader.py:458] Loading weights took 5.36 seconds
+INFO 05-24 21:26:13 [gpu_model_runner.py:1347] Model loading took 14.9460 GiB and 9.736377 seconds
+INFO 05-24 21:26:22 [backends.py:420] Using cache directory: /mnt/raid6/hst/.cache/vllm/torch_compile_cache/2a559a1e0c/rank_0_0 for vLLM's torch.compile
+INFO 05-24 21:26:22 [backends.py:430] Dynamo bytecode transform time: 8.99 s
+INFO 05-24 21:26:54 [backends.py:118] Directly load the compiled graph(s) for shape None from the cache, took 31.891 s
+INFO 05-24 21:26:57 [monitor.py:33] torch.compile takes 8.99 s in total
+INFO 05-24 21:26:59 [kv_cache_utils.py:634] GPU KV cache size: 121,904 tokens
+INFO 05-24 21:26:59 [kv_cache_utils.py:637] Maximum concurrency for 32,768 tokens per request: 3.72x
+INFO 05-24 21:28:20 [gpu_model_runner.py:1686] Graph capturing finished in 81 secs, took 1.75 GiB
+INFO 05-24 21:28:21 [core.py:159] init engine (profile, create kv cache, warmup model) took 127.84 seconds
+INFO 05-24 21:28:21 [core_client.py:439] Core engine process 0 ready.
+/mnt/raid6/hst/kt/paper/lm-evaluation-harness/lm_eval/models/vllm_causallms.py:126: FutureWarning: It is strongly recommended to run mistral models with `--tokenizer-mode "mistral"` to ensure correct encoding and decoding.
+  self.tokenizer = get_tokenizer(
+2025-05-24:21:28:28 INFO     [evaluator:286] mgsm_direct_en: Using gen_kwargs: {'do_sample': False, 'until': ['Question:', '</s>', '<|im_end|>']}
+2025-05-24:21:28:28 INFO     [api.task:434] Building contexts for mgsm_direct_en on rank 0...
+  0%|          | 0/250 [00:00<?, ?it/s] 44%|████▍     | 110/250 [00:00<00:00, 1094.60it/s] 88%|████████▊ | 220/250 [00:00<00:00, 1068.29it/s]100%|██████████| 250/250 [00:00<00:00, 1074.20it/s]
+2025-05-24:21:28:28 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=mgsm_direct_en,output_type=generate_until,num_fewshot=0,num_samples=250); document 0; context prompt (starting on next line):    
+Question: Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+18
+(end of target on previous line)
+2025-05-24:21:28:28 INFO     [evaluator_utils:210] Request: Instance(request_type='generate_until', doc={'question': "Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?", 'answer': None, 'answer_number': 18, 'equation_solution': None}, arguments=("Question: Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?\nAnswer:", {'do_sample': False, 'until': ['Question:', '</s>', '<|im_end|>']}), idx=0, metadata=('mgsm_direct_en', 0, 1), resps=[], filtered_resps={}, task_name='mgsm_direct_en', doc_id=0, repeats=1)
+2025-05-24:21:28:28 INFO     [evaluator:559] Running generate_until requests
+Running generate_until requests:   0%|          | 0/250 [00:00<?, ?it/s]
+Processed prompts:   0%|          | 0/250 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts:   0%|          | 1/250 [00:02<11:18,  2.72s/it, est. speed input: 26.07 toks/s, output: 3.30 toks/s][A
+Processed prompts:   2%|▏         | 4/250 [00:02<02:16,  1.81it/s, est. speed input: 111.70 toks/s, output: 13.26 toks/s][A
+Processed prompts:   5%|▍         | 12/250 [00:03<00:38,  6.18it/s, est. speed input: 306.94 toks/s, output: 42.62 toks/s][A
+Processed prompts:   7%|▋         | 18/250 [00:03<00:23, 10.02it/s, est. speed input: 416.66 toks/s, output: 68.22 toks/s][A
+Processed prompts:   9%|▉         | 23/250 [00:03<00:16, 13.39it/s, est. speed input: 497.50 toks/s, output: 90.90 toks/s][A
+Processed prompts:  11%|█         | 27/250 [00:03<00:17, 12.86it/s, est. speed input: 545.53 toks/s, output: 105.22 toks/s][A
+Processed prompts:  12%|█▏        | 30/250 [00:04<00:17, 12.36it/s, est. speed input: 557.54 toks/s, output: 117.40 toks/s][A
+Processed prompts:  13%|█▎        | 33/250 [00:04<00:27,  7.96it/s, est. speed input: 503.26 toks/s, output: 121.04 toks/s][A
+Processed prompts:  15%|█▍        | 37/250 [00:04<00:20, 10.37it/s, est. speed input: 532.78 toks/s, output: 149.48 toks/s][A
+Processed prompts:  16%|█▌        | 39/250 [00:05<00:26,  8.07it/s, est. speed input: 506.85 toks/s, output: 153.21 toks/s][A
+Processed prompts:  17%|█▋        | 43/250 [00:05<00:20, 10.10it/s, est. speed input: 526.97 toks/s, output: 181.85 toks/s][A
+Processed prompts:  18%|█▊        | 46/250 [00:05<00:19, 10.26it/s, est. speed input: 527.00 toks/s, output: 199.54 toks/s][A
+Processed prompts:  21%|██        | 52/250 [00:06<00:13, 14.25it/s, est. speed input: 551.14 toks/s, output: 246.59 toks/s][A
+Processed prompts:  22%|██▏       | 56/250 [00:06<00:11, 16.70it/s, est. speed input: 573.03 toks/s, output: 278.32 toks/s][A
+Processed prompts:  24%|██▎       | 59/250 [00:06<00:10, 17.79it/s, est. speed input: 578.99 toks/s, output: 300.71 toks/s][A
+Processed prompts:  25%|██▍       | 62/250 [00:06<00:09, 18.95it/s, est. speed input: 600.97 toks/s, output: 323.70 toks/s][A
+Processed prompts:  26%|██▌       | 65/250 [00:06<00:10, 17.94it/s, est. speed input: 611.04 toks/s, output: 343.59 toks/s][A
+Processed prompts:  29%|██▉       | 72/250 [00:06<00:06, 26.60it/s, est. speed input: 648.57 toks/s, output: 405.35 toks/s][A
+Processed prompts:  30%|███       | 76/250 [00:07<00:06, 25.14it/s, est. speed input: 662.20 toks/s, output: 434.79 toks/s][A
+Processed prompts:  32%|███▏      | 79/250 [00:07<00:06, 25.10it/s, est. speed input: 681.69 toks/s, output: 457.81 toks/s][A
+Processed prompts:  34%|███▎      | 84/250 [00:07<00:05, 29.28it/s, est. speed input: 703.40 toks/s, output: 500.89 toks/s][A
+Processed prompts:  36%|███▌      | 89/250 [00:07<00:04, 32.60it/s, est. speed input: 734.28 toks/s, output: 544.62 toks/s][A
+Processed prompts:  38%|███▊      | 94/250 [00:07<00:04, 35.38it/s, est. speed input: 765.11 toks/s, output: 588.23 toks/s][A
+Processed prompts:  40%|████      | 100/250 [00:07<00:03, 39.95it/s, est. speed input: 803.23 toks/s, output: 642.27 toks/s][A
+Processed prompts:  42%|████▏     | 105/250 [00:07<00:05, 28.88it/s, est. speed input: 812.22 toks/s, output: 672.75 toks/s][A
+Processed prompts:  44%|████▎     | 109/250 [00:08<00:04, 30.22it/s, est. speed input: 834.66 toks/s, output: 707.01 toks/s][A
+Processed prompts:  45%|████▌     | 113/250 [00:08<00:04, 31.43it/s, est. speed input: 849.94 toks/s, output: 740.77 toks/s][A
+Processed prompts:  47%|████▋     | 118/250 [00:08<00:03, 33.96it/s, est. speed input: 867.50 toks/s, output: 784.98 toks/s][A
+Processed prompts:  49%|████▉     | 122/250 [00:08<00:04, 29.83it/s, est. speed input: 877.00 toks/s, output: 813.16 toks/s][A
+Processed prompts:  50%|█████     | 126/250 [00:08<00:03, 32.04it/s, est. speed input: 897.78 toks/s, output: 848.86 toks/s][A
+Processed prompts:  52%|█████▏    | 130/250 [00:08<00:03, 30.42it/s, est. speed input: 906.17 toks/s, output: 879.71 toks/s][A
+Processed prompts:  54%|█████▎    | 134/250 [00:08<00:03, 29.48it/s, est. speed input: 921.87 toks/s, output: 911.23 toks/s][A
+Processed prompts:  55%|█████▌    | 138/250 [00:09<00:04, 26.20it/s, est. speed input: 933.30 toks/s, output: 938.72 toks/s][A
+Processed prompts:  58%|█████▊    | 144/250 [00:09<00:03, 30.64it/s, est. speed input: 954.86 toks/s, output: 994.96 toks/s][A
+Processed prompts:  60%|██████    | 150/250 [00:09<00:02, 33.94it/s, est. speed input: 981.50 toks/s, output: 1052.00 toks/s][A
+Processed prompts:  62%|██████▏   | 154/250 [00:09<00:02, 32.59it/s, est. speed input: 992.01 toks/s, output: 1085.29 toks/s][A
+Processed prompts:  63%|██████▎   | 158/250 [00:09<00:03, 26.56it/s, est. speed input: 997.90 toks/s, output: 1109.23 toks/s][A
+Processed prompts:  65%|██████▌   | 163/250 [00:09<00:02, 29.25it/s, est. speed input: 1012.15 toks/s, output: 1156.39 toks/s][A
+Processed prompts:  67%|██████▋   | 167/250 [00:09<00:03, 27.10it/s, est. speed input: 1018.42 toks/s, output: 1186.62 toks/s][A
+Processed prompts:  68%|██████▊   | 171/250 [00:10<00:03, 25.71it/s, est. speed input: 1021.70 toks/s, output: 1217.26 toks/s][A
+Processed prompts:  71%|███████   | 177/250 [00:10<00:02, 30.81it/s, est. speed input: 1050.86 toks/s, output: 1279.89 toks/s][A
+Processed prompts:  72%|███████▏  | 181/250 [00:10<00:02, 28.58it/s, est. speed input: 1061.36 toks/s, output: 1312.20 toks/s][A
+Processed prompts:  74%|███████▍  | 185/250 [00:10<00:02, 29.66it/s, est. speed input: 1078.30 toks/s, output: 1350.35 toks/s][A
+Processed prompts:  76%|███████▌  | 189/250 [00:10<00:02, 26.48it/s, est. speed input: 1103.18 toks/s, output: 1380.57 toks/s][A
+Processed prompts:  77%|███████▋  | 193/250 [00:10<00:01, 28.76it/s, est. speed input: 1113.97 toks/s, output: 1421.26 toks/s][A
+Processed prompts:  79%|███████▉  | 197/250 [00:11<00:02, 24.83it/s, est. speed input: 1120.85 toks/s, output: 1449.39 toks/s][A
+Processed prompts:  80%|████████  | 200/250 [00:11<00:02, 21.05it/s, est. speed input: 1125.63 toks/s, output: 1464.96 toks/s][A
+Processed prompts:  81%|████████  | 203/250 [00:11<00:02, 17.86it/s, est. speed input: 1117.86 toks/s, output: 1477.30 toks/s][A
+Processed prompts:  82%|████████▏ | 206/250 [00:11<00:02, 19.92it/s, est. speed input: 1128.01 toks/s, output: 1508.55 toks/s][A
+Processed prompts:  84%|████████▎ | 209/250 [00:11<00:02, 20.49it/s, est. speed input: 1142.53 toks/s, output: 1535.91 toks/s][A
+Processed prompts:  85%|████████▍ | 212/250 [00:12<00:02, 13.17it/s, est. speed input: 1118.67 toks/s, output: 1526.10 toks/s][A
+Processed prompts:  86%|████████▌ | 215/250 [00:12<00:02, 14.29it/s, est. speed input: 1120.20 toks/s, output: 1551.95 toks/s][A
+Processed prompts:  87%|████████▋ | 217/250 [00:12<00:02, 14.47it/s, est. speed input: 1121.65 toks/s, output: 1567.29 toks/s][A
+Processed prompts:  88%|████████▊ | 219/250 [00:12<00:02, 13.95it/s, est. speed input: 1117.56 toks/s, output: 1579.40 toks/s][A
+Processed prompts:  88%|████████▊ | 221/250 [00:13<00:03,  8.32it/s, est. speed input: 1079.69 toks/s, output: 1548.51 toks/s][A
+Processed prompts:  90%|█████████ | 225/250 [00:13<00:02, 12.08it/s, est. speed input: 1091.40 toks/s, output: 1601.32 toks/s][A
+Processed prompts:  92%|█████████▏| 229/250 [00:13<00:01, 14.57it/s, est. speed input: 1097.26 toks/s, output: 1647.21 toks/s][A
+Processed prompts:  93%|█████████▎| 232/250 [00:13<00:01, 16.59it/s, est. speed input: 1097.71 toks/s, output: 1684.23 toks/s][A
+Processed prompts:  94%|█████████▍| 235/250 [00:13<00:00, 16.01it/s, est. speed input: 1101.61 toks/s, output: 1711.37 toks/s][A
+Processed prompts:  95%|█████████▌| 238/250 [00:14<00:00, 13.65it/s, est. speed input: 1094.88 toks/s, output: 1727.72 toks/s][A
+Processed prompts:  99%|█████████▉| 248/250 [00:14<00:00, 27.20it/s, est. speed input: 1148.19 toks/s, output: 1894.48 toks/s][AProcessed prompts: 100%|██████████| 250/250 [00:14<00:00, 17.54it/s, est. speed input: 1155.44 toks/s, output: 1930.34 toks/s]
+Running generate_until requests:   0%|          | 1/250 [00:14<59:16, 14.28s/it]Running generate_until requests: 100%|██████████| 250/250 [00:14<00:00, 17.50it/s]
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+2025-05-24:21:28:54 INFO     [loggers.evaluation_tracker:209] Saving results aggregated
+2025-05-24:21:28:54 INFO     [loggers.evaluation_tracker:298] Saving per-sample results for: mgsm_direct_en
+vllm (pretrained=mistralai/Ministral-8B-Instruct-2410,tensor_parallel_size=1,dtype=auto,gpu_memory_utilization=0.7), gen_kwargs: (None), limit: None, num_fewshot: None, batch_size: auto
+|    Tasks     |Version|     Filter      |n-shot|  Metric   |   |Value|   |Stderr|
+|--------------|------:|-----------------|-----:|-----------|---|----:|---|-----:|
+|mgsm_direct_en|      3|flexible-extract |     0|exact_match|↑  |0.688|±  |0.0294|
+|              |       |remove_whitespace|     0|exact_match|↑  |0.000|±  |0.0000|
+

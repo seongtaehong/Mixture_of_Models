@@ -1,0 +1,145 @@
+INFO 06-20 15:13:47 [importing.py:53] Triton module has been replaced with a placeholder.
+INFO 06-20 15:13:48 [__init__.py:239] Automatically detected platform cuda.
+2025-06-20:15:13:52 INFO     [__main__:440] Selected Tasks: ['commonsense_qa']
+2025-06-20:15:13:52 INFO     [evaluator:185] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+2025-06-20:15:13:52 INFO     [evaluator:223] Initializing vllm model, with arguments: {'pretrained': 'Qwen/Qwen3-1.7B', 'tensor_parallel_size': 1, 'dtype': 'auto', 'gpu_memory_utilization': 0.8}
+INFO 06-20 15:14:02 [config.py:717] This model supports multiple tasks: {'score', 'embed', 'classify', 'reward', 'generate'}. Defaulting to 'generate'.
+INFO 06-20 15:14:02 [config.py:2003] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 06-20 15:14:12 [importing.py:53] Triton module has been replaced with a placeholder.
+INFO 06-20 15:14:12 [__init__.py:239] Automatically detected platform cuda.
+INFO 06-20 15:14:14 [core.py:58] Initializing a V1 LLM engine (v0.8.5.post1) with config: model='Qwen/Qwen3-1.7B', speculative_config=None, tokenizer='Qwen/Qwen3-1.7B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=40960, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='auto', reasoning_backend=None), observability_config=ObservabilityConfig(show_hidden_metrics=False, otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=1234, served_model_name=Qwen/Qwen3-1.7B, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"level":3,"custom_ops":["none"],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output"],"use_inductor":true,"compile_sizes":[],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":512}
+2025-06-20 15:14:15,752 - INFO - flashinfer.jit: Prebuilt kernels not found, using JIT backend
+WARNING 06-20 15:14:15 [utils.py:2522] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7f8599a36510>
+INFO 06-20 15:14:18 [parallel_state.py:1004] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0
+INFO 06-20 15:14:18 [cuda.py:221] Using Flash Attention backend on V1 engine.
+INFO 06-20 15:14:18 [topk_topp_sampler.py:44] Currently, FlashInfer top-p & top-k sampling sampler is disabled because FlashInfer>=v0.2.3 is not backward compatible. Falling back to the PyTorch-native implementation of top-p & top-k sampling.
+INFO 06-20 15:14:18 [gpu_model_runner.py:1329] Starting to load model Qwen/Qwen3-1.7B...
+INFO 06-20 15:14:23 [weight_utils.py:265] Using model weights format ['*.safetensors']
+Loading safetensors checkpoint shards:   0% Completed | 0/2 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards: 100% Completed | 2/2 [00:00<00:00,  2.45it/s]
+Loading safetensors checkpoint shards: 100% Completed | 2/2 [00:00<00:00,  2.45it/s]
+
+INFO 06-20 15:14:25 [loader.py:458] Loading weights took 0.91 seconds
+INFO 06-20 15:14:25 [gpu_model_runner.py:1347] Model loading took 3.2152 GiB and 6.261464 seconds
+INFO 06-20 15:14:34 [backends.py:420] Using cache directory: /mnt/raid6/hst/.cache/vllm/torch_compile_cache/221c7c3b3b/rank_0_0 for vLLM's torch.compile
+INFO 06-20 15:14:34 [backends.py:430] Dynamo bytecode transform time: 8.68 s
+INFO 06-20 15:15:05 [backends.py:118] Directly load the compiled graph(s) for shape None from the cache, took 31.029 s
+INFO 06-20 15:15:07 [monitor.py:33] torch.compile takes 8.68 s in total
+INFO 06-20 15:15:09 [kv_cache_utils.py:634] GPU KV cache size: 309,024 tokens
+INFO 06-20 15:15:09 [kv_cache_utils.py:637] Maximum concurrency for 40,960 tokens per request: 7.54x
+INFO 06-20 15:16:33 [gpu_model_runner.py:1686] Graph capturing finished in 83 secs, took 1.64 GiB
+INFO 06-20 15:16:33 [core.py:159] init engine (profile, create kv cache, warmup model) took 127.82 seconds
+INFO 06-20 15:16:33 [core_client.py:439] Core engine process 0 ready.
+2025-06-20:15:16:42 INFO     [api.task:434] Building contexts for commonsense_qa on rank 0...
+  0%|          | 0/1221 [00:00<?, ?it/s]  5%|▌         | 64/1221 [00:00<00:01, 632.08it/s] 11%|█         | 131/1221 [00:00<00:01, 651.05it/s] 16%|█▋        | 199/1221 [00:00<00:01, 663.68it/s] 22%|██▏       | 269/1221 [00:00<00:01, 677.30it/s] 28%|██▊       | 338/1221 [00:00<00:01, 678.50it/s] 33%|███▎      | 409/1221 [00:00<00:01, 688.98it/s] 39%|███▉      | 480/1221 [00:00<00:01, 694.40it/s] 45%|████▌     | 551/1221 [00:00<00:00, 697.83it/s] 51%|█████     | 621/1221 [00:00<00:00, 690.82it/s] 57%|█████▋    | 692/1221 [00:01<00:00, 693.73it/s] 62%|██████▏   | 762/1221 [00:01<00:00, 695.48it/s] 68%|██████▊   | 832/1221 [00:01<00:00, 691.60it/s] 74%|███████▍  | 902/1221 [00:01<00:00, 688.19it/s] 80%|███████▉  | 973/1221 [00:01<00:00, 692.27it/s] 85%|████████▌ | 1043/1221 [00:01<00:00, 689.58it/s] 91%|█████████▏| 1115/1221 [00:01<00:00, 696.22it/s] 97%|█████████▋| 1187/1221 [00:01<00:00, 701.52it/s]100%|██████████| 1221/1221 [00:01<00:00, 690.16it/s]
+2025-06-20:15:16:44 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=commonsense_qa,output_type=multiple_choice,num_fewshot=0,num_samples=1221); document 0; context prompt (starting on next line):    
+Question: A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?
+A. bank
+B. library
+C. department store
+D. mall
+E. new york
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+A
+(end of target on previous line)
+2025-06-20:15:16:44 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'id': '1afa02df02c908a558b4036e80242fac', 'question': 'A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?', 'question_concept': 'revolving door', 'choices': {'label': ['A', 'B', 'C', 'D', 'E'], 'text': ['bank', 'library', 'department store', 'mall', 'new york']}, 'answerKey': 'A'}, arguments=('Question: A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?\nA. bank\nB. library\nC. department store\nD. mall\nE. new york\nAnswer:', ' A'), idx=0, metadata=('commonsense_qa', 0, 1), resps=[], filtered_resps={}, task_name='commonsense_qa', doc_id=0, repeats=1)
+2025-06-20:15:16:44 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=commonsense_qa,output_type=multiple_choice,num_fewshot=0,num_samples=1221); document 0; context prompt (starting on next line):    
+Question: A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?
+A. bank
+B. library
+C. department store
+D. mall
+E. new york
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+A
+(end of target on previous line)
+2025-06-20:15:16:44 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'id': '1afa02df02c908a558b4036e80242fac', 'question': 'A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?', 'question_concept': 'revolving door', 'choices': {'label': ['A', 'B', 'C', 'D', 'E'], 'text': ['bank', 'library', 'department store', 'mall', 'new york']}, 'answerKey': 'A'}, arguments=('Question: A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?\nA. bank\nB. library\nC. department store\nD. mall\nE. new york\nAnswer:', ' B'), idx=1, metadata=('commonsense_qa', 0, 1), resps=[], filtered_resps={}, task_name='commonsense_qa', doc_id=0, repeats=1)
+2025-06-20:15:16:44 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=commonsense_qa,output_type=multiple_choice,num_fewshot=0,num_samples=1221); document 0; context prompt (starting on next line):    
+Question: A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?
+A. bank
+B. library
+C. department store
+D. mall
+E. new york
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+A
+(end of target on previous line)
+2025-06-20:15:16:44 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'id': '1afa02df02c908a558b4036e80242fac', 'question': 'A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?', 'question_concept': 'revolving door', 'choices': {'label': ['A', 'B', 'C', 'D', 'E'], 'text': ['bank', 'library', 'department store', 'mall', 'new york']}, 'answerKey': 'A'}, arguments=('Question: A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?\nA. bank\nB. library\nC. department store\nD. mall\nE. new york\nAnswer:', ' C'), idx=2, metadata=('commonsense_qa', 0, 1), resps=[], filtered_resps={}, task_name='commonsense_qa', doc_id=0, repeats=1)
+2025-06-20:15:16:44 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=commonsense_qa,output_type=multiple_choice,num_fewshot=0,num_samples=1221); document 0; context prompt (starting on next line):    
+Question: A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?
+A. bank
+B. library
+C. department store
+D. mall
+E. new york
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+A
+(end of target on previous line)
+2025-06-20:15:16:44 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'id': '1afa02df02c908a558b4036e80242fac', 'question': 'A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?', 'question_concept': 'revolving door', 'choices': {'label': ['A', 'B', 'C', 'D', 'E'], 'text': ['bank', 'library', 'department store', 'mall', 'new york']}, 'answerKey': 'A'}, arguments=('Question: A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?\nA. bank\nB. library\nC. department store\nD. mall\nE. new york\nAnswer:', ' D'), idx=3, metadata=('commonsense_qa', 0, 1), resps=[], filtered_resps={}, task_name='commonsense_qa', doc_id=0, repeats=1)
+2025-06-20:15:16:44 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=commonsense_qa,output_type=multiple_choice,num_fewshot=0,num_samples=1221); document 0; context prompt (starting on next line):    
+Question: A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?
+A. bank
+B. library
+C. department store
+D. mall
+E. new york
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+A
+(end of target on previous line)
+2025-06-20:15:16:44 INFO     [evaluator_utils:210] Request: Instance(request_type='loglikelihood', doc={'id': '1afa02df02c908a558b4036e80242fac', 'question': 'A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?', 'question_concept': 'revolving door', 'choices': {'label': ['A', 'B', 'C', 'D', 'E'], 'text': ['bank', 'library', 'department store', 'mall', 'new york']}, 'answerKey': 'A'}, arguments=('Question: A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?\nA. bank\nB. library\nC. department store\nD. mall\nE. new york\nAnswer:', ' E'), idx=4, metadata=('commonsense_qa', 0, 1), resps=[], filtered_resps={}, task_name='commonsense_qa', doc_id=0, repeats=1)
+2025-06-20:15:16:44 INFO     [evaluator:559] Running loglikelihood requests
+Running loglikelihood requests:   0%|          | 0/6105 [00:00<?, ?it/s]
+Processed prompts:   0%|          | 0/6105 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts:   0%|          | 1/6105 [00:00<35:12,  2.89it/s, est. speed input: 263.00 toks/s, output: 2.89 toks/s][A
+Processed prompts:   3%|▎         | 153/6105 [00:00<00:34, 173.58it/s, est. speed input: 10188.35 toks/s, output: 155.57 toks/s][A
+Processed prompts:   5%|▍         | 295/6105 [00:01<00:27, 213.51it/s, est. speed input: 11852.93 toks/s, output: 192.38 toks/s][A
+Processed prompts:   7%|▋         | 445/6105 [00:02<00:23, 240.17it/s, est. speed input: 12777.12 toks/s, output: 215.25 toks/s][A
+Processed prompts:  10%|▉         | 599/6105 [00:02<00:21, 252.08it/s, est. speed input: 13135.15 toks/s, output: 227.44 toks/s][A
+Processed prompts:  12%|█▏        | 758/6105 [00:03<00:20, 263.68it/s, est. speed input: 13409.59 toks/s, output: 237.61 toks/s][A
+Processed prompts:  15%|█▌        | 921/6105 [00:03<00:19, 271.59it/s, est. speed input: 13565.16 toks/s, output: 245.12 toks/s][A
+Processed prompts:  18%|█▊        | 1089/6105 [00:04<00:17, 279.41it/s, est. speed input: 13682.42 toks/s, output: 251.77 toks/s][A
+Processed prompts:  21%|██        | 1259/6105 [00:04<00:17, 283.79it/s, est. speed input: 13728.12 toks/s, output: 256.65 toks/s][A
+Processed prompts:  23%|██▎       | 1433/6105 [00:05<00:18, 246.02it/s, est. speed input: 13006.53 toks/s, output: 246.76 toks/s][A
+Processed prompts:  26%|██▋       | 1608/6105 [00:06<00:14, 317.01it/s, est. speed input: 13910.76 toks/s, output: 267.14 toks/s][A
+Processed prompts:  29%|██▉       | 1786/6105 [00:06<00:14, 307.24it/s, est. speed input: 13849.49 toks/s, output: 269.09 toks/s][A
+Processed prompts:  32%|███▏      | 1966/6105 [00:07<00:13, 311.88it/s, est. speed input: 13912.60 toks/s, output: 273.23 toks/s][A
+Processed prompts:  35%|███▌      | 2148/6105 [00:07<00:12, 311.35it/s, est. speed input: 13916.14 toks/s, output: 276.02 toks/s][A
+Processed prompts:  38%|███▊      | 2333/6105 [00:08<00:12, 308.48it/s, est. speed input: 13877.60 toks/s, output: 277.94 toks/s][A
+Processed prompts:  41%|████▏     | 2519/6105 [00:08<00:11, 312.54it/s, est. speed input: 13896.30 toks/s, output: 280.78 toks/s][A
+Processed prompts:  44%|████▍     | 2707/6105 [00:09<00:11, 294.41it/s, est. speed input: 13708.90 toks/s, output: 279.27 toks/s][A
+Processed prompts:  47%|████▋     | 2898/6105 [00:10<00:10, 303.07it/s, est. speed input: 13722.57 toks/s, output: 281.85 toks/s][A
+Processed prompts:  51%|█████     | 3091/6105 [00:10<00:09, 310.11it/s, est. speed input: 13730.13 toks/s, output: 284.31 toks/s][A
+Processed prompts:  54%|█████▍    | 3286/6105 [00:11<00:08, 313.90it/s, est. speed input: 13720.93 toks/s, output: 286.33 toks/s][A
+Processed prompts:  57%|█████▋    | 3485/6105 [00:12<00:09, 268.00it/s, est. speed input: 13295.93 toks/s, output: 279.69 toks/s][A
+Processed prompts:  60%|██████    | 3684/6105 [00:12<00:07, 344.53it/s, est. speed input: 13724.68 toks/s, output: 290.87 toks/s][A
+Processed prompts:  64%|██████▎   | 3886/6105 [00:13<00:06, 339.57it/s, est. speed input: 13707.92 toks/s, output: 292.63 toks/s][A
+Processed prompts:  67%|██████▋   | 4091/6105 [00:13<00:05, 338.80it/s, est. speed input: 13698.10 toks/s, output: 294.58 toks/s][A
+Processed prompts:  70%|███████   | 4296/6105 [00:14<00:05, 339.29it/s, est. speed input: 13694.71 toks/s, output: 296.48 toks/s][A
+Processed prompts:  74%|███████▍  | 4505/6105 [00:15<00:04, 339.44it/s, est. speed input: 13678.58 toks/s, output: 298.24 toks/s][A
+Processed prompts:  77%|███████▋  | 4715/6105 [00:15<00:04, 337.59it/s, est. speed input: 13651.63 toks/s, output: 299.65 toks/s][A
+Processed prompts:  81%|████████  | 4930/6105 [00:16<00:03, 338.19it/s, est. speed input: 13622.66 toks/s, output: 301.20 toks/s][A
+Processed prompts:  84%|████████▍ | 5146/6105 [00:16<00:02, 343.22it/s, est. speed input: 13617.08 toks/s, output: 303.13 toks/s][A
+Processed prompts:  88%|████████▊ | 5368/6105 [00:17<00:02, 338.11it/s, est. speed input: 13559.24 toks/s, output: 304.06 toks/s][A
+Processed prompts:  92%|█████████▏| 5592/6105 [00:18<00:01, 346.59it/s, est. speed input: 13553.64 toks/s, output: 306.17 toks/s][A
+Processed prompts:  95%|█████████▌| 5823/6105 [00:18<00:00, 344.43it/s, est. speed input: 13501.29 toks/s, output: 307.37 toks/s][AProcessed prompts: 100%|██████████| 6105/6105 [00:18<00:00, 321.57it/s, est. speed input: 13973.39 toks/s, output: 321.58 toks/s]
+Running loglikelihood requests:   0%|          | 1/6105 [00:19<32:52:53, 19.39s/it]Running loglikelihood requests: 100%|██████████| 6105/6105 [00:19<00:00, 313.25it/s]
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+[rank0]:[W620 15:17:14.589432452 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+2025-06-20:15:17:17 INFO     [loggers.evaluation_tracker:209] Saving results aggregated
+2025-06-20:15:17:17 INFO     [loggers.evaluation_tracker:298] Saving per-sample results for: commonsense_qa
+vllm (pretrained=Qwen/Qwen3-1.7B,tensor_parallel_size=1,dtype=auto,gpu_memory_utilization=0.8), gen_kwargs: (None), limit: None, num_fewshot: None, batch_size: auto
+|    Tasks     |Version|Filter|n-shot|Metric|   |Value |   |Stderr|
+|--------------|-------|------|-----:|------|---|-----:|---|-----:|
+|commonsense_qa|Yaml   |none  |     0|acc   |↑  |0.6421|±  |0.0137|
+

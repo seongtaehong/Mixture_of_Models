@@ -1,0 +1,86 @@
+INFO 05-24 21:25:37 [importing.py:53] Triton module has been replaced with a placeholder.
+INFO 05-24 21:25:37 [__init__.py:239] Automatically detected platform cuda.
+2025-05-24:21:25:42 INFO     [__main__:440] Selected Tasks: ['mgsm_direct_en']
+2025-05-24:21:25:42 INFO     [evaluator:185] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+2025-05-24:21:25:42 INFO     [evaluator:223] Initializing vllm model, with arguments: {'pretrained': 'google/gemma-2-2b-it', 'tensor_parallel_size': 1, 'dtype': 'auto', 'gpu_memory_utilization': 0.7}
+INFO 05-24 21:25:52 [config.py:717] This model supports multiple tasks: {'classify', 'reward', 'score', 'generate', 'embed'}. Defaulting to 'generate'.
+INFO 05-24 21:25:54 [config.py:2003] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 05-24 21:25:57 [core.py:58] Initializing a V1 LLM engine (v0.8.5.post1) with config: model='google/gemma-2-2b-it', speculative_config=None, tokenizer='google/gemma-2-2b-it', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='auto', reasoning_backend=None), observability_config=ObservabilityConfig(show_hidden_metrics=False, otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=1234, served_model_name=google/gemma-2-2b-it, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"level":3,"custom_ops":["none"],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output"],"use_inductor":true,"compile_sizes":[],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":512}
+2025-05-24 21:26:00,385 - INFO - flashinfer.jit: Prebuilt kernels not found, using JIT backend
+WARNING 05-24 21:26:00 [utils.py:2522] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7f99a3746210>
+INFO 05-24 21:26:02 [parallel_state.py:1004] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0
+INFO 05-24 21:26:02 [cuda.py:221] Using Flash Attention backend on V1 engine.
+INFO 05-24 21:26:02 [topk_topp_sampler.py:44] Currently, FlashInfer top-p & top-k sampling sampler is disabled because FlashInfer>=v0.2.3 is not backward compatible. Falling back to the PyTorch-native implementation of top-p & top-k sampling.
+INFO 05-24 21:26:03 [gpu_model_runner.py:1329] Starting to load model google/gemma-2-2b-it...
+INFO 05-24 21:26:05 [weight_utils.py:265] Using model weights format ['*.safetensors']
+Loading safetensors checkpoint shards:   0% Completed | 0/2 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards: 100% Completed | 2/2 [00:01<00:00,  1.27it/s]
+Loading safetensors checkpoint shards: 100% Completed | 2/2 [00:01<00:00,  1.27it/s]
+
+INFO 05-24 21:26:07 [loader.py:458] Loading weights took 1.74 seconds
+INFO 05-24 21:26:08 [gpu_model_runner.py:1347] Model loading took 4.9000 GiB and 4.481172 seconds
+INFO 05-24 21:26:15 [backends.py:420] Using cache directory: /mnt/raid6/hst/.cache/vllm/torch_compile_cache/1ffef29f86/rank_0_0 for vLLM's torch.compile
+INFO 05-24 21:26:15 [backends.py:430] Dynamo bytecode transform time: 7.67 s
+INFO 05-24 21:26:43 [backends.py:118] Directly load the compiled graph(s) for shape None from the cache, took 26.317 s
+INFO 05-24 21:26:45 [monitor.py:33] torch.compile takes 7.67 s in total
+INFO 05-24 21:26:47 [kv_cache_utils.py:634] GPU KV cache size: 258,272 tokens
+INFO 05-24 21:26:47 [kv_cache_utils.py:637] Maximum concurrency for 8,192 tokens per request: 31.53x
+INFO 05-24 21:28:05 [gpu_model_runner.py:1686] Graph capturing finished in 77 secs, took 1.32 GiB
+INFO 05-24 21:28:05 [core.py:159] init engine (profile, create kv cache, warmup model) took 117.46 seconds
+INFO 05-24 21:28:05 [core_client.py:439] Core engine process 0 ready.
+2025-05-24:21:28:07 INFO     [models.vllm_causallms:138] Found 'gemma' in model name, a BOS token will be used as Gemma series models underperform without it.
+2025-05-24:21:28:14 INFO     [evaluator:286] mgsm_direct_en: Using gen_kwargs: {'do_sample': False, 'until': ['Question:', '</s>', '<|im_end|>']}
+2025-05-24:21:28:14 INFO     [api.task:434] Building contexts for mgsm_direct_en on rank 0...
+  0%|          | 0/250 [00:00<?, ?it/s] 45%|████▌     | 113/250 [00:00<00:00, 1122.51it/s] 91%|█████████ | 227/250 [00:00<00:00, 1129.93it/s]100%|██████████| 250/250 [00:00<00:00, 1129.18it/s]
+2025-05-24:21:28:14 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=mgsm_direct_en,output_type=generate_until,num_fewshot=0,num_samples=250); document 0; context prompt (starting on next line):    
+Question: Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?
+Answer:
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+18
+(end of target on previous line)
+2025-05-24:21:28:14 INFO     [evaluator_utils:210] Request: Instance(request_type='generate_until', doc={'question': "Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?", 'answer': None, 'answer_number': 18, 'equation_solution': None}, arguments=("Question: Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?\nAnswer:", {'do_sample': False, 'until': ['Question:', '</s>', '<|im_end|>']}), idx=0, metadata=('mgsm_direct_en', 0, 1), resps=[], filtered_resps={}, task_name='mgsm_direct_en', doc_id=0, repeats=1)
+2025-05-24:21:28:14 INFO     [evaluator:559] Running generate_until requests
+Running generate_until requests:   0%|          | 0/250 [00:00<?, ?it/s]
+Processed prompts:   0%|          | 0/250 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts:   0%|          | 1/250 [00:00<02:52,  1.44it/s, est. speed input: 183.48 toks/s, output: 4.33 toks/s][A
+Processed prompts:   1%|          | 2/250 [00:00<01:33,  2.65it/s, est. speed input: 207.03 toks/s, output: 7.06 toks/s][A
+Processed prompts:   2%|▏         | 5/250 [00:00<00:34,  7.05it/s, est. speed input: 359.03 toks/s, output: 27.15 toks/s][A
+Processed prompts:   5%|▍         | 12/250 [00:01<00:12, 18.47it/s, est. speed input: 709.49 toks/s, output: 103.01 toks/s][A
+Processed prompts:   8%|▊         | 21/250 [00:01<00:07, 32.15it/s, est. speed input: 1052.55 toks/s, output: 214.38 toks/s][A
+Processed prompts:  10%|█         | 26/250 [00:01<00:07, 30.07it/s, est. speed input: 1123.78 toks/s, output: 266.39 toks/s][A
+Processed prompts:  12%|█▏        | 30/250 [00:01<00:07, 29.49it/s, est. speed input: 1207.46 toks/s, output: 323.04 toks/s][A
+Processed prompts:  14%|█▎        | 34/250 [00:01<00:09, 21.73it/s, est. speed input: 1163.45 toks/s, output: 354.71 toks/s][A
+Processed prompts:  15%|█▍        | 37/250 [00:02<00:09, 21.45it/s, est. speed input: 1169.41 toks/s, output: 405.56 toks/s][A
+Processed prompts:  16%|█▋        | 41/250 [00:02<00:09, 22.01it/s, est. speed input: 1210.90 toks/s, output: 476.81 toks/s][A
+Processed prompts:  18%|█▊        | 44/250 [00:02<00:09, 21.59it/s, est. speed input: 1210.76 toks/s, output: 528.26 toks/s][A
+Processed prompts:  20%|█▉        | 49/250 [00:02<00:08, 24.90it/s, est. speed input: 1287.36 toks/s, output: 634.45 toks/s][A
+Processed prompts:  21%|██        | 52/250 [00:02<00:08, 24.71it/s, est. speed input: 1299.16 toks/s, output: 691.37 toks/s][A
+Processed prompts:  22%|██▏       | 55/250 [00:02<00:08, 23.19it/s, est. speed input: 1320.03 toks/s, output: 742.07 toks/s][A
+Processed prompts:  23%|██▎       | 58/250 [00:03<00:15, 12.28it/s, est. speed input: 1161.11 toks/s, output: 706.44 toks/s][A
+Processed prompts:  24%|██▍       | 61/250 [00:03<00:14, 12.94it/s, est. speed input: 1164.12 toks/s, output: 758.33 toks/s][A
+Processed prompts:  25%|██▌       | 63/250 [00:03<00:14, 12.55it/s, est. speed input: 1143.20 toks/s, output: 786.21 toks/s][A
+Processed prompts:  26%|██▌       | 65/250 [00:03<00:14, 12.62it/s, est. speed input: 1154.57 toks/s, output: 818.69 toks/s][A
+Processed prompts:  27%|██▋       | 67/250 [00:04<00:16, 11.30it/s, est. speed input: 1128.66 toks/s, output: 837.76 toks/s][A
+Processed prompts:  29%|██▉       | 72/250 [00:04<00:10, 16.81it/s, est. speed input: 1186.35 toks/s, output: 972.89 toks/s][A
+Processed prompts:  30%|███       | 75/250 [00:04<00:16, 10.86it/s, est. speed input: 1085.76 toks/s, output: 963.66 toks/s][A
+Processed prompts:  31%|███       | 77/250 [00:05<00:17,  9.81it/s, est. speed input: 1067.72 toks/s, output: 976.99 toks/s][A
+Processed prompts:  32%|███▏      | 80/250 [00:05<00:14, 11.44it/s, est. speed input: 1065.86 toks/s, output: 1044.48 toks/s][A
+Processed prompts:  33%|███▎      | 82/250 [00:05<00:24,  6.76it/s, est. speed input: 969.65 toks/s, output: 985.25 toks/s]  [A
+Processed prompts:  34%|███▎      | 84/250 [00:06<00:28,  5.93it/s, est. speed input: 917.61 toks/s, output: 981.15 toks/s][A
+Processed prompts:  34%|███▍      | 85/250 [00:06<00:27,  6.08it/s, est. speed input: 911.39 toks/s, output: 994.17 toks/s][A
+Processed prompts:  34%|███▍      | 86/250 [00:06<00:26,  6.25it/s, est. speed input: 902.43 toks/s, output: 1007.43 toks/s][A
+Processed prompts:  35%|███▍      | 87/250 [00:06<00:25,  6.41it/s, est. speed input: 899.29 toks/s, output: 1021.00 toks/s][A
+Processed prompts:  36%|███▌      | 89/250 [00:06<00:20,  7.73it/s, est. speed input: 892.16 toks/s, output: 1064.11 toks/s][A
+Processed prompts:  36%|███▌      | 90/250 [00:07<00:32,  4.96it/s, est. speed input: 853.65 toks/s, output: 1030.01 toks/s][AProcessed prompts: 100%|██████████| 250/250 [00:07<00:00, 33.43it/s, est. speed input: 2185.72 toks/s, output: 6499.24 toks/s]
+Running generate_until requests:   0%|          | 1/250 [00:07<31:10,  7.51s/it]Running generate_until requests: 100%|██████████| 250/250 [00:07<00:00, 33.28it/s]
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+2025-05-24:21:28:31 INFO     [loggers.evaluation_tracker:209] Saving results aggregated
+2025-05-24:21:28:31 INFO     [loggers.evaluation_tracker:298] Saving per-sample results for: mgsm_direct_en
+vllm (pretrained=google/gemma-2-2b-it,tensor_parallel_size=1,dtype=auto,gpu_memory_utilization=0.7), gen_kwargs: (None), limit: None, num_fewshot: None, batch_size: auto
+|    Tasks     |Version|     Filter      |n-shot|  Metric   |   |Value|   |Stderr|
+|--------------|------:|-----------------|-----:|-----------|---|----:|---|-----:|
+|mgsm_direct_en|      3|flexible-extract |     0|exact_match|↑  |0.048|±  |0.0135|
+|              |       |remove_whitespace|     0|exact_match|↑  |0.000|±  |0.0000|
+

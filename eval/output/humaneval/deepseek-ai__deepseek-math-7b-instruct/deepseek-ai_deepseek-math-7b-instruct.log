@@ -1,0 +1,159 @@
+INFO 05-23 22:38:23 [importing.py:53] Triton module has been replaced with a placeholder.
+INFO 05-23 22:38:23 [__init__.py:239] Automatically detected platform cuda.
+2025-05-23:22:38:27 INFO     [__main__:440] Selected Tasks: ['humaneval_instruct']
+2025-05-23:22:38:27 WARNING  [evaluator:159] Instruct model detected, but chat template not applied. Recommend setting `apply_chat_template` (optionally `fewshot_as_multiturn`).
+2025-05-23:22:38:27 INFO     [evaluator:185] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+2025-05-23:22:38:27 INFO     [evaluator:223] Initializing vllm model, with arguments: {'pretrained': 'deepseek-ai/deepseek-math-7b-instruct', 'tensor_parallel_size': 1, 'dtype': 'auto', 'gpu_memory_utilization': 0.8}
+INFO 05-23 22:38:38 [config.py:717] This model supports multiple tasks: {'classify', 'embed', 'score', 'reward', 'generate'}. Defaulting to 'generate'.
+INFO 05-23 22:38:39 [config.py:2003] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 05-23 22:38:41 [core.py:58] Initializing a V1 LLM engine (v0.8.5.post1) with config: model='deepseek-ai/deepseek-math-7b-instruct', speculative_config=None, tokenizer='deepseek-ai/deepseek-math-7b-instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=4096, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='auto', reasoning_backend=None), observability_config=ObservabilityConfig(show_hidden_metrics=False, otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=1234, served_model_name=deepseek-ai/deepseek-math-7b-instruct, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"level":3,"custom_ops":["none"],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output"],"use_inductor":true,"compile_sizes":[],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":512}
+2025-05-23 22:38:43,547 - INFO - flashinfer.jit: Prebuilt kernels not found, using JIT backend
+WARNING 05-23 22:38:43 [utils.py:2522] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7f461fb981a0>
+INFO 05-23 22:38:46 [parallel_state.py:1004] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0
+INFO 05-23 22:38:46 [cuda.py:221] Using Flash Attention backend on V1 engine.
+INFO 05-23 22:38:46 [topk_topp_sampler.py:44] Currently, FlashInfer top-p & top-k sampling sampler is disabled because FlashInfer>=v0.2.3 is not backward compatible. Falling back to the PyTorch-native implementation of top-p & top-k sampling.
+INFO 05-23 22:38:47 [gpu_model_runner.py:1329] Starting to load model deepseek-ai/deepseek-math-7b-instruct...
+INFO 05-23 22:38:49 [weight_utils.py:265] Using model weights format ['*.bin']
+Loading pt checkpoint shards:   0% Completed | 0/2 [00:00<?, ?it/s]
+Loading pt checkpoint shards:  50% Completed | 1/2 [00:13<00:13, 13.86s/it]
+Loading pt checkpoint shards: 100% Completed | 2/2 [00:18<00:00,  8.24s/it]
+Loading pt checkpoint shards: 100% Completed | 2/2 [00:18<00:00,  9.09s/it]
+
+INFO 05-23 22:39:08 [loader.py:458] Loading weights took 18.22 seconds
+INFO 05-23 22:39:08 [gpu_model_runner.py:1347] Model loading took 12.8726 GiB and 20.563164 seconds
+INFO 05-23 22:39:16 [backends.py:420] Using cache directory: /mnt/raid6/hst/.cache/vllm/torch_compile_cache/b7d8a146bb/rank_0_0 for vLLM's torch.compile
+INFO 05-23 22:39:16 [backends.py:430] Dynamo bytecode transform time: 7.65 s
+INFO 05-23 22:39:42 [backends.py:118] Directly load the compiled graph(s) for shape None from the cache, took 25.215 s
+INFO 05-23 22:39:45 [monitor.py:33] torch.compile takes 7.65 s in total
+INFO 05-23 22:39:48 [kv_cache_utils.py:634] GPU KV cache size: 52,032 tokens
+INFO 05-23 22:39:48 [kv_cache_utils.py:637] Maximum concurrency for 4,096 tokens per request: 12.70x
+INFO 05-23 22:41:12 [gpu_model_runner.py:1686] Graph capturing finished in 84 secs, took 1.33 GiB
+INFO 05-23 22:41:12 [core.py:159] init engine (profile, create kv cache, warmup model) took 123.69 seconds
+INFO 05-23 22:41:12 [core_client.py:439] Core engine process 0 ready.
+2025-05-23:22:41:24 INFO     [evaluator:286] humaneval_instruct: Using gen_kwargs: {'until': ['\nclass', '\ndef', '\n#', '\nif', '\nprint'], 'max_gen_toks': 1024, 'do_sample': False}
+2025-05-23:22:41:24 INFO     [api.task:434] Building contexts for humaneval_instruct on rank 0...
+  0%|          | 0/164 [00:00<?, ?it/s] 84%|████████▎ | 137/164 [00:00<00:00, 1366.93it/s]100%|██████████| 164/164 [00:00<00:00, 1371.86it/s]
+2025-05-23:22:41:25 INFO     [evaluator_utils:206] Task: ConfigurableTask(task_name=humaneval_instruct,output_type=generate_until,num_fewshot=0,num_samples=164); document 0; context prompt (starting on next line):    
+Write a solution to the following problem and make sure that it passes the tests:
+```from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """ Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """
+ Here is the completed function:
+```python
+from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """ Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """
+
+
+(end of prompt on previous line)
+target string or answer choice index (starting on next line):
+
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.3) == True
+    assert candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.05) == False
+    assert candidate([1.0, 2.0, 5.9, 4.0, 5.0], 0.95) == True
+    assert candidate([1.0, 2.0, 5.9, 4.0, 5.0], 0.8) == False
+    assert candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.0], 0.1) == True
+    assert candidate([1.1, 2.2, 3.1, 4.1, 5.1], 1.0) == True
+    assert candidate([1.1, 2.2, 3.1, 4.1, 5.1], 0.5) == False
+
+
+check(has_close_elements)
+(end of target on previous line)
+2025-05-23:22:41:25 INFO     [evaluator_utils:210] Request: Instance(request_type='generate_until', doc={'task_id': 'HumanEval/0', 'prompt': 'from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    """ Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    """\n', 'canonical_solution': '    for idx, elem in enumerate(numbers):\n        for idx2, elem2 in enumerate(numbers):\n            if idx != idx2:\n                distance = abs(elem - elem2)\n                if distance < threshold:\n                    return True\n\n    return False\n', 'test': "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.3) == True\n    assert candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.05) == False\n    assert candidate([1.0, 2.0, 5.9, 4.0, 5.0], 0.95) == True\n    assert candidate([1.0, 2.0, 5.9, 4.0, 5.0], 0.8) == False\n    assert candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.0], 0.1) == True\n    assert candidate([1.1, 2.2, 3.1, 4.1, 5.1], 1.0) == True\n    assert candidate([1.1, 2.2, 3.1, 4.1, 5.1], 0.5) == False\n\n", 'entry_point': 'has_close_elements'}, arguments=('Write a solution to the following problem and make sure that it passes the tests:\n```from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    """ Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    """\n Here is the completed function:\n```python\nfrom typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    """ Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    """\n\n', {'until': ['\nclass', '\ndef', '\n#', '\nif', '\nprint'], 'max_gen_toks': 1024, 'do_sample': False}), idx=0, metadata=('humaneval_instruct', 0, 1), resps=[], filtered_resps={}, task_name='humaneval_instruct', doc_id=0, repeats=1)
+2025-05-23:22:41:25 INFO     [evaluator:559] Running generate_until requests
+Running generate_until requests:   0%|          | 0/164 [00:00<?, ?it/s]
+Processed prompts:   0%|          | 0/164 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts:   1%|          | 1/164 [00:07<20:54,  7.70s/it, est. speed input: 34.43 toks/s, output: 3.64 toks/s][A
+Processed prompts:   1%|          | 2/164 [00:07<08:53,  3.29s/it, est. speed input: 68.54 toks/s, output: 7.46 toks/s][A
+Processed prompts:   2%|▏         | 3/164 [00:08<05:26,  2.03s/it, est. speed input: 96.95 toks/s, output: 11.51 toks/s][A
+Processed prompts:   3%|▎         | 5/164 [00:08<02:28,  1.07it/s, est. speed input: 149.10 toks/s, output: 20.07 toks/s][A
+Processed prompts:   4%|▍         | 7/164 [00:08<01:26,  1.82it/s, est. speed input: 211.65 toks/s, output: 29.21 toks/s][A
+Processed prompts:   5%|▌         | 9/164 [00:08<00:57,  2.70it/s, est. speed input: 263.58 toks/s, output: 38.21 toks/s][A
+Processed prompts:   6%|▌         | 10/164 [00:09<00:50,  3.02it/s, est. speed input: 296.15 toks/s, output: 42.57 toks/s][A
+Processed prompts:   7%|▋         | 12/164 [00:09<00:38,  3.97it/s, est. speed input: 342.99 toks/s, output: 51.56 toks/s][A
+Processed prompts:   8%|▊         | 13/164 [00:09<00:39,  3.86it/s, est. speed input: 361.73 toks/s, output: 55.51 toks/s][A
+Processed prompts:  10%|█         | 17/164 [00:10<00:24,  6.06it/s, est. speed input: 477.81 toks/s, output: 73.50 toks/s][A
+Processed prompts:  12%|█▏        | 19/164 [00:10<00:22,  6.41it/s, est. speed input: 532.92 toks/s, output: 83.26 toks/s][A
+Processed prompts:  12%|█▏        | 20/164 [00:10<00:22,  6.36it/s, est. speed input: 545.10 toks/s, output: 87.60 toks/s][A
+Processed prompts:  13%|█▎        | 22/164 [00:10<00:22,  6.40it/s, est. speed input: 583.39 toks/s, output: 97.17 toks/s][A
+Processed prompts:  16%|█▌        | 26/164 [00:10<00:14,  9.28it/s, est. speed input: 671.93 toks/s, output: 119.51 toks/s][A
+Processed prompts:  18%|█▊        | 29/164 [00:11<00:12, 10.94it/s, est. speed input: 732.51 toks/s, output: 136.13 toks/s][A
+Processed prompts:  19%|█▉        | 31/164 [00:11<00:11, 12.05it/s, est. speed input: 779.55 toks/s, output: 147.43 toks/s][A
+Processed prompts:  20%|██        | 33/164 [00:11<00:16,  7.97it/s, est. speed input: 822.28 toks/s, output: 152.89 toks/s][A
+Processed prompts:  23%|██▎       | 38/164 [00:11<00:10, 11.89it/s, est. speed input: 965.03 toks/s, output: 183.53 toks/s][A
+Processed prompts:  25%|██▌       | 41/164 [00:12<00:08, 13.92it/s, est. speed input: 1063.67 toks/s, output: 201.87 toks/s][A
+Processed prompts:  27%|██▋       | 45/164 [00:12<00:06, 17.50it/s, est. speed input: 1152.66 toks/s, output: 226.85 toks/s][A
+Processed prompts:  30%|██▉       | 49/164 [00:12<00:05, 20.84it/s, est. speed input: 1236.41 toks/s, output: 252.03 toks/s][A
+Processed prompts:  33%|███▎      | 54/164 [00:12<00:04, 25.70it/s, est. speed input: 1347.95 toks/s, output: 281.48 toks/s][A
+Processed prompts:  35%|███▌      | 58/164 [00:12<00:03, 27.87it/s, est. speed input: 1444.68 toks/s, output: 307.45 toks/s][A
+Processed prompts:  38%|███▊      | 62/164 [00:12<00:03, 29.61it/s, est. speed input: 1523.10 toks/s, output: 333.34 toks/s][A
+Processed prompts:  40%|████      | 66/164 [00:12<00:03, 27.53it/s, est. speed input: 1584.58 toks/s, output: 347.00 toks/s][A
+Processed prompts:  42%|████▏     | 69/164 [00:12<00:03, 27.38it/s, est. speed input: 1658.02 toks/s, output: 360.28 toks/s][A
+Processed prompts:  44%|████▍     | 72/164 [00:13<00:03, 27.39it/s, est. speed input: 1714.09 toks/s, output: 377.53 toks/s][A
+Processed prompts:  46%|████▌     | 75/164 [00:13<00:03, 27.51it/s, est. speed input: 1778.88 toks/s, output: 390.22 toks/s][A
+Processed prompts:  48%|████▊     | 78/164 [00:13<00:03, 27.66it/s, est. speed input: 1825.27 toks/s, output: 405.28 toks/s][A
+Processed prompts:  49%|████▉     | 81/164 [00:13<00:03, 21.91it/s, est. speed input: 1892.24 toks/s, output: 422.65 toks/s][A
+Processed prompts:  51%|█████     | 84/164 [00:13<00:03, 23.59it/s, est. speed input: 1937.65 toks/s, output: 437.67 toks/s][A
+Processed prompts:  53%|█████▎    | 87/164 [00:13<00:03, 22.21it/s, est. speed input: 1971.80 toks/s, output: 456.23 toks/s][A
+Processed prompts:  55%|█████▍    | 90/164 [00:13<00:03, 21.31it/s, est. speed input: 2020.57 toks/s, output: 475.82 toks/s][A
+Processed prompts:  57%|█████▋    | 93/164 [00:14<00:03, 23.18it/s, est. speed input: 2078.94 toks/s, output: 497.24 toks/s][A
+Processed prompts:  60%|█████▉    | 98/164 [00:14<00:02, 26.65it/s, est. speed input: 2187.37 toks/s, output: 529.05 toks/s][A
+Processed prompts:  62%|██████▏   | 101/164 [00:14<00:02, 24.76it/s, est. speed input: 2230.48 toks/s, output: 544.22 toks/s][A
+Processed prompts:  63%|██████▎   | 104/164 [00:14<00:02, 21.71it/s, est. speed input: 2265.60 toks/s, output: 563.26 toks/s][A
+Processed prompts:  65%|██████▌   | 107/164 [00:14<00:02, 20.02it/s, est. speed input: 2326.48 toks/s, output: 583.07 toks/s][A
+Processed prompts:  68%|██████▊   | 111/164 [00:14<00:02, 21.02it/s, est. speed input: 2391.49 toks/s, output: 607.15 toks/s][A
+Processed prompts:  70%|██████▉   | 114/164 [00:15<00:02, 19.99it/s, est. speed input: 2425.24 toks/s, output: 624.19 toks/s][A
+Processed prompts:  73%|███████▎  | 119/164 [00:15<00:01, 23.10it/s, est. speed input: 2506.94 toks/s, output: 657.08 toks/s][A
+Processed prompts:  76%|███████▌  | 124/164 [00:15<00:01, 27.52it/s, est. speed input: 2578.52 toks/s, output: 694.56 toks/s][A
+Processed prompts:  78%|███████▊  | 128/164 [00:15<00:01, 27.09it/s, est. speed input: 2644.43 toks/s, output: 721.25 toks/s][A
+Processed prompts:  80%|███████▉  | 131/164 [00:15<00:01, 27.00it/s, est. speed input: 2673.98 toks/s, output: 741.56 toks/s][A
+Processed prompts:  82%|████████▏ | 134/164 [00:15<00:01, 17.51it/s, est. speed input: 2698.90 toks/s, output: 755.59 toks/s][A
+Processed prompts:  84%|████████▎ | 137/164 [00:16<00:01, 15.90it/s, est. speed input: 2718.27 toks/s, output: 772.02 toks/s][A
+Processed prompts:  85%|████████▌ | 140/164 [00:16<00:01, 16.49it/s, est. speed input: 2741.72 toks/s, output: 792.38 toks/s][A
+Processed prompts:  87%|████████▋ | 142/164 [00:16<00:01, 11.00it/s, est. speed input: 2702.12 toks/s, output: 790.73 toks/s][A
+Processed prompts:  88%|████████▊ | 144/164 [00:17<00:02,  7.05it/s, est. speed input: 2625.90 toks/s, output: 780.38 toks/s][A
+Processed prompts:  89%|████████▉ | 146/164 [00:17<00:02,  7.47it/s, est. speed input: 2633.68 toks/s, output: 792.67 toks/s][A
+Processed prompts:  91%|█████████▏| 150/164 [00:17<00:01,  9.75it/s, est. speed input: 2654.14 toks/s, output: 824.68 toks/s][A
+Processed prompts:  93%|█████████▎| 152/164 [00:18<00:01,  9.22it/s, est. speed input: 2661.31 toks/s, output: 838.27 toks/s][A
+Processed prompts:  94%|█████████▍| 154/164 [00:18<00:01,  8.86it/s, est. speed input: 2695.37 toks/s, output: 853.19 toks/s][A
+Processed prompts:  95%|█████████▌| 156/164 [00:18<00:01,  7.37it/s, est. speed input: 2670.92 toks/s, output: 861.69 toks/s][A
+Processed prompts:  96%|█████████▌| 157/164 [00:18<00:00,  7.19it/s, est. speed input: 2659.50 toks/s, output: 865.98 toks/s][A
+Processed prompts:  96%|█████████▋| 158/164 [00:19<00:00,  6.05it/s, est. speed input: 2653.18 toks/s, output: 867.52 toks/s][A
+Processed prompts:  98%|█████████▊| 160/164 [00:19<00:00,  6.99it/s, est. speed input: 2656.18 toks/s, output: 886.58 toks/s][A
+Processed prompts:  99%|█████████▉| 162/164 [00:20<00:00,  3.25it/s, est. speed input: 2568.64 toks/s, output: 861.44 toks/s][A
+Processed prompts:  99%|█████████▉| 163/164 [00:20<00:00,  3.42it/s, est. speed input: 2568.47 toks/s, output: 868.77 toks/s][A
+Processed prompts: 100%|██████████| 164/164 [00:35<00:00,  3.36s/it, est. speed input: 1520.98 toks/s, output: 539.50 toks/s][AProcessed prompts: 100%|██████████| 164/164 [00:35<00:00,  4.62it/s, est. speed input: 1520.98 toks/s, output: 539.50 toks/s]
+Running generate_until requests:   1%|          | 1/164 [00:35<1:36:31, 35.53s/it]Running generate_until requests: 100%|██████████| 164/164 [00:35<00:00,  4.62it/s]
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+2025-05-23:22:42:27 INFO     [loggers.evaluation_tracker:209] Saving results aggregated
+2025-05-23:22:42:27 INFO     [loggers.evaluation_tracker:298] Saving per-sample results for: humaneval_instruct
+vllm (pretrained=deepseek-ai/deepseek-math-7b-instruct,tensor_parallel_size=1,dtype=auto,gpu_memory_utilization=0.8), gen_kwargs: (None), limit: None, num_fewshot: None, batch_size: auto
+|      Tasks       |Version|  Filter   |n-shot|Metric|   |Value |   |Stderr|
+|------------------|------:|-----------|-----:|------|---|-----:|---|-----:|
+|humaneval_instruct|      2|create_test|     0|pass@1|   |0.5183|±  |0.0391|
+
