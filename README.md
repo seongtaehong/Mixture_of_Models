@@ -63,9 +63,9 @@ MOM/
 ## 🚀 Installation
 
 ### Prerequisites
-- Python 3.8+
-- CUDA-capable GPU (recommended)
-- 16GB+ RAM
+- Python 3.10+
+- Intel Xeon Gold 6230R @ 2.1GHz (dual socket, 52 cores/104 threads, max 4.0GHz boost)
+- A6000 X 1
 
 ### Setup
 ```bash
